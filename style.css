@@ -1634,6 +1634,9 @@ input[type="text"]:focus {
   .btnstyle:active{
     background-color: #ad9416;
   }
+　#datasakujo{
+    color: #fff;
+  }
   .tap{
     background-color: #787878;
     background-image:
