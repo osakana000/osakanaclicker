@@ -516,7 +516,7 @@
     let clickCountB =0;//usagiセリフ✖︎
     let clickCountc =0;//uranyankoセリフ✖︎
     let itm5timer = null;
-saveNedan(nedan);
+
     //ロード画面
     window.onload = function () {
         const spinner = document.getElementById("loading");
@@ -854,6 +854,7 @@ saveNedan(nedan);
         document.getElementById('nedan4').innerText = `${nedan[3]}魚`; // 表示更新
         document.getElementById('nedan5').innerText = `${nedan[4]}魚`; // 表示更新
     }
+    saveNedan(nedan);
 
     //記録
     //総クリック数counttt
