@@ -946,7 +946,8 @@
         window.dispatchEvent(new Event('scroll'));
     });
 
-
+    nedan[3] = [800];
+    nedan[4] = [1000];
     const clickicon = document.getElementById("clickicon");
     const tapicon = document.getElementById("tapicon");
     upsakana.style.display = 'none';
@@ -971,8 +972,6 @@
         oyatustyles();
         shopItemStyles();
         urashopStyles();
-        let nedan[3] = 800;
-        let nedan[4] = 1000;
         questlvup = JSON.parse(localStorage.getItem("questlvup") || "[1,1,1]");
         msakana = Number(localStorage.getItem("msakana") || 170);
         mmck = Number(localStorage.getItem("mmck") || 100);
