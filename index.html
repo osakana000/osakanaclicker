@@ -1396,8 +1396,8 @@
     const BUTTON_CLICK_EVENT = document.getElementById('button1');
     BUTTON_CLICK_EVENT.addEventListener('click', () => {
         let count = Number(localStorage.getItem("count"));
-        let get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
-        let nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1000]");
+        get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
+        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1000]");
         let currentPrice = nedan[0]; //現在の価格
         let totalCost = 0;           //合計金額の初期化
 
@@ -1474,8 +1474,8 @@
     const BUTTON_EVT= document.getElementById('button2');
     BUTTON_EVT.addEventListener('click', () => {
         let count = Number(localStorage.getItem("count"));
-        let get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
-        let nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1000]");
+        get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
+        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1000]");
         let currentPrice = nedan[1];      //現在の価格
         let totalCost = 0;                //合計コスト
 
@@ -1551,8 +1551,8 @@
     const BUTTON_koukandume= document.getElementById('button3');
     BUTTON_koukandume.addEventListener('click', () => {
         let count = Number(localStorage.getItem("count"));
-        let get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
-        let nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1000]");
+        get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
+        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1000]");
         let currentPrice = nedan[2];      //現在の価格
         let totalCost = 0;                //合計コスト
 
