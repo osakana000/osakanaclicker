@@ -59,7 +59,7 @@ img{
 
 #loading{
   width: 100vw;
-  height: 100vh;/*全画面に表示されるようにvw/vh にする*/
+  height: 100vh;
   transition: all 1s;
   background-color: #1db5d7;
   position: fixed;
@@ -370,9 +370,9 @@ img{
   left: 50%; /* 親に対して中央配置 */
 }
 #couns{
-  position: absolute; /* 絶対配置 */
   top: 50px;
   left: 20px;
+  display: inline-block;
   z-index: 999;
 }
 #upsakana{
@@ -472,6 +472,18 @@ img{
   background-size: 60px 60px;
   background-position: 0 0, 30px 30px;
 }
+/* .con4{
+  height: 380px;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px 0px;
+  position: relative;
+	background-image: linear-gradient(0deg, transparent calc(100% - 1px), #d0d0d0 calc(100% - 1px)),
+                    linear-gradient(90deg, transparent calc(100% - 1px), #d0d0d0 calc(100% - 1px));
+  background-size: 16px 16px;
+  background-repeat: repeat;
+  background-position: center center;
+} */
 
 .ok{
   background-color: #fff;
@@ -1145,7 +1157,7 @@ hr{
 #oyatuclass2{
   background-color: rgba(255, 255, 255, 0.575);
   display: flex;
-  width: 460px;
+  width: 620px;
   height: 400px;
   padding: 5px 5px;
   overflow-x: scroll;
@@ -1430,7 +1442,7 @@ hr{
 #uuushop{
   background-color: rgba(255, 255, 255, 0.575);
   display: flex;
-  width: 540px;
+  width: 620px;
   height: 255px;
   padding: 5px 5px;
   overflow-x: scroll;
@@ -1892,8 +1904,9 @@ input[type="text"]:focus {
     min-height: 35px;
   }
   #couns{
+    position: relative;
     top: 40px;/*親要素下からの位置 */
-    min-width: 80px;
+    height: 25px;
   }
 
   #kiroku{
