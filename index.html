@@ -930,16 +930,6 @@
         window.dispatchEvent(new Event('scroll'));
     });
 
-    if (nedan && Array.isArray(nedan)) {
-        nedan[3] = 800; // 3番目
-        nedan[4] = 1000; // 4番目
-        localStorage.setItem("nedan", JSON.stringify(nedan));
-    }
-    if (counnt && Array.isArray(counnt)) {
-        counnt[3] = 50; // 3番目
-        localStorage.setItem("counnt", JSON.stringify(counnt));
-    }
-
     const clickicon = document.getElementById("clickicon");
     const tapicon = document.getElementById("tapicon");
     upsakana.style.display = 'none';
