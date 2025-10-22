@@ -293,6 +293,42 @@
         <audio class="koukaon" src="音/決定ボタンを押す50.mp3"></audio><!--6-->
 
 
+        <!--con4-->
+        <!-- <div class="con4">
+            <p id="Ishop" class="shopname"><i class="ri-user-add-fill"></i><span>ね</span>こ紹介所</p>
+            <div id="itemshop">
+                <div>
+                    <img src="./images/usagi1.png"id="usagi"><button id="btn2" class="bbb"><p>いらっしゃいませ</p></button>
+                    <p><span class="tooltip-text" id="i2">自動で<span class="tango">魚</span><i class="ri-money-cny-circle-fill"></i>がクリック<i class="ri-cursor-line"></i>されます。</span>
+                        <span class="setumei" id="stmi2">説明</span></p>
+                </div>
+                <div class="Itembox">  
+                    <div class="Itemcontents"> 
+                        <div class="Itemm" id="im4">
+                            <div class="Itm" title="アイテム4" >
+                                <p class="txt">ねこの手<i class="ri-cursor-line"></i><i class="ri-timer-fill"></i></p>
+                                <img  class="Itemphoto" src="./images/cat_fish_run.png">
+                                <p id="photo2">魚+5</p>
+                                <p><i class="ri-cursor-line"></i><span>+5</span></p>
+                                <p id="Inedan5" class="nee">650魚</p>
+                                <button id="Item5" class="Itembtn">購入する</button>
+                            </div>
+                        </div>
+                        <div class="Itemm" id="im0">
+                            <div class="Itm" title="アイテム4" >
+                                <p class="txt">ねこの手<i class="ri-cursor-line"></i><i class="ri-timer-fill"></i></p>
+                                <img  class="Itemphoto" src="./images/cat_fish_run.png">
+                                <p id="photo2">魚+5</p>
+                                <p><i class="ri-cursor-line"></i><span>+5</span></p>
+                                <p id="Inedan5" class="nee">650魚</p>
+                                <button id="Item5" class="Itembtn">購入する</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div> -->
+
         <!--con1-->
         <div class="con1">
             <p id="Ishop" class="shopname"><i class="ri-store-line"></i><span>ア</span>イテムショップ</p>
@@ -494,7 +530,7 @@
     let get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");//ねこショップのものを買った数✔︎
     let kaukazu =1;//ねこショップのものを買う数を決める✖︎
     // let nedan = [20,80,150];//ねこショップの値段✔︎
-    let nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1000]");//ねこショップの値段✔︎
+    let nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");//ねこショップの値段✔︎
     // let Inedan = [760,800,50,100,1200];
     let Inedan = JSON.parse(localStorage.getItem("Inedan") || "[0,800,100,650]");//アイテムショップの値段✔︎
     let unedan = JSON.parse(localStorage.getItem("unedan") || "[5,10,15,45]");//ウラショップの値段✔︎
@@ -532,6 +568,11 @@
         questclear2 = localStorage.getItem("questclear2") === "true";
         questclear3 = localStorage.getItem("questclear3") === "true";
         flagItm5 = localStorage.getItem("flagItm5") === "true";
+        get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");//ねこショップのものを買った数✔︎
+        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");//ねこショップの値段✔︎
+        Inedan = JSON.parse(localStorage.getItem("Inedan") || "[0,800,100,650]");//アイテムショップの値段✔︎
+        unedan = JSON.parse(localStorage.getItem("unedan") || "[5,10,15,45]");//ウラショップの値段✔︎
+        counnt = JSON.parse(localStorage.getItem("counnt") || "[2,5,10,50]");//ねこショップのものを買ってクリックが増える数✔︎
         Itm5flag();
         questflag();
         resumeItem2Timer();
@@ -626,7 +667,6 @@
             msg.remove();
         }, 900);
     }
-
     //データ削除ボタン
     function resetCount() {
       ok7();
@@ -656,7 +696,7 @@
       btn5();
       localStorage.removeItem('userName');
       document.getElementById('output').textContent = '名無しさんの';
-      localStorage.setItem("nedan", JSON.stringify([20, 80, 150, 800, 1000]));
+      localStorage.setItem("nedan", JSON.stringify([20, 80, 150, 800, 1500]));
       localStorage.setItem("Inedan", JSON.stringify([0, 800, 100, 650]));
       localStorage.setItem("unedan", JSON.stringify([5,10,15,45]));
       localStorage.setItem("counnt", JSON.stringify([2,5,10,50]));
@@ -831,7 +871,7 @@
     //ねこショップ
     //削除するときの関数(nedan)
     function resetNedan() {
-        let nedan = [20, 80, 150, 800, 1000];
+        let nedan = [20, 80, 150, 800, 1500];
         document.getElementById('nedan').innerText = `${nedan[0]}魚`; // 表示更新
         document.getElementById('nedan2').innerText = `${nedan[1]}魚`; // 表示更新
         document.getElementById('nedan3').innerText = `${nedan[2]}魚`; // 表示更新
@@ -1384,13 +1424,12 @@
     }
 
 
-
     // 缶詰の購入ボタンの動作
     const BUTTON_CLICK_EVENT = document.getElementById('button1');
     BUTTON_CLICK_EVENT.addEventListener('click', () => {
         let count = Number(localStorage.getItem("count"));
         get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
-        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1000]");
+        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");
         let currentPrice = nedan[0]; //現在の価格
         let totalCost = 0;           //合計金額の初期化
 
@@ -1468,7 +1507,7 @@
     BUTTON_EVT.addEventListener('click', () => {
         let count = Number(localStorage.getItem("count"));
         get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
-        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1000]");
+        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");
         let currentPrice = nedan[1];      //現在の価格
         let totalCost = 0;                //合計コスト
 
@@ -1545,7 +1584,7 @@
     BUTTON_koukandume.addEventListener('click', () => {
         let count = Number(localStorage.getItem("count"));
         get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
-        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1000]");
+        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");
         let currentPrice = nedan[2];      //現在の価格
         let totalCost = 0;                //合計コスト
 
@@ -1621,7 +1660,7 @@
     BUTTON_oyatu.addEventListener('click', () => {
         let count = Number(localStorage.getItem("count"));
         get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
-        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1000]");
+        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");
         let currentPrice = nedan[3];      //現在の価格
         let totalCost = 0;                //合計コスト
 
@@ -1687,7 +1726,7 @@
         let price = nedan[4];
         for (let i = 0; i < kaukazu; i++) {
             total += price;
-            price *= 2.5;
+            price *= 3;
         }
         document.getElementById('nedan5').innerText = `${total}魚`; // ←表示用要素IDに合わせて調整
     }
@@ -1697,14 +1736,14 @@
     BUTTON_cake.addEventListener('click', () => {
         let count = Number(localStorage.getItem("count"));
         get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
-        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1000]");
+        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");
         let currentPrice = nedan[4];      //現在の価格
         let totalCost = 0;                //合計コスト
 
         //価格上昇を含めた合計金額を計算
         for (let i = 0; i < kaukazu; i++) {
             totalCost += currentPrice;
-            currentPrice *= 2.5; // 高級缶詰 価格上昇
+            currentPrice *= 3; // 高級缶詰 価格上昇
         }
 
         //魚が足りるかチェック
@@ -1716,7 +1755,7 @@
 
             // 価格と表示用価格記録
             for (let i = 0; i < kaukazu; i++) {
-                nedan[4] *= 2.5;
+                nedan[4] *= 3;
             }
             setIcount(Icount += kaukazu);
             nedan = nedan.map(value => Math.floor(value));//nedanを小数点切り捨て
@@ -1804,8 +1843,10 @@
     }
 
     const i1 = document.getElementById('i1');
+    // const i2 = document.getElementById('i2');
     i1.style.opacity = 1;
     i1.textContent = "ここにアイテムの説明が出ます";
+    // i2.textContent = "ここにねこの説明が出ます";
 
     const im1= document.getElementById('im1');
     im1.addEventListener('click', () => {
@@ -1813,11 +1854,11 @@
     });
     const im2= document.getElementById('im2');
     im2.addEventListener('click', () => {
-        i1.innerHTML = '2分間食べ物<i class="ri-restaurant-fill"></i>が安くなります。';
+        i1.innerHTML = '2分間<span class="tango">食べ物</span><i class="ri-restaurant-fill"></i>が安くなります。';
     });
     const im3= document.getElementById('im3');
     im3.addEventListener('click', () => {
-        i1.innerHTML = 'ランダムで食べ物<i class="ri-restaurant-fill"></i>が貰えます。当たり:1番(缶詰),2番(キャットフード),9番(高級缶詰)';
+        i1.innerHTML = 'ランダムで<span class="tango">食べ物</span><i class="ri-restaurant-fill"></i>が貰えます。当たり:1番(缶詰),2番(キャットフード),9番(高級缶詰)';
     });
     const im4= document.getElementById('im4');
     im4.addEventListener('click', () => {
@@ -2077,7 +2118,7 @@
         // 値段を元に戻す処理（必要ならここで）
         let savedMotonedan = JSON.parse(localStorage.getItem("motonedan") || "[]");
         if (savedMotonedan.length === 4) {
-            nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1000]");
+            nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");
             nedan[0] = savedMotonedan[0];
             nedan[1] = savedMotonedan[1];
             nedan[2] = savedMotonedan[2];
@@ -2100,7 +2141,7 @@
 
         let count = Number(localStorage.getItem("count"));
         Inedan = JSON.parse(localStorage.getItem("Inedan") || "[0,800,100,650]");
-        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1000]");
+        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");
 
         if (count < Inedan[1]) {
             const audio = new Audio('音/キャンセル4.mp3');
@@ -2654,7 +2695,6 @@
         sessionStorage.setItem('selectsize', "0");
     }
 
-
     //ねこの表情とセリフ
     {
         const btn = document.getElementById('btn');
@@ -2669,7 +2709,7 @@
                 audio.play();
             }
             else if(clickCount==3){
-                btn.textContent = 'ここでは食べ物やおもちゃなどを売っています。';
+                btn.textContent = 'ここでは食べ物やプレゼントなどを売っています。';
                 document.getElementById('cat').src='./images/ねこ4.png';
                 clickCount++
                 audio.play();
