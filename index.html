@@ -47,7 +47,7 @@
                     </ul>    
                 </div>
                 <div id="counts">
-                    <p class="counterr" id="countsakana"><span><i class="ri-money-cny-circle-fill"></i>魚 <span class="countup" id="counter">0</span></span></p>
+                    <p class="counterr" id="countsakana"><i class="ri-money-cny-circle-fill"></i>魚 <span class="countup" id="counter">0</span></span></p>
                     <p class="coun" id="couns"><span><i class="ri-time-fill"></i><span id="coun1s">毎秒+0</span></span></p>
                     <p class="counterr" id="countlv"><span><i class="ri-star-fill"></i>小判 <span class="countup" id="inputLv">0</span></span></p>
                 </div>
@@ -345,7 +345,7 @@
                                 <img class="Itemphoto" src="./images/おさかな.png">
                                 <p id="photo1">+150</p>
                                 <p><span id="Itm1buy" class="nee">あと5コ</span></p>
-                                <p id="Inedan" class="nee">0魚</p>
+                                <p><span id="Inedan" class="nee">0</span>魚</p>
                                 <button id="Item" class="Itembtn">購入する</button>
                             </div>
                         </div>
@@ -353,7 +353,7 @@
                             <div class="Itm" title="アイテム2" >
                                 <p class="txt">セールの張り紙<i class="ri-money-cny-circle-fill"></i><i class="ri-restaurant-fill"></i></p>
                                 <img  class="Itemphoto" src="./images/pop_sale.png">
-                                <p id="Inedan2" class="nee">800魚</p>
+                                <p><span id="Inedan2" class="nee">800</span>魚</p>
                                 <button id="Item2" class="Itembtn">購入する</button>
                             </div>
                         </div>
@@ -361,7 +361,7 @@
                             <div class="Itm" title="アイテム3" >
                                 <p class="txt">ねこみくじ<i class="ri-restaurant-fill"></i></p>
                                 <img  class="Itemphoto" src="./images/syougatsu2_omijikuji2.png">
-                                <p id="Inedan4" class="nee">100魚</p>
+                                <p><span id="Inedan4" class="nee">100</span>魚</p>
                                 <button id="Item4" class="Itembtn">購入する</button>
                             </div>
                         </div>
@@ -371,7 +371,7 @@
                                 <img  class="Itemphoto" src="./images/cat_fish_run.png">
                                 <p id="photo2">魚+5</p>
                                 <p><i class="ri-cursor-line"></i><span>+5</span></p>
-                                <p id="Inedan5" class="nee">650魚</p>
+                                <p><span id="Inedan5" class="nee">650</span>魚</p>
                                 <button id="Item5" class="Itembtn">購入する</button>
                             </div>
                         </div>
@@ -406,7 +406,7 @@
                             </button>
                             <p><span id="get" class="up">所持数　×0</span></p>
                             <p><i class="ri-cursor-line"></i><span id="+cnt2" class="up">+0</span></p>
-                            <p><span id="nedan" class="line">20魚</span></p>
+                            <p><span id="nedan" class="line">20</span>魚</p>
                             <button id="button1" class="text">購入する</button>
                         </div>
                         <div id="oyatutu" class="oyatudiv"title="食べ物2" >
@@ -417,7 +417,7 @@
                             </button>
                             <p><span id="get2" class="up">所持数　×0</span></p>
                             <p><i class="ri-cursor-line"></i><span id="+cnt3" class="up">+0</span></p>
-                            <p><span id="nedan2" class="line">80魚</span></p>
+                            <p><span id="nedan2" class="line">80</span>魚</p>
                             <button id="button2" class="text">購入する</button>
                         </div>
                         <div id="oyatu3" class="oyatudiv"title="食べ物3" >
@@ -428,7 +428,7 @@
                             </button>
                             <p><span id="get3" class="up">所持数　×0</span></p>
                             <p><i class="ri-cursor-line"></i><span id="+cnt4" class="up">+0</span></p>
-                            <p><span id="nedan3" class="line">150魚</span></p>
+                            <p><span id="nedan3" class="line">150</span>魚</p>
                             <button id="button3" class="text">購入する</button>
                         </div>
                         <div id="oyatu4" class="oyatudiv">
@@ -439,7 +439,7 @@
                             </button>
                             <p><span id="get4" class="up">所持数　×0</span></p>
                             <p><i class="ri-cursor-line"></i><span id="+cnt5" class="up">+50</span></p>
-                            <p><span id="nedan4" class="line">800魚</span></p>
+                            <p><span id="nedan4" class="line">800</span>魚</p>
                             <button id="button4" class="text">購入する</button>
                         </div>
                         <div id="oyatu5" class="oyatudiv">
@@ -447,7 +447,7 @@
                             <button class="oyatu"><img src="./images/pet_cat_birthday_cake.png"></button>
                             <p><span id="get5" class="up">所持数　×0</span></p>
                             <p><i class="ri-cursor-line"></i><span id="+cnt6" class="up">x2</span></p>
-                            <p><span id="nedan5" class="line">1000魚</span></p>
+                            <p><span id="nedan5" class="line">1000</span>魚</p>
                             <button id="button5" class="text">購入する</button>
                         </div>
                     </div>
@@ -732,10 +732,10 @@
       localStorage.setItem("unedan", JSON.stringify([5,10,15,45]));
       localStorage.setItem("counnt", JSON.stringify([2,5,10,50]));
       localStorage.setItem("questlvup", JSON.stringify([1,1,1]));
-      document.getElementById('Inedan').innerText = `${Inedan[0]}魚`;
-      document.getElementById('Inedan2').innerText = `${Inedan[1]}魚`;
-      document.getElementById('Inedan4').innerText = `${Inedan[2]}魚`;
-      document.getElementById('Inedan5').innerText = `${Inedan[3]}魚`;
+    //   document.getElementById('Inedan').textContent = `${Inedan[0]}`;
+    //   document.getElementById('Inedan2').innerText = `${Inedan[1]}`;
+    //   document.getElementById('Inedan4').innerText = `${Inedan[2]}`;
+    //   document.getElementById('Inedan5').innerText = `${Inedan[3]}`;
       document.getElementById('unedan1').innerText = `${unedan[0]}枚`;
       document.getElementById('unedan2').innerText = `${unedan[1]}枚`;
       document.getElementById('unedan3').innerText = `${unedan[2]}枚`;
@@ -761,12 +761,12 @@
       localStorage.setItem("msakana", 170);
       localStorage.setItem("mItem", 10);
       localStorage.setItem("mmck", 100);
-      mq12.textContent = mqest1[0]+msakana+"コ集める Lv+"+questlvup[0]+"↑";
-      mq22.textContent = mqest1[1]+mItem+"コ買う Lv+"+questlvup[1]+"↑";
-      mq32.textContent = mqest1[2]+mmck+"回クリックする Lv+"+questlvup[2]+"↑";
-      document.getElementById('ato12').innerText = `クリアまであと${msakana-count}コ`;
-      document.getElementById('ato22').innerText = `クリアまであと${mItem-Icount}コ`;
-      document.getElementById('ato32').innerText = `クリアまであと${mmck-counttt}回`;
+    //   mq12.textContent = mqest1[0]+msakana+"コ集める Lv+"+questlvup[0]+"↑";
+    //   mq22.textContent = mqest1[1]+mItem+"コ買う Lv+"+questlvup[1]+"↑";
+    //   mq32.textContent = mqest1[2]+mmck+"回クリックする Lv+"+questlvup[2]+"↑";
+    //   document.getElementById('ato12').innerText = `クリアまであと${msakana-count}コ`;
+    //   document.getElementById('ato22').innerText = `クリアまであと${mItem-Icount}コ`;
+    //   document.getElementById('ato32').innerText = `クリアまであと${mmck-counttt}回`;
       localStorage.setItem("itemBuycount", 0);
       localStorage.setItem("itemBuyStartTime", Date.now());
       Item1BuyStatus();
@@ -855,7 +855,7 @@
     function setAndDisplaycount(newcount) {
       count = newcount;
       localStorage.setItem('count', count);
-      document.getElementById('counter').textContent = count;
+      document.getElementById('counter').textContent = formatNumberJP(count);
     }
     function loadcount() {
       const saved = localStorage.getItem('count');
@@ -903,11 +903,11 @@
     //削除するときの関数(nedan)
     function resetNedan() {
         let nedan = [20, 80, 150, 800, 1500];
-        document.getElementById('nedan').innerText = `${nedan[0]}魚`; // 表示更新
-        document.getElementById('nedan2').innerText = `${nedan[1]}魚`; // 表示更新
-        document.getElementById('nedan3').innerText = `${nedan[2]}魚`; // 表示更新
-        document.getElementById('nedan4').innerText = `${nedan[3]}魚`; // 表示更新
-        document.getElementById('nedan5').innerText = `${nedan[4]}魚`; // 表示更新
+        document.getElementById('nedan').textContent = formatNumberJP(nedan[0]); // 表示更新
+        document.getElementById('nedan2').innerText = formatNumberJP(nedan[1]); // 表示更新
+        document.getElementById('nedan3').innerText = formatNumberJP(nedan[2]); // 表示更新
+        document.getElementById('nedan4').innerText = formatNumberJP(nedan[3]); // 表示更新
+        document.getElementById('nedan5').innerText = formatNumberJP(nedan[4]); // 表示更新
     }
 
     //記録
@@ -1016,7 +1016,7 @@
         localStorage.setItem('coun', coun);
         count+=coun;
         localStorage.setItem('count', count);
-        document.getElementById('counter').textContent =count;
+        document.getElementById('counter').textContent = formatNumberJP(count);
         setnibosi(countb+=coun);
         clickplus();
         const audio = new Audio('音/決定ボタンを押す45.mp3');
@@ -1035,7 +1035,7 @@
             Lvcount+=questlvup[0];
             questlvup[0]+=1;
             localStorage.setItem("msakana", msakana);
-            mq12.textContent = mqest1[0]+msakana+"コ集める Lv+"+questlvup[0]+"↑";
+            mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める Lv+"+questlvup[0]+"↑";
             localStorage.setItem("questlvup", JSON.stringify(questlvup));
             ok1();
             lvup();
@@ -1045,7 +1045,7 @@
             Lvcount+=questlvup[2];
             questlvup[2]+=1;
             localStorage.setItem("mmck", mmck);
-            mq32.textContent = mqest1[2]+mmck+"回クリックする Lv+"+questlvup[2]+"↑";
+            mq32.textContent = mqest1[2]+formatNumberJP(mmck)+"回クリックする Lv+"+questlvup[2]+"↑";
             localStorage.setItem("questlvup", JSON.stringify(questlvup));
             ok1();
             lvup();
@@ -1085,7 +1085,6 @@
             lvup();
         }
 
-        document.getElementById('counter').innerText = `${count}`;
         //記録
         document.getElementById('kirokuLv').innerText = `${Lvcount}`;
         document.getElementById('kirokuclick').innerText = `${counttt}`;
@@ -1095,6 +1094,29 @@
         document.getElementById('kirokumono').innerText = `${Icount}`;
         clearcheck();
     }
+
+    function formatNumberJP(count) {
+        if (count < 10000) return count.toString(); // 万未満はそのまま表示
+
+        const units = [
+            "", "万", "億", "兆", "京", "垓", "秭", "穣", "溝", "澗",
+            "正", "載", "極", "恒河沙", "阿僧祇", "那由他","不可思議",
+            "無量大数"
+        ];
+
+        let unitIndex = 0;
+
+        while (count >= 10000 && unitIndex < units.length - 1) {
+            count /= 10000;
+            unitIndex++;
+        }
+
+        // 小数2桁の切り捨て
+        const formatted = Math.floor(count * 100) / 100;
+
+        return formatted.toString() + units[unitIndex];
+    }
+
 
     function clearcheck(){
         let count = Number(localStorage.getItem("count") || 0);
@@ -1162,7 +1184,7 @@
                 count += coun1s;
                 setnibosi(countb+=coun1s);
                 localStorage.setItem("count", count);
-                document.getElementById('counter').innerText = `${count}`;
+                document.getElementById('counter').textContent = formatNumberJP(count);
                 oyatustyles();
                 shopItemStyles();
                 clearcheck();
@@ -1173,7 +1195,7 @@
                     Lvcount+=questlvup[0];
                     questlvup[0]+=1;
                     localStorage.setItem("msakana", msakana);
-                    mq12.textContent = mqest1[0]+msakana+"コ集める Lv+"+questlvup[0]+"↑";
+                    mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める Lv+"+questlvup[0]+"↑";
                     localStorage.setItem("questlvup", JSON.stringify(questlvup));
                     ok1();
                     lvup();
@@ -1215,7 +1237,7 @@
         }
     }
 
-    document.getElementById('counter').innerText = `${count}`;
+    document.getElementById('counter').textContent = formatNumberJP(count);
     document.getElementById('coun').innerText = `+${coun}`;
     document.getElementById('coun1s').innerText = `毎秒+${coun1s}`;
     document.getElementById('inputLv').innerText = `${Lvcount}`;
@@ -1227,21 +1249,21 @@
     document.getElementById('get4').innerText = `所持数　×${get[3]}`;
     document.getElementById('get5').innerText = `所持数　×${get[4]}`;
     //値段
-    document.getElementById('nedan').innerText = `${nedan[0]}魚`;
-    document.getElementById('nedan2').innerText = `${nedan[1]}魚`;
-    document.getElementById('nedan3').innerText = `${nedan[2]}魚`;
-    document.getElementById('nedan4').innerText = `${nedan[3]}魚`;
-    document.getElementById('nedan5').innerText = `${nedan[4]}魚`;
+    document.getElementById('nedan').textContent = formatNumberJP(nedan[0]);
+    document.getElementById('nedan2').innerText = formatNumberJP(nedan[1]);
+    document.getElementById('nedan3').innerText = formatNumberJP(nedan[2]);
+    document.getElementById('nedan4').innerText = formatNumberJP(nedan[3]);
+    document.getElementById('nedan5').innerText = formatNumberJP(nedan[4]);
     document.getElementById('+cnt2').innerText = `+${counnt[0]}`;
     document.getElementById('+cnt3').innerText = `+${counnt[1]}`;
     document.getElementById('+cnt4').innerText = `+${counnt[2]}`;
     document.getElementById('+cnt5').innerText = `+${counnt[3]}`;
     //アイテムの値段
-    document.getElementById('Inedan').innerText = `${Inedan[0]}魚`;
-    document.getElementById('Inedan2').innerText = `${Inedan[1]}魚`;
+    document.getElementById('Inedan').textContent = formatNumberJP(Inedan[0]);
+    document.getElementById('Inedan2').textContent = formatNumberJP(Inedan[1]);
     // document.getElementById('Inedan3').innerText = `${Inedan[2]}魚`;
-    document.getElementById('Inedan4').innerText = `${Inedan[2]}魚`;
-    document.getElementById('Inedan5').innerText = `${Inedan[3]}魚`;
+    document.getElementById('Inedan4').textContent = formatNumberJP(Inedan[2]);
+    document.getElementById('Inedan5').textContent = formatNumberJP(Inedan[3]);
     document.getElementById('inputLv').innerText = `${Lvcount}`;
     //ウラショップ
     document.getElementById('moto').innerText = `+${counnt[0]}`;
@@ -1315,7 +1337,7 @@
         if(Icount >= mItem){
             mItem*=2;
             Lvcount+=questlvup[1];
-            mq22.textContent = mqest1[1]+mItem+"コ買う Lv+"+questlvup[1]+"↑";
+            mq22.textContent = mqest1[1]+formatNumberJP(mItem)+"コ買う Lv+"+questlvup[1]+"↑";
             document.getElementById('ato22').innerText = `クリアまであと${mItem - Icount}コ`;
             questlvup[1]+=1;
             localStorage.setItem("mItem", mItem);
@@ -1380,7 +1402,7 @@
             // 金額を画面に表示（例：nedan, nedan2, nedan3）
             const priceDisplay = document.getElementById(target.nedanId);
             if (priceDisplay) {
-            priceDisplay.innerText = `${total}魚`;
+            priceDisplay.textContent = formatNumberJP(total);
             }
             if (count < total) {
             el.style.opacity = '0.6';  // 半透明に
@@ -1451,7 +1473,7 @@
             total += price;
             price *= 1.25;
         }
-        document.getElementById('nedan').innerText = `${total}魚`;
+        document.getElementById('nedan').textContent = formatNumberJP(total);
     }
 
 
@@ -1504,8 +1526,8 @@
             document.getElementById('coun').textContent = '+' + coun;
             localStorage.setItem("count", count);
             localStorage.setItem("get", JSON.stringify(get));
-            document.getElementById('counter').innerText = `${count}`;
-            document.getElementById('nedan').innerText = `${nedan[0]}魚`;
+            document.getElementById('counter').textContent = formatNumberJP(count);
+            document.getElementById('nedan').textContent = formatNumberJP(nedan[0]);
             localStorage.setItem("nedan", JSON.stringify(nedan));
             oyatustyles();
             shopItemStyles();
@@ -1530,7 +1552,7 @@
             total += price;
             price *= 1.5;
         }
-        document.getElementById('nedan2').innerText = `${total}魚`;
+        document.getElementById('nedan2').innerText = `${total}`;
     }
     
     //キャットフードの購入ボタンの動作
@@ -1581,8 +1603,8 @@
             document.getElementById('coun').textContent = '+' + coun;
             localStorage.setItem("count", count);
             localStorage.setItem("get", JSON.stringify(get));
-            document.getElementById('counter').innerText = `${count}`;
-            document.getElementById('nedan2').innerText = `${nedan[1]}魚`;
+            document.getElementById('counter').textContent = formatNumberJP(count);
+            document.getElementById('nedan2').innerText = `${nedan[1]}`;
             localStorage.setItem("nedan", JSON.stringify(nedan));
             oyatustyles();
             shopItemStyles();
@@ -1607,7 +1629,7 @@
             total += price;
             price *= 2;
         }
-        document.getElementById('nedan3').innerText = `${total}魚`; // ←表示用要素IDに合わせて調整
+        document.getElementById('nedan3').innerText = `${total}`; // ←表示用要素IDに合わせて調整
     }
 
     //高級缶詰の購入ボタンの動作
@@ -1657,8 +1679,8 @@
             document.getElementById('coun').textContent = '+' + coun;
             localStorage.setItem("count", count);
             localStorage.setItem("get", JSON.stringify(get));
-            document.getElementById('counter').innerText = `${count}`;
-            document.getElementById('nedan3').innerText = `${nedan[2]}魚`;
+            document.getElementById('counter').textContent = formatNumberJP(count);
+            document.getElementById('nedan3').innerText = `${nedan[2]}`;
             localStorage.setItem("nedan", JSON.stringify(nedan));
             oyatustyles();
             shopItemStyles();
@@ -1683,7 +1705,7 @@
             total += price;
             price *= 2;
         }
-        document.getElementById('nedan4').innerText = `${total}魚`; // ←表示用要素IDに合わせて調整
+        document.getElementById('nedan4').innerText = `${total}`; // ←表示用要素IDに合わせて調整
     }
 
     //オヤツの購入ボタンの動作
@@ -1733,8 +1755,8 @@
             document.getElementById('coun').textContent = '+' + coun;
             localStorage.setItem("count", count);
             localStorage.setItem("get", JSON.stringify(get));
-            document.getElementById('counter').innerText = `${count}`;
-            document.getElementById('nedan4').innerText = `${nedan[3]}魚`;
+            document.getElementById('counter').textContent = formatNumberJP(count);
+            document.getElementById('nedan4').innerText = `${nedan[3]}`;
             localStorage.setItem("nedan", JSON.stringify(nedan));
             oyatustyles();
             shopItemStyles();
@@ -1759,7 +1781,7 @@
             total += price;
             price *= 3;
         }
-        document.getElementById('nedan5').innerText = `${total}魚`; // ←表示用要素IDに合わせて調整
+        document.getElementById('nedan5').innerText = `${total}`; // ←表示用要素IDに合わせて調整
     }
 
     //ケーキの購入ボタンの動作
@@ -1810,8 +1832,8 @@
             document.getElementById('coun').textContent = '+' + coun;
             localStorage.setItem("count", count);
             localStorage.setItem("get", JSON.stringify(get));
-            document.getElementById('counter').innerText = `${count}`;
-            document.getElementById('nedan5').innerText = `${nedan[4]}魚`;
+            document.getElementById('counter').textContent = formatNumberJP(count);
+            document.getElementById('nedan5').innerText = `${nedan[4]}`;
             localStorage.setItem("nedan", JSON.stringify(nedan));
             oyatustyles();
             shopItemStyles();
@@ -2003,7 +2025,7 @@
                 Lvcount+=questlvup[0];
                 questlvup[0]+=1;
                 localStorage.setItem("msakana", msakana);
-                mq12.textContent = mqest1[0]+msakana+"コ集める Lv+"+questlvup[0]+"↑";
+                mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める Lv+"+questlvup[0]+"↑";
                 localStorage.setItem("questlvup", JSON.stringify(questlvup));
                 ok1();
                 lvup();
@@ -2044,8 +2066,8 @@
             }
 
             localStorage.setItem("count", count);
-            document.getElementById('counter').innerText = `${count}`;
-            document.getElementById('Inedan').innerText = `${Inedan[0]}魚`;
+            document.getElementById('counter').textContent = formatNumberJP(count);
+            document.getElementById('Inedan').textContent = formatNumberJP(Inedan[0]);;
 
             itemBuycount++;
             localStorage.setItem("itemBuycount", itemBuycount);
@@ -2157,10 +2179,10 @@
             oyatustyles();
             shopItemStyles();
             localStorage.setItem("nedan", JSON.stringify(nedan));
-            document.getElementById('nedan').innerText = `${nedan[0]}魚`;
-            document.getElementById('nedan2').innerText = `${nedan[1]}魚`;
-            document.getElementById('nedan3').innerText = `${nedan[2]}魚`;
-            document.getElementById('nedan4').innerText = `${nedan[3]}魚`;
+            document.getElementById('nedan').textContent = formatNumberJP(nedan[0]);
+            document.getElementById('nedan2').innerText = formatNumberJP(nedan[1]);
+            document.getElementById('nedan3').innerText = formatNumberJP(nedan[2]);
+            document.getElementById('nedan4').innerText = formatNumberJP(nedan[3]);
             localStorage.removeItem("motonedan");
         }
 
@@ -2201,12 +2223,12 @@
         localStorage.setItem("Inedan", JSON.stringify(Inedan));
         localStorage.setItem("nedan", JSON.stringify(nedan));
 
-        document.getElementById('counter').innerText = `${count}`;
-        document.getElementById('nedan').innerText = `${nedan[0]}魚`;
-        document.getElementById('nedan2').innerText = `${nedan[1]}魚`;
-        document.getElementById('nedan3').innerText = `${nedan[2]}魚`;
-        document.getElementById('nedan4').innerText = `${nedan[3]}魚`;
-        document.getElementById('Inedan2').innerText = `${Inedan[1]}魚`;
+        document.getElementById('counter').textContent = formatNumberJP(count);
+        document.getElementById('nedan').textContent = formatNumberJP(nedan[0]);
+        document.getElementById('nedan2').textContent = formatNumberJP(nedan[1]);
+        document.getElementById('nedan3').textContent = formatNumberJP(nedan[2]);
+        document.getElementById('nedan4').textContent = formatNumberJP(nedan[3]);
+        document.getElementById('Inedan2').textContent = formatNumberJP(Inedan[1]);
 
         const audio = new Audio('音/kounyu1.mp3');
         audio.volume = slider_volume.value;
@@ -2250,11 +2272,11 @@
                 setcnedan(countnedan += Inedan[2]);
                 Inedan[2] *= 1.5;
                 Inedan = Inedan.map(value => Math.floor(value));//Inedanを小数点切り捨て
+                document.getElementById('Inedan4').textContent = formatNumberJP(Inedan[3]);
                 setIcount(Icount += 1);
                 oyatustyles();
                 shopItemStyles();
                 btn5();
-                document.getElementById('Inedan4').innerText = `${Inedan[2]}魚`;
                 const gazou = document.getElementById('gazou');
                 const kuji = document.getElementById('kuji');
                 if(random==1){
@@ -2304,6 +2326,7 @@
                 }   
                 mmI(); 
                 ok3();  
+                document.getElementById('Inedan4').textContent = formatNumberJP(Inedan[3]);
                 localStorage.setItem("Inedan", JSON.stringify(Inedan));
                 localStorage.setItem("get", JSON.stringify(get));
                 localStorage.setItem('coun', coun);
@@ -2312,7 +2335,7 @@
                 document.getElementById('get').innerText = `所持数　×${get[0]}`;
                 document.getElementById('get2').innerText = `所持数　×${get[1]}`;
                 document.getElementById('get3').innerText = `所持数　×${get[2]}`;
-                document.getElementById('counter').innerText = `${count}`;
+                document.getElementById('counter').textContent = formatNumberJP(count);
             }
             else
             {
@@ -2325,7 +2348,7 @@
     // }
     );
 
-  const BUN_EVT5= document.getElementById('Item5');
+    const BUN_EVT5= document.getElementById('Item5');
     BUN_EVT5.addEventListener('click', () => {
         let count = Number(localStorage.getItem("count") || 0);
         let coun1s = Number(localStorage.getItem("coun1s") || 0);
@@ -2352,8 +2375,8 @@
                 shopItemStyles();
                 localStorage.setItem("count", count);
                 localStorage.setItem("Inedan", JSON.stringify(Inedan));
-                document.getElementById('counter').innerText = `${count}`;
-                document.getElementById('Inedan5').innerText = `${Inedan[3]}魚`;
+                document.getElementById('counter').textContent = formatNumberJP(count);
+                document.getElementById('Inedan5').textContent = formatNumberJP(Inedan[3]);
                 document.getElementById('coun1s').innerText = `毎秒+${coun1s}`;
                 mmI();
                 ok3();
@@ -2406,7 +2429,6 @@
                 const audio = new Audio('音/決定ボタンを押す31.mp3');
                 audio.volume = slider_volume.value;
                 audio.play();
-                // document.getElementById('Inedan3').innerText = `${Inedan[2]}魚`;
                 urashopStyles();
                 localStorage.setItem('inputLv', Lvcount);
                 localStorage.setItem("unedan", JSON.stringify(unedan));
@@ -2441,7 +2463,6 @@
                 const audio = new Audio('音/決定ボタンを押す31.mp3');
                 audio.volume = slider_volume.value;
                 audio.play();
-                // document.getElementById('Inedan3').innerText = `${Inedan[2]}魚`;
                 urashopStyles();
                 localStorage.setItem('inputLv', Lvcount);
                 localStorage.setItem("unedan", JSON.stringify(unedan));
@@ -2475,7 +2496,6 @@
                 const audio = new Audio('音/決定ボタンを押す31.mp3');
                 audio.volume = slider_volume.value;
                 audio.play();
-                // document.getElementById('Inedan3').innerText = `${Inedan[2]}魚`;
                 urashopStyles();
                 localStorage.setItem('inputLv', Lvcount);
                 localStorage.setItem("unedan", JSON.stringify(unedan));
@@ -2509,7 +2529,6 @@
                 const audio = new Audio('音/決定ボタンを押す31.mp3');
                 audio.volume = slider_volume.value;
                 audio.play();
-                // document.getElementById('Inedan3').innerText = `${Inedan[2]}魚`;
                 urashopStyles();
                 localStorage.setItem('inputLv', Lvcount);
                 localStorage.setItem("unedan", JSON.stringify(unedan));
@@ -2565,9 +2584,9 @@
         const ato62 = document.getElementById("ato62");
         // 要素を表示する
         mii2.style.display = 'block';
-        mq12.textContent = mqest1[0]+msakana+"コ集める Lv+"+questlvup[0]+"↑";
-        mq22.textContent = mqest1[1]+mItem+"コ買う Lv+"+questlvup[1]+"↑";
-        mq32.textContent = mqest1[2]+mmck+"回クリックする Lv+"+questlvup[2]+"↑";
+        mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める Lv+"+questlvup[0]+"↑";
+        mq22.textContent = mqest1[1]+formatNumberJP(mItem)+"コ買う Lv+"+questlvup[1]+"↑";
+        mq32.textContent = mqest1[2]+formatNumberJP(mmck)+"回クリックする Lv+"+questlvup[2]+"↑";
         document.getElementById('ato12').innerText = `クリアまであと${msakana-count}コ`;
         document.getElementById('ato22').innerText = `クリアまであと${mItem-Icount}コ`;
         document.getElementById('ato32').innerText = `クリアまであと${mmck-counttt}回`;
@@ -2908,7 +2927,7 @@
             catget += 100;
             localStorage.setItem('catget', catget);
             localStorage.setItem("count", count); 
-            document.getElementById('counter').textContent =count;
+            document.getElementById('counter').textContent = formatNumberJP(count);
         }
         localStorage.setItem('catcount', catcount);
         document.getElementById('catcount').innerText = `${catcount}`;
