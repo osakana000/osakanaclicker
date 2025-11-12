@@ -252,7 +252,7 @@ img{
   margin: 0;
   padding-left: 100%;
   white-space: nowrap;
-  animation: SlideSample 30s linear infinite;
+  animation: SlideSample 50s linear infinite;
 }
 .slidemoji ul li {
   display: inline;
@@ -1637,6 +1637,35 @@ input[type="text"]:focus {
   box-shadow: 0 0 5px rgba(0, 213, 255, 0.304);
   outline: none;
 }
+
+/* Safari専用調整 */
+.safari .headerbutton {
+  top: 5%;   /* 微調整 */
+  transform: translate(-50%, -50%);
+}
+
+.safari #hatena{
+  position: relative;
+  background-color: #fff;
+  border: transparent;
+  border-radius: 50%;
+  font-size: 20px;
+  height: 35px;
+  width: 35px;
+  filter: drop-shadow(2px 2px #333);
+  transition: 0.3s;
+}
+.safari #hatena:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -14px;
+  margin-top: -8px;
+  border: 8px solid transparent;
+  border-right: 8px solid #ffffff;
+  z-index: 0;
+}
+
 
 @media (prefers-color-scheme: dark) {
   /* このなかにダークモード時のスタイルを記述します */

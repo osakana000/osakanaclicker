@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <meta name="description" content="魚をクリックするゲーム">
+        <meta name="description" content="魚をクリックして数を増やし、万 → 億 → 兆 → … と 単位がインフレしていくクリッカーゲームです。PC・スマホ・タブレットに対応しています。">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" href="style.css">
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
@@ -32,7 +32,7 @@
                 <div class="slidemoji">
                     <ul>
                         <li>▶︎おさかなクリッカーへようこそ!</li>
-                        <li>お知らせ<i class="ri-phone-fill"></i>:<span class="textao">10/17アップデート!</span></li>
+                        <li>お知らせ<i class="ri-phone-fill"></i>:<span class="textao">11/12アップデート!</span></li>
                         <li>2025/10/02 おさかなクリッカー公開!</li>
                         <li></li>
                         <li>設定で名前や音の大きさ、文字が変えられます</li>
@@ -167,11 +167,11 @@
                         <p class="mt3" id="ato22">クリアまであと...</p>
                         <p id="mq32" class="mt2">ミッション３</p>
                         <p class="mt3" id="ato32">クリアまであと...</p>
-                        <p id="mq42" class="mt2">魚を1000コ以上集める Lv+10↑</i></p>
+                        <p id="mq42" class="mt2">魚を1000コ以上集める 小判+10</i></p>
                         <p class="mt3" id="ato42">クリアまであと...</p>
-                        <p id="mq52" class="mt2">魚を10000コ以上集める Lv+30↑</i></p>
+                        <p id="mq52" class="mt2">魚を10000コ以上集める 小判+30</i></p>
                         <p class="mt3" id="ato52">クリアまであと...</p>
-                        <p id="mq62" class="mt2">魚を100000コ以上集める Lv+50↑</p>
+                        <p id="mq62" class="mt2">魚を100000コ以上集める 小判+50</p>
                         <p class="mt3" id="ato62">クリアまであと...</p>
                     </div>
                 </div>
@@ -557,28 +557,33 @@
     let itm5timer = null;
 
     function migrateData() {
-    const migrations = {
-        nedan: [20, 80, 150, 800, 1500],
-        Inedan: [0, 800, 100, 650],
-        unedan: [5, 10, 15, 45]
-    };
+        const migrations = {
+            nedan: [20, 80, 150, 800, 1500],
+            Inedan: [0, 800, 100, 650],
+            unedan: [5, 10, 15, 45]
+        };
 
-    for (const key in migrations) {
-        const def = migrations[key];
-        let current = JSON.parse(localStorage.getItem(key) || JSON.stringify(def));
+        for (const key in migrations) {
+            const def = migrations[key];
+            let current = JSON.parse(localStorage.getItem(key) || JSON.stringify(def));
 
-        let changed = false;
-        for (let i = 0; i < def.length; i++) {
-        if (current[i] === undefined || current[i] < def[i]) {
-            current[i] = def[i];
-            changed = true;
-        }
-        }
-        if (changed) {
-        localStorage.setItem(key, JSON.stringify(current));
-        console.log(`${key} を更新しました:`, current);
+            let changed = false;
+            for (let i = 0; i < def.length; i++) {
+            if (current[i] === undefined || current[i] < def[i]) {
+                current[i] = def[i];
+                changed = true;
+            }
+            }
+            if (changed) {
+            localStorage.setItem(key, JSON.stringify(current));
+            console.log(`${key} を更新しました:`, current);
+            }
         }
     }
+
+    //safari
+    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        document.body.classList.add('safari');
     }
 
 
@@ -1035,7 +1040,7 @@
             Lvcount+=questlvup[0];
             questlvup[0]+=1;
             localStorage.setItem("msakana", msakana);
-            mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める Lv+"+questlvup[0]+"↑";
+            mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める 小判+"+questlvup[0];
             localStorage.setItem("questlvup", JSON.stringify(questlvup));
             ok1();
             lvup();
@@ -1045,7 +1050,7 @@
             Lvcount+=questlvup[2];
             questlvup[2]+=1;
             localStorage.setItem("mmck", mmck);
-            mq32.textContent = mqest1[2]+formatNumberJP(mmck)+"回クリックする Lv+"+questlvup[2]+"↑";
+            mq32.textContent = mqest1[2]+formatNumberJP(mmck)+"回クリックする 小判+"+questlvup[2];
             localStorage.setItem("questlvup", JSON.stringify(questlvup));
             ok1();
             lvup();
@@ -1158,15 +1163,15 @@
       localStorage.setItem("questclear2", "false");
       localStorage.setItem("questclear3", "false");
       //スタイル
-      mq42.textContent = '魚を1000コ以上集める Lv+10↑';
+      mq42.textContent = '魚を1000コ以上集める 小判+10';
       mq42.style.textDecoration = 'none';
       mq42.style.opacity = '1';
       ato42.style.display = 'block';
-      mq52.textContent = '魚を1000コ以上集める Lv+30↑';
+      mq52.textContent = '魚を1000コ以上集める 小判+30';
       mq52.style.textDecoration = 'none';
       mq52.style.opacity = '1';
       ato52.style.display = 'block';
-      mq62.textContent = '魚を1000コ以上集める Lv+50↑';
+      mq62.textContent = '魚を1000コ以上集める 小判+50';
       mq62.style.textDecoration = 'none';
       mq62.style.opacity = '1';
       ato62.style.display = 'block';
@@ -1195,7 +1200,7 @@
                     Lvcount+=questlvup[0];
                     questlvup[0]+=1;
                     localStorage.setItem("msakana", msakana);
-                    mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める Lv+"+questlvup[0]+"↑";
+                    mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める 小判+"+questlvup[0];
                     localStorage.setItem("questlvup", JSON.stringify(questlvup));
                     ok1();
                     lvup();
@@ -1337,7 +1342,7 @@
         if(Icount >= mItem){
             mItem*=2;
             Lvcount+=questlvup[1];
-            mq22.textContent = mqest1[1]+formatNumberJP(mItem)+"コ買う Lv+"+questlvup[1]+"↑";
+            mq22.textContent = mqest1[1]+formatNumberJP(mItem)+"コ買う 小判+"+questlvup[1];
             document.getElementById('ato22').innerText = `クリアまであと${mItem - Icount}コ`;
             questlvup[1]+=1;
             localStorage.setItem("mItem", mItem);
@@ -2025,7 +2030,7 @@
                 Lvcount+=questlvup[0];
                 questlvup[0]+=1;
                 localStorage.setItem("msakana", msakana);
-                mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める Lv+"+questlvup[0]+"↑";
+                mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める 小判+"+questlvup[0];
                 localStorage.setItem("questlvup", JSON.stringify(questlvup));
                 ok1();
                 lvup();
@@ -2584,9 +2589,9 @@
         const ato62 = document.getElementById("ato62");
         // 要素を表示する
         mii2.style.display = 'block';
-        mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める Lv+"+questlvup[0]+"↑";
-        mq22.textContent = mqest1[1]+formatNumberJP(mItem)+"コ買う Lv+"+questlvup[1]+"↑";
-        mq32.textContent = mqest1[2]+formatNumberJP(mmck)+"回クリックする Lv+"+questlvup[2]+"↑";
+        mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める 小判+"+questlvup[0];
+        mq22.textContent = mqest1[1]+formatNumberJP(mItem)+"コ買う 小判+"+questlvup[1];
+        mq32.textContent = mqest1[2]+formatNumberJP(mmck)+"回クリックする 小判+"+questlvup[2];
         document.getElementById('ato12').innerText = `クリアまであと${msakana-count}コ`;
         document.getElementById('ato22').innerText = `クリアまであと${mItem-Icount}コ`;
         document.getElementById('ato32').innerText = `クリアまであと${mmck-counttt}回`;
@@ -2958,5 +2963,4 @@
             }, { once: true });
         }
     }
-
 </script>
