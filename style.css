@@ -27,6 +27,7 @@ img{
   font-weight: bold;
   font-style: italic;
 }
+/*フォント*/
 @font-face {
   font-family: "Chalk";
   src: url(./font/Chalk.woff) format("woff");
@@ -51,9 +52,13 @@ img{
   font-family: "yusei";
   src: url(./font/YuseiMagic-Regular.woff) format("woff");
 }
-@font-face{
+/* @font-face{
   font-family: "crayon";
   src: url(./font/crayon_1-1.woff) format("woff");
+} */
+@font-face{
+  font-family: "crayon";
+  src: url(./font/misaki_mincho.woff) format("woff");
 }
 
 
@@ -187,22 +192,12 @@ img{
 #hatena{
   background-color: #fff;
   border: transparent;
-  border-radius: 50%;
-  font-size: 20px;
+  border-radius: 5px;
+  font-size: 16px;
   height: 35px;
-  width: 35px;
+  width: 80px;
   filter: drop-shadow(2px 2px #333);
   transition: 0.3s;
-}
-#hatena:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -14px;
-  margin-top: -8px;
-  border: 8px solid transparent;
-  border-right: 8px solid #ffffff;
-  z-index: 0;
 }
 #hatena:hover{
   color: #007bff;
@@ -233,6 +228,16 @@ img{
 }
 .btnstyle:active{
   background-color: #1691ad;
+}
+#tenseibtn{
+  border-color: #d71d7d;
+}
+#tenseibtn:hover{
+  background-color: #d71d7d;
+  color: white;
+}
+#tenseibtn:active{
+  background-color: #ad165c;
 }
 .slidemoji {
   background-color: rgba(0, 0, 0, 0.301);
@@ -351,21 +356,38 @@ img{
 #countlv{
   left: 180px;
 }
+#koukann{
+  background-color: #333;
+  color: #FFF;
+  text-align: center;
+  border: transparent;
+  height: 30px;
+  width: 30px;
+  font-size: 18px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 1px;
+  right: 5px;
+  transition: 0.3s;
+}
+#koukann:hover{
+  background-color: #007bff;
+}
+
 
 .coun{
   background-color: #333;
   color: white;
   border-radius: 5px;
-  height: 25px;
+  display: inline-block; /* 横幅が内容に応じて伸びる */
+  padding: 0 3px;        /* 横に余白がつく */
   line-height: 25px;
-  padding: 3px; /* 余白 */
-  text-align: left;
-  vertical-align: middle;
-  display: inline-block;
-  position: absolute; /* 絶対配置 */
+  white-space: nowrap;   /* 改行禁止、横に伸ばす */
+  position: absolute;
   top: 90px;
   left: 70px;
 }
+
 #coun{
   left: 50%; /* 親に対して中央配置 */
 }
@@ -433,6 +455,47 @@ img{
     bottom: 15px;
   }
 }
+/* スキルエフェクト */
+.skill-circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.8); /* 金色 */
+    pointer-events: none;
+    animation: skillPop 0.6s ease-out forwards;
+}
+@keyframes skillPop {
+    0% {
+        transform: scale(0) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5) translateY(-40px);
+        opacity: 0;
+    }
+}
+.skill2-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(20, 173, 255, 0.8);
+    pointer-events: none;
+    animation: skill2Pop 0.8s ease-out forwards;
+    z-index: 999;
+}
+@keyframes skill2Pop {
+    0% {
+        transform: scale(0.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.4) translateY(-30px);
+        opacity: 0;
+    }
+}
+
+
+
 
 .con1{
   height: 380px;
@@ -463,7 +526,7 @@ img{
 .con3{
   height: 350px;
   width: 100%;
-  margin-top: 10px 0px;
+  margin: 10px 0px;
   padding: 10px 0px;
   position: relative;
   background-color: rgb(216, 218, 223);
@@ -514,6 +577,10 @@ img{
   top: 20%;
   border-left: solid 3px #ffcf30;/*左線*/
 }
+#o9{
+  top: 23%;
+  border-left: solid 3px #007bff;/*左線*/
+}
 .o1-style {
   top: 15% !important;
   border-left: solid 3px #30f5ff !important;
@@ -526,6 +593,10 @@ img{
   top: 20% !important;
   border-left: solid 3px #ffcf30 !important;
   
+}
+.o9-style {
+  top: 23% !important;
+  border-left: solid 3px #007bff !important;
 }
 @keyframes kieru {
   0%{
@@ -583,6 +654,21 @@ img{
 }
 #s3{
   height: 400px;
+}
+#s4{
+  height: 220px;
+  width: 380px;
+}
+#s4::-webkit-scrollbar {
+  height: 0px;/* スクロールバーの高さ */
+  width: 10px;
+}
+#s4::-webkit-scrollbar-thumb {
+  background-color: #1db4d5;
+  border-radius: 20px;
+}
+#s5{
+  height: 340px;
 }
 @keyframes fadeInScale {/*ふわっと出てくるアニメーション*/
   0% {
@@ -736,6 +822,13 @@ details ul::before {
 #tst{
   top: 105px;
 }
+#jisseki{
+  top: 170px;
+}
+#title{
+  white-space: nowrap;
+  margin: 3px 5px;
+}
 .mmm2{
   background-color: #ffffff;
   background-image: linear-gradient(0deg, transparent calc(100% - 1px), #caf4ff calc(100% - 1px)),
@@ -756,7 +849,7 @@ details ul::before {
   opacity: 0;
   position: fixed;/*位置*/
   right: 10px;
-  top: 220px;
+  top: 250px;
   animation: fadeInScale 0.4s ease forwards;
   z-index: 5;
 }
@@ -768,7 +861,7 @@ details ul::before {
   color: #183c65;
   width: 350px;
   min-height: 20px;
-  text-align:center;
+  text-align:left;
   padding:5px 0;
   border-left: solid 3px #183c65;/*左線*/
   filter: drop-shadow(2px 2px  #183c65);
@@ -779,43 +872,52 @@ details ul::before {
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
 } */
-.mt3{
-  background-color: #FFF;
-  color: #2b64a5;
-  width: 340px;
-  min-height: 20px;
-  padding:5px 0;
-  filter: drop-shadow(2px 2px  #2b64a5);
-  animation: fadeInScale 0.4s ease forwards;
-}
-.mt3::before{
-  content: '▶︎';
-}
-#ato{
-  width: 350px;
-  height: 50px;
-  display: flex;
-}
-#atobtn{
-  background-color: #ffffff;
-  border-radius: 5px;
-  border: solid 1.5px #183c65;
-  height: 35px;
-  width: 35px;
-  font-size: 25px;
-  padding: 0px;
-  margin: 0 5px;
-}
-#atojiru{
-  background-color: #ffffff;
-  border-radius: 5px;
-  border: solid 1.5px #183c65;
-  height: 35px;
-  width: 35px;
-  font-size: 25px;
-  padding: 0px;
-}
 
+/* 実績 */
+.date{
+  background-color: #ffffff;
+  border: solid 1px #007bff;
+  border-radius: 5px 5px 0px 5px;
+  display: flex;
+  margin: 5px 5px;
+  position: relative;
+  line-height: 18.5px;
+}
+.tate{
+  text-align: left;
+}
+.jissekiicon{
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: solid 1.5px #007bff;
+  height: 40px;
+  width: 40px;
+  margin: 18.5px 3px;
+  padding: 2px;
+}
+.jimg{
+  height: 40px;
+  width: 40px;
+}
+#namae{
+  margin: 0px 0px;
+  font-size: 15px;
+}
+.clear{
+  background-color: #ffffff;
+  text-align: center;
+  color: #007bff;
+  font-size: 40px;
+  line-height: 30px;
+  width: 55px;
+  height: 30px;
+  position: absolute;
+  right:10px;
+  bottom: 30px;
+  transform: rotate(15deg);
+  filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.3));
+  opacity: 0;
+}
 
 .tab-2 {
   display: flex;
@@ -862,7 +964,7 @@ input[type=radio] {
 #scon{
   width: 320px;
   height: 410px;
-  z-index: 21;
+  z-index: 27;
 }
 .settei p{
   line-height: 16px;
@@ -896,9 +998,15 @@ input[type=radio] {
   color: #1d9cd7;
   border-radius: 5px;
   font-family: "Chalk";
+  height: 35px;
+  font-size: 15px;
   margin: 3px;
   transition: 0.3s;
   filter: drop-shadow(2px 2px 4px #cdcdcd);
+}
+.setteibtn:hover{
+  background-color: #1db5d7;
+  color: #ffffff;
 }
 .setteibtn:focus{
   border-color: #1db5d7;
@@ -931,6 +1039,10 @@ input[type=radio] {
   line-height: 25px;
   margin: 5px;
   transition: 0.3s;
+}
+.fontbtn:hover{
+  background-color: #1db5d7;
+  color: #ffffff;
 }
 .fontbtn:focus{
   border-color: #1db5d7;
@@ -1023,6 +1135,12 @@ hr{
 #data:hover{
   filter: drop-shadow(0 0 8px #9f9f9f);
 }
+#nekotapicon{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 51;
+}
 #cathyouji{
   font-size: 16px;
 }
@@ -1083,6 +1201,10 @@ hr{
 .sakujo:hover{
   transform: scale(1.1,1.1);
 }
+#sakujokakutei{
+  background-color: #000;
+  color: #c4c4c4;
+}
 #eee{
   margin: 30px 5px;
   display: flex;
@@ -1098,6 +1220,214 @@ hr{
   line-height: 50px;
 }
 
+#tenseitab{
+  width: 450px;
+  height: 350px;
+  border-color: #ad165c;
+  z-index: 26;
+}
+#tenseikakunin{
+  position: fixed;
+  width: 340px;
+  height: 340px;
+  z-index: 30;
+}
+#tenseikakutei{
+  background-color: #d71d7d;
+  border: 1px solid #d71d7d;
+  color: #ffffff;
+}
+#x5{
+  border-color: #ad165c;
+  color: #991351;
+}
+#tnsipoint{
+  background-color: #FFF;
+  border: solid 1.5px #d71d7d;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 1.5px 3px;
+  display: inline-block;
+  margin-right: 200px;
+}
+#lost{
+  border: solid 1.5px #d71d7d;
+  border-radius: 5px;
+  width: 200px;
+  height: 70px;
+  margin: 15px 13%;
+  padding: 15px 50px;
+  list-style: circle;
+  text-align: center;
+}
+#tenseiok{
+  background-color: #d71d7d;
+  color: #FFF;
+  border: solid 1.5px #fff;
+}
+#tenseiok :active{
+  background-color: #FFF;
+  color: #d71d7d;
+}
+#skill{
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 15px;
+  padding: 5px;
+}
+.skilldate{
+  background-color: #ffffff;
+  border: solid 1px #d71d7d;
+  border-radius: 5px 5px 0px 5px;
+  line-height: 18.5px;
+  width: 175px;
+  margin: 5px 5px;
+  padding: 5px;
+  position: relative;
+}
+.skillbtn {
+  background-color: #fff;
+  border: 1.5px solid #d71d7d;
+  border-radius: 20px;
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  width: 80px;
+  height: 35px;
+  overflow: hidden;
+  position: relative;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+.skillbtn:hover{
+  color: #fff;
+}
+.skillbtn:hover::before {
+  transform: scaleY(1);
+}
+.skillbtn::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #d71d7d;
+  transform: scaleY(0);
+  transition: all 0.3s ease;
+  transition-property: transform;
+  z-index: -1;
+}
+.kakutoku{
+  background-color: #ffffff;
+  text-align: center;
+  color: #e05661;
+  line-height: 35px;
+  font-size: 14px;
+  width: 60px;
+  height: 38px;
+  position: absolute;
+  right:0px;
+  top: -5px;
+  transition: 0.3s;
+  transform: rotate(15deg);
+  filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.3));
+}
+#koukancount{
+  border: solid 1px #1db5d7;
+  border-radius: 5px;
+  height: 40px;
+  width: 80px;
+  line-height: 40px;
+  margin: 15px 180px;
+}
+#koukantab{
+  height: 290px;
+  width: 430px;
+}
+.koukanbtn{
+  background-color: #FFF;
+  border: solid 2px #1db5d7;
+  border-radius: 5px;
+  height: 40px;
+  width: 40px;
+  margin: 3px;
+  transition: 0.3s;
+}
+.koukanbtn:hover{
+  background-color: #1db5d7;
+  color: #FFF;
+}
+.koukanbtn:active{
+  transform: scale(1.1,1.1);
+}
+#koukanminus{
+  background-color: #ffffff;
+  border: solid 1.5px #d71d20;
+}
+#koukanminus:hover{
+  color: #FFF;
+  background-color: #d71d20;
+}
+#koukanmten{
+  background-color: #ffffff;
+  border: solid 1.5px #d71d20;
+}
+#koukanmten:hover{
+  color: #FFF;
+  background-color: #d71d20;
+}
+#koukankakutei{
+  background-color: #1db5d7;
+  color: #FFF;
+  width: 80px;
+}
+#koukankakutei:hover{
+  transform: scale(1.1,1.1);
+}
+.tab-3 {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 450px;
+  margin: 3px 5px;
+}
+.tab-3 > label {
+  height: 30px;
+  line-height: 30px;
+  flex: 1 1;
+  order: -1;
+  opacity: .5;
+  min-width: 70px;
+  padding: .6em 1em;
+  border-radius: 5px 5px 0 0;
+  background-color: #d71d7d;
+  color: #ffffff;
+  font-size: .9em;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.tab-3 > label:hover {
+  opacity: .8;
+}
+.tab-3 > div {
+  background-color: #ffffff;
+  border-radius: 20px;
+  display: none;
+  width: 100%;
+  height: 280px;
+  margin: 10px 5px;
+}
+.tab-3 label:has(:checked) {
+  opacity: 1;
+}
+.tab-3 label:has(:checked) + div {
+  display: block;
+}
 
 #kekka{
   height: 260px;
@@ -1229,6 +1559,22 @@ hr{
 }
 .pm:active{
   transform: scale(1.1,1.1);
+}
+#minus{
+  background-color: #ffffff;
+  border: solid 1.5px #d71d20;
+}
+#minus:hover{
+  color: #FFF;
+  background-color: #d71d20;
+}
+#minus10{
+  background-color: #ffffff;
+  border: solid 1.5px #d71d20;
+}
+#minus10:hover{
+  color: #FFF;
+  background-color: #d71d20;
 }
 
 .oyatu{
@@ -1382,6 +1728,7 @@ hr{
 .setumei{
   background-color: #1db5d7;
   color: #FFF;
+  font-family: "Chalk";
   height: 100px;
   border-radius: 10px 0 0 10px;
   writing-mode: vertical-rl;
@@ -1479,6 +1826,7 @@ hr{
 .up{
   font-size: 16px;
   letter-spacing: 1px;
+  transition: 0.3s;
 }
 .nee{
   line-height: 1px;
@@ -1487,6 +1835,7 @@ hr{
   text-decoration: underline;
   text-decoration-color: #ff0000;
   text-decoration-thickness: 2px;
+  transition: 0.3s;
 }
 .line{
   line-height: 1px;
@@ -1496,6 +1845,11 @@ hr{
   text-decoration-color: #455798;
   text-decoration-style: dashed; /* 波線 */
   text-decoration-thickness: 2px;
+  transition: 0.3s;
+}
+.wavy{
+  text-decoration: underline wavy #e05661;
+  text-underline-offset: 2px;
 }
 .text{
   background-color: white;
@@ -1609,11 +1963,11 @@ hr{
   position: absolute;
   top:-5px;
   right:-5px;
-  transition: 1s; /* アニメーション設定 */
+  transition: 0.3s; /* アニメーション設定 */
   z-index: 30;
 }
-.xbutton:hover { /* マウスオーバー時のスタイル */
-  transform: rotate(360deg);
+.xbutton:hover { 
+  transform: scale(1.1,1.1);
 }
 .fade-out {
   animation: fadeanime 0.3s ease;
@@ -1640,31 +1994,13 @@ input[type="text"]:focus {
 
 /* Safari専用調整 */
 .safari .headerbutton {
-  top: 5%;   /* 微調整 */
+  top: 6%;   /* 微調整 */
   transform: translate(-50%, -50%);
 }
+.safari .yokobtn {
+  width: 140px;
+}
 
-.safari #hatena{
-  position: relative;
-  background-color: #fff;
-  border: transparent;
-  border-radius: 50%;
-  font-size: 20px;
-  height: 35px;
-  width: 35px;
-  filter: drop-shadow(2px 2px #333);
-  transition: 0.3s;
-}
-.safari #hatena:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -14px;
-  margin-top: -8px;
-  border: 8px solid transparent;
-  border-right: 8px solid #ffffff;
-  z-index: 0;
-}
 
 
 @media (prefers-color-scheme: dark) {
@@ -1733,11 +2069,9 @@ input[type="text"]:focus {
   }
   .headerbutton{
     position: fixed;
-    top: 50%;
     left: 65%;
     display: flex;
     text-align: center;
-    transform: translateY(-50%) translateX(-50%);/*真ん中*/
   }
   #countlv{
     left: 23%;
@@ -1869,11 +2203,9 @@ input[type="text"]:focus {
   }
   .headerbutton{
     position: fixed;
-    top: 50%;
     left: 70%;
     display: flex;
     text-align: center;
-    transform: translateY(-50%) translateX(-50%);/*真ん中*/
   }
   .my-parts {
     color: #333;
@@ -1933,13 +2265,35 @@ input[type="text"]:focus {
   #countlv{
     left: 6px;
     top: 150px;
-    max-width: 150px;
-    min-height: 35px;
+    border-radius: 5px;
   }
   #couns{
     position: relative;
     top: 40px;/*親要素下からの位置 */
     height: 25px;
+  }
+  #koukann{
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    position: absolute;
+    bottom: -25px;
+    right: 5px;
+  }
+  #koukantab{
+    height: 280px;
+    width: 250px;
+  }
+  #koukancount{
+    height: 40px;
+    width: 80px;
+    line-height: 40px;
+    margin: 5px 87.5px;
+  }
+  .koukanbtn{
+    height: 40px;
+    width: 40px;
+    margin: 3px;
   }
 
   #kiroku{
@@ -2046,6 +2400,33 @@ input[type="text"]:focus {
   #s3{
     height: 320px;
   }
+  #s5{
+    width: 245px;
+    height: 345px;
+  }
+  #tenseitab{
+    width: 250px;
+    height: 350px;
+    z-index: 109;
+  }
+  #lost{
+    width: 75px;
+    height: 100px;
+  }
+  #skill{
+    width: 200px;
+  }
+  #tnsipoint{
+    width: 120px;
+  }
+  #tenseiok{
+    width: 100px;
+  }
+  #hatena{
+    font-size: 14px;
+    height: 40px;
+    width: 45px;
+  }
   #hatenatab{
     width: 350px;
     height: 300px;
@@ -2074,6 +2455,12 @@ input[type="text"]:focus {
   #tst{
     top: 100px;
   }
+  #title{
+    white-space: nowrap;
+    margin: 3px 50px;
+    text-align: center;
+    width: 100px;
+  }
   .mmm2{
     width: 280px;
     height: 250px;
@@ -2083,20 +2470,24 @@ input[type="text"]:focus {
     width: 200px;
     min-height: 20px;
     font-size: 15px;
-    text-align:center;
+    text-align:left;
     padding:5px 0;
     margin:5px;
   }
-  .mt3{
-    width: 180px;
-    min-height: 20px;
-    padding:5px 0;
+  .date{
+    margin: 5px 5px;
+    font-size: 14px;
+    width: 200px;
   }
-  #ato{
-    width: 220px;
-    height: 50px;
-    display: flex;
+  .jissekiicon{
+    height: 30px;
+    width: 30px;
   }
+  .jimg{
+    height: 30px;
+    width: 30px;
+  }
+
   .xbutton{
     height:30px;
     width: 30px;
@@ -2173,6 +2564,7 @@ input[type="text"]:focus {
     margin: 0px 20px;
     display: inline-block;
     padding: 5px; /* 余白 */
+    z-index: 1;
   }
   .oyatubox{
     margin: 0px 10%;

@@ -24,10 +24,11 @@
 
         <div class="header">
                 <p class="my-parts" >#<span>お</span>さかなクリッカー</p>
-                <button id="hatena"><i class="ri-question-fill"></i></button>
+                <button id="hatena">ヘルプ<i class="ri-question-fill"></i></button>
                 <div class="headerbutton">
                     <button id="buttonAA" class="btnstyle">記録<i class="ri-bar-chart-fill"></i></button>
                     <button id="sbtn" class="btnstyle">設定<i class="ri-settings-3-fill"></i></button>
+                    <button id="tenseibtn" class="btnstyle">転生<i class="ri-repeat-line"></i></button>
                 </div>
                 <div class="slidemoji">
                     <ul>
@@ -43,13 +44,14 @@
                         <li></li>
                         <li>ヒント<i class="ri-lightbulb-line"></i>:ミッションをクリアして小判を獲得しましょう</li>
                         <li></li>
-                        <li>左上の<i class="ri-question-fill"></i>で遊び方が確認できます</li>
+                        <li>左上のヘルプ<i class="ri-question-fill"></i>で遊び方が確認できます</li>
                     </ul>    
                 </div>
                 <div id="counts">
-                    <p class="counterr" id="countsakana"><i class="ri-money-cny-circle-fill"></i>魚 <span class="countup" id="counter">0</span></span></p>
+                    <p class="counterr" id="countsakana"><i class="ri-money-cny-circle-fill"></i>魚 <span id="counter">0</span></span></p>
                     <p class="coun" id="couns"><span><i class="ri-time-fill"></i><span id="coun1s">毎秒+0</span></span></p>
-                    <p class="counterr" id="countlv"><span><i class="ri-star-fill"></i>小判 <span class="countup" id="inputLv">0</span></span></p>
+                    <p class="counterr" id="countlv"><span><i class="ri-star-fill"></i>小判 <span id="inputLv">0</span></span>
+                    <button id="koukann"><i class="ri-arrow-left-right-line"></i></button></p>
                 </div>
         </div>
 
@@ -59,27 +61,22 @@
                 <h4>このゲームについて</h4>
                 <details>
                     <summary>クレジット</summary>
-                    <p>使用素材</p>
+                    <p>素材提供</p>
                     <ul>
                         <li>
-                            アイコン素材：<strong>Remix Icon</strong> 様<br>
-                            <a href="https://remixicon.com/" target="_blank" rel="noopener noreferrer">公式サイト</a>
+                            <strong><a href="https://remixicon.com/" target="_blank" rel="noopener noreferrer">Remix Icon</a></strong> 様<br>
                         </li>
                         <li>
-                            一部画像素材：<strong>いらすとや</strong> 様<br>
-                            <a href="https://www.irasutoya.com/" target="_blank" rel="noopener noreferrer">公式サイト</a>
+                            <strong><a href="https://www.irasutoya.com/" target="_blank" rel="noopener noreferrer">いらすとや</a></strong> 様<br>
                         </li>
                         <li>
-                            一部画像素材：<strong>無料の猫イラスト素材専門サイト｜猫画工房</strong> 様<br>
-                            <a href="https://nekoillust.com/" target="_blank" rel="noopener noreferrer">公式サイト</a>
+                            <strong><a href="https://nekoillust.com/" target="_blank" rel="noopener noreferrer">無料の猫イラスト素材専門サイト｜猫画工房公式サイト</a></strong> 様<br>
                         </li>
                         <li>
-                            効果音素材：<strong>OtoLogic</strong> 様<br>
-                            <a href="https://otologic.jp/" target="_blank" rel="noopener noreferrer">公式サイト</a>
+                            <strong><a href="https://on-jin.com/" target="_blank" rel="noopener noreferrer">On-Jin ～音人～</a></strong> 様<br>
                         </li>
                         <li>
-                            効果音素材：<strong>効果音ラボ</strong> 様<br>
-                            <a href="https://soundeffect-lab.info/" target="_blank" rel="noopener noreferrer">公式サイト</a>
+                            <strong><a href="https://soundeffect-lab.info/" target="_blank" rel="noopener noreferrer">効果音ラボ</a></strong> 様<br>
                         </li>
                     </ul>
                 </details>
@@ -95,7 +92,15 @@
                             集めた<span class="tango">魚</span>は、アイテムショップはねこショップで使用します。
                         </li>
                         <li>
-                            <span class="tango">ねこショップ</span>で食べ物を買うと、1回のクリック<i class="ri-cursor-line"></i>で得られる<span class="tango">さかな</span>の量が増加します。
+                            <span class="tango">ねこショップ</span>で食べ物を買うと、1回のクリック<i class="ri-cursor-line"></i>で得られる<span class="tango">魚</span>の量（獲得量）が増加します。
+                        </li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>単位について</summary>
+                    <ul>
+                        <li>
+                            単位は万→億→兆→京→垓→秭→穣→溝→澗→正→載→極→恒河沙→阿僧祇→那由他→不可思議→無量大数と増えていきます。無量大数が最大です。
                         </li>
                     </ul>
                 </details>
@@ -138,7 +143,7 @@
 
         <div class="tap">
             <div>
-                <div id="target" onclick="hit()">
+                <div id="target" onclick="hit(event)">
                     <img src='./images/おさかな.png' id="sakana">
                     <img  class="tcicon" id="tapicon" src="./images/computer_cursor_finger_white.png">
                     <img  class="tcicon" id="clickicon" src="./images/nikukyu_shiro.png">
@@ -149,30 +154,93 @@
         </div>
 
         <button class="yokobtn" id="tst">ミッション<i class="ri-todo-fill"></i></button>
+        <button class="yokobtn" id="jisseki">実績<i class="ri-checkbox-fill"></i></button>
 
         <!-- ミッション-->
         <div class="mmm2"id="mii2">
             <button class="xbutton" id="xx2" onclick="xbutton(event)"><i class="ri-close-fill"></i></button>
             <div class="scroll" id="s2">
-                <nobr>ミッション</nobr>
-                <div class="mtext2">
-                    <div id="ato">
-                        <button id="atobtn"><i class="ri-bar-chart-fill"></i></button>
-                        <button id="atojiru"><i class="ri-close-fill"></i></button>
+                <h3 id="title">ミッション</h3>
+                <div>
+                    <div>
+                        <p class="mt2"><span id="mq12">ミッション１</span><span id="ato12">クリアまであと...</span></p>
+                        <p class="mt2"><span id="mq22">ミッション２</span><span id="ato22">クリアまであと...</span></p>
+                        <p class="mt2"><span id="mq32">ミッション３</span><span id="ato32">クリアまであと...</span></p>
+                        <p class="mt2"><span id="mq42">魚を1000コ以上集める 小判+10</span><span id="ato42">クリアまであと...</span></p>
+                        <p class="mt2"><span id="mq52">魚を1万コ以上集める 小判+30</span><span id="ato52">クリアまであと...</span></p>
+                        <p class="mt2"><span id="mq62">魚を10万コ以上集める 小判+50</span><span id="ato62">クリアまであと...</span></p>
                     </div>
-                    <div class="mscroll">
-                        <p id="mq12" class="mt2">ミッション１</p>
-                        <p class="mt3" id="ato12">クリアまであと...</p>
-                        <p id="mq22" class="mt2">ミッション２</p>
-                        <p class="mt3" id="ato22">クリアまであと...</p>
-                        <p id="mq32" class="mt2">ミッション３</p>
-                        <p class="mt3" id="ato32">クリアまであと...</p>
-                        <p id="mq42" class="mt2">魚を1000コ以上集める 小判+10</i></p>
-                        <p class="mt3" id="ato42">クリアまであと...</p>
-                        <p id="mq52" class="mt2">魚を10000コ以上集める 小判+30</i></p>
-                        <p class="mt3" id="ato52">クリアまであと...</p>
-                        <p id="mq62" class="mt2">魚を100000コ以上集める 小判+50</p>
-                        <p class="mt3" id="ato62">クリアまであと...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 実績-->
+        <div class="mmm2" id="jissekitab">
+            <button class="xbutton" id="xx2" onclick="xbutton(event)"><i class="ri-close-fill"></i></button>
+            <div class="scroll" id="s4">
+                <h3 id="title">実績</h3>
+                <div class="date">
+                    <span class="clear" id="clear01"><i class="ri-check-fill"></i></span>
+                    <span class="jissekiicon" id="j01"><img class="jimg" src="./images/おさかな.png"></span>
+                    <div class="tate">
+                        <p class="txt" id="namae">さかなもち🥉</p>
+                        <p class="bun">魚を10万コ集める</p>
+                    </div>
+                </div>
+                <div class="date">
+                    <span class="clear" id="clear02"><i class="ri-check-fill"></i></span>
+                    <span class="jissekiicon" id="j02"><img class="jimg" src="./images/おさかな.png"></span>
+                    <div class="tate">
+                        <p class="txt" id="namae">おさかなもち🥈</p>
+                        <p class="bun">魚を1億コ集める</p>
+                    </div>
+                </div>
+                <div class="date">
+                    <span class="clear" id="clear03"><i class="ri-check-fill"></i></span>
+                    <span class="jissekiicon" id="j03"><img class="jimg" src="./images/おさかな.png"></span>
+                    <div class="tate">
+                        <p class="txt" id="namae">大さかなもち🥇</p>
+                        <p class="bun">魚を1兆コ集める</p>
+                    </div>
+                </div>
+                <div class="date">
+                    <span class="clear" id="clear04"><i class="ri-check-fill"></i></span>
+                    <span class="jissekiicon" id="j04"><img class="jimg" src="./images/おさかな.png"></span>
+                    <div class="tate">
+                        <p class="txt" id="namae">！🏆</p>
+                        <p class="bun">魚を1無量大数コ集める</p>
+                    </div>
+                </div>
+                <div class="date">
+                    <span class="clear" id="clear05"><i class="ri-check-fill"></i></span>
+                    <span class="jissekiicon" id="j05"><img class="jimg" src="./images/cat_fish_run.png"></span>
+                    <div class="tate">
+                        <p class="txt" id="namae">自動化</p>
+                        <p class="bun">自動クリック数を毎秒100にする</p>
+                    </div>
+                </div>
+                <div class="date">
+                    <span class="clear" id="clear06"><i class="ri-check-fill"></i></span>
+                    <span class="jissekiicon" id="j06"><img class="jimg" src="./images/ねこ1.png"></span>
+                    <div class="tate">
+                        <p class="txt" id="namae">普通のお客さん🥉</p>
+                        <p class="bun">ショップで商品を50コ買う</p>
+                    </div>
+                </div>
+                <div class="date">
+                    <span class="clear" id="clear07"><i class="ri-check-fill"></i></span>
+                    <span class="jissekiicon" id="j07"><img class="jimg" src="./images/ねこ2.png"></span>
+                    <div class="tate">
+                        <p class="txt" id="namae">よく見るお客さん🥈</p>
+                        <p class="bun">ショップで商品を250コ買う</p>
+                    </div>
+                </div>
+                <div class="date">
+                    <span class="clear" id="clear08"><i class="ri-check-fill"></i></span>
+                    <span class="jissekiicon" id="j08"><img class="jimg" src="./images/ねこ4.png"></span>
+                    <div class="tate">
+                        <p class="txt" id="namae">常連客🥇</p>
+                        <p class="bun">ショップで商品を500コ買う</p>
                     </div>
                 </div>
             </div>
@@ -180,7 +248,7 @@
 
         <!-- 設定 -->
         <div  id="scon" class="tab">
-            <button class="xbutton" id="x4" onclick="xbutton(event)"><i class="ri-close-fill"></i></button>
+            <button class="xbutton" onclick="xbutton(event)"><i class="ri-close-fill"></i></button>
             <div class="scroll" id="s3">
                 <div class="tab-2">
                     <label>
@@ -229,7 +297,7 @@
                         <div class="settei">
                             <p class="marker" id="dbtn"><img src="./images/font-sans.png"><span>フォントの設定</span></p>
                             <hr>
-                            <p>フォントを変更</p>
+                            <p class="up">フォントを変更</p>
                             <div id="fontkaeru">
                                 <button class="fontbtn" onclick="changeFont('Chalk')">チョークS（デフォルト）</button>
                                 <button class="fontbtn" id="f2" onclick="changeFont('Comic sans MS')">Comic sans</button>
@@ -238,11 +306,11 @@
                                 <button class="fontbtn" id="f5" onclick="changeFont('mochiy')">モッチーポップ</button>
                                 <button class="fontbtn" id="f6" onclick="changeFont('bananaslip_plus')">バナナスリップ</button>
                                 <button class="fontbtn" id="f7" onclick="changeFont('yusei')">油性マジック</button>
-                                <button class="fontbtn" id="f8" onclick="changeFont('crayon')">殴り書きクレヨン</button>
+                                <button class="fontbtn" id="f8" onclick="changeFont('crayon')">美咲明朝</button>
                             </div>
                             <p class="hint"><i class="ri-lightbulb-line"></i>:スクロールできます。</p>
                             <hr>
-                            <p>フォントの大きさ</p>
+                            <p class="up">フォントの大きさ</p>
                             <button class="setteibtn" id="fA" onclick="changeFontSize(1)">+1</button>
                             <button class="setteibtn" id="fC" onclick="changeFontSize(-1)">-1</button>
                             <button onclick="resetFontSize()" class="setteibtn" id="riset">リセット</button>
@@ -256,23 +324,25 @@
 
 
         <div id="kiroku" class="tab">
-            <button class="xbutton" id="x1" onclick="xbutton(event)"><i class="ri-close-fill"></i></button>
+            <button class="xbutton" onclick="xbutton(event)"><i class="ri-close-fill"></i></button>
             <div id="dkiroku">
                 <div id="d1" class="d">
                     <span class="marker" id="output">ここに結果が表示されます。</span><span class="marker">記録</span>
                     <p><span id="catcount">0</span><img class="catimage" id="catimg1" src="./images/526f8894d2a6851c7a6de6f137af6e68.png"></p>
                     <img id="data" src="./images/1f23085c8632289aed6b0c83d47f5cfc.png">
+                    <img  class="tcicon" id="nekotapicon" src="./images/computer_cursor_finger_white.png">
                     <p id="cathyouji">クリック数<span id="catcc">000</span>突破!魚<span id="catgetsakana">000</span>コをゲット!</p>
                     <button class="btnstyle" id="catreset"><i class="ri-focus-3-line"></i>位置をリセット</button>
                     <button class="btnstyle" id="datasakujo"><i class="ri-delete-bin-2-fill"></i>データを削除</button>
                 </div>
                 <div id="d2" class="d">
-                    <p>小判: <span class="marker" id="kirokuLv"></span></p>
-                    <p>クリック数: <span class="marker" id="kirokuclick"></span></p>
-                    <p>魚を集めた数: <span class="marker" id="kirokusakana"></span></p>
-                    <p>魚を集めた数(合計): <span class="marker" id="kirokusakanas"></span></p>
-                    <p>魚を使った数: <span class="marker" id="kirokusakanasiyou"></span></p>
-                    <p>物を買った数: <span class="marker" id="kirokumono"></span></p>
+                    <p class="up">魚を集めた数: <span class="marker" id="kirokusakana"></span></p>
+                    <p class="up">小判: <span class="marker" id="kirokuLv"></span></p>
+                    <p class="up">クリック数: <span class="marker" id="kirokuclick"></span></p>
+                    <p class="up">転生回数: <span class="marker" id="kirokutensei"></span></p>
+                    <p class="up">物を買った数: <span class="marker" id="kirokumono"></span></p>
+                    <p class="up">魚を集めた数(合計): <span class="marker" id="kirokusakanas"></span></p>
+                    <p class="up">魚を使った数(合計): <span class="marker" id="kirokusakanasiyou"></span></p>
                 </div>
             </div>
         </div>
@@ -283,14 +353,96 @@
                 <p class="bbb">本当に削除しますか？</p>
             </div>
             <button  class="sakujo" onclick="xbutton(event)">いいえ</button>
-            <button  class="sakujo" onclick="resetcount()">データを削除</button>
+            <button  class="sakujo" id="sakujokakutei" onclick="resetcount()">データを削除</button>
+        </div>
+
+        <div id="tenseitab" class="tab">
+            <button class="xbutton" id="x5" onclick="xbutton(event)"><i class="ri-close-fill"></i></button>
+            <div class="scroll" id="s5">
+                <p id="tnsipoint">転生ポイント　<span id="point">00000</span></p>
+                <div class="tab-3">
+                    <label>
+                        <input type="radio" name="tab-3" checked>
+                        転生<i class="ri-repeat-line"></i>
+                    </label>
+                    <div>
+                        <p>転生できるまで<span id="imacount">000</span>/<span id="tenseicount">000</span></p>
+                        <p>転生しますか？</p>
+                        <p>失うもの</p>
+                        <ul id="lost">
+                            <li>魚</li>
+                            <li>小判</li>
+                            <li>ショップで買った商品</li>
+                        </ul>
+                        <p>※強化した商品の<i class="ri-cursor-line"></i>は初期化されません。</p>
+                        <button class="btnstyle" id="tenseiok">転生する</button>
+                    </div>
+                    <label>
+                        <input type="radio" name="tab-3">
+                        スキル<i class="ri-sword-fill"></i>
+                    </label>
+                    <div>
+                        <p>スキルを獲得すると魚が集めやすくなります。</p>
+                        <div id="skill">
+                            <div class="skilldate">
+                                <div>
+                                    <span class="kakutoku" id="kakutoku1">獲得済み<img id="nekonote" src="images/526f8894d2a6851c7a6de6f137af6e68.png"></span>
+                                    <p class="txt" id="namae">スキル1</p>
+                                    <p class="bun">魚をクリックしたとき、たまに多く魚を集められる<br>黄色いエフェクト</p>
+                                    <p class="wavy"><span id="snedan1">000</span>ポイント</p>
+                                    <button class="skillbtn" id="skillbtn1">獲得する</button>
+                                </div>
+                            </div>
+                            <div class="skilldate">
+                                <div>
+                                    <span class="kakutoku" id="kakutoku2">獲得済み<img id="nekonote" src="images/526f8894d2a6851c7a6de6f137af6e68.png"></span>
+                                    <p class="txt" id="namae">スキル2</p>
+                                    <p class="bun">一定時間獲得量が10倍になる<br>青いエフェクト</p>
+                                    <p class="wavy"><span id="snedan2">000</span>ポイント</p>
+                                    <button class="skillbtn" id="skillbtn2">獲得する</button>
+                                </div>
+                            </div>
+                            <div class="skilldate">
+                                <div>
+                                    <span class="kakutoku" id="kakutoku3">獲得済み<img id="nekonote" src="images/526f8894d2a6851c7a6de6f137af6e68.png"></span>
+                                    <p class="txt" id="namae">スキル3</p>
+                                    <p class="bun">小判を魚に変換できるようになる</p>
+                                    <p class="wavy"><span id="snedan3">000</span>ポイント</p>
+                                    <button class="skillbtn" id="skillbtn3">獲得する</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab" id="tenseikakunin">
+            <div id="eee">
+                <img src="./images/ねこ3.png">
+                <p class="bbb">本当に転生しますか？</p>
+            </div>
+            <button  class="sakujo" onclick="xbutton(event)">いいえ</button>
+            <button  class="sakujo" id="tenseikakutei" onclick="tensei()">はい</button>
+        </div>
+
+        <div id="koukantab" class="tab">
+            <button class="xbutton" onclick="xbutton(event)"><i class="ri-close-fill"></i></button>
+            <p>いくつ交換しますか？</p>
+            <p>1小判 = 100魚</p>
+            <p><span><i class="ri-star-fill"></i>小判 <span id="koukankoban">0</span></span> → 
+            <span><i class="ri-money-cny-circle-fill"></i>魚 <span id="koukansakana">0</span></span></p>
+            <p id="koukancount">000</p>
+            <button class="koukanbtn" id="koukanmten">-10</button><button class="koukanbtn" id="koukanminus">-1</button>
+            <button class="koukanbtn" id="koukanplus">+1</button><button class="koukanbtn" id="koukanten">>></button>
+            <br><button class="koukanbtn" id="koukankakutei">交換する</button>
         </div>
 
         <!--効果音-->
-        <audio class="koukaon" src="音/決定ボタンを押す12.mp3"></audio><!--1-->
-        <audio class="koukaon" src="音/決定ボタンを押す31.mp3"></audio><!--3-->
-        <audio class="koukaon" src="音/決定ボタンを押す45.mp3"></audio><!--5-->
-        <audio class="koukaon" src="音/決定ボタンを押す50.mp3"></audio><!--6-->
+        <audio class="koukaon" src="./音/決定ボタンを押す12.mp3"></audio><!--1-->
+        <audio class="koukaon" src="./音/決定ボタンを押す31.mp3"></audio><!--3-->
+        <audio class="koukaon" src="./音/決定ボタンを押す45.mp3"></audio><!--5-->
+        <audio class="koukaon" src="./音/決定ボタンを押す50.mp3"></audio><!--6-->
 
 
         <!--con4-->
@@ -344,8 +496,8 @@
                                 <p class="txt">150魚<i class="ri-money-cny-circle-fill"></i></p>
                                 <img class="Itemphoto" src="./images/おさかな.png">
                                 <p id="photo1">+150</p>
-                                <p><span id="Itm1buy" class="nee">あと5コ</span></p>
-                                <p><span id="Inedan" class="nee">0</span>魚</p>
+                                <p class="nee"><span id="Itm1buy">あと5コ</span></p>
+                                <p class="nee"><span id="Inedan">0</span>魚</p>
                                 <button id="Item" class="Itembtn">購入する</button>
                             </div>
                         </div>
@@ -353,7 +505,7 @@
                             <div class="Itm" title="アイテム2" >
                                 <p class="txt">セールの張り紙<i class="ri-money-cny-circle-fill"></i><i class="ri-restaurant-fill"></i></p>
                                 <img  class="Itemphoto" src="./images/pop_sale.png">
-                                <p><span id="Inedan2" class="nee">800</span>魚</p>
+                                <p class="nee"><span id="Inedan2">800</span>魚</p>
                                 <button id="Item2" class="Itembtn">購入する</button>
                             </div>
                         </div>
@@ -361,7 +513,7 @@
                             <div class="Itm" title="アイテム3" >
                                 <p class="txt">ねこみくじ<i class="ri-restaurant-fill"></i></p>
                                 <img  class="Itemphoto" src="./images/syougatsu2_omijikuji2.png">
-                                <p><span id="Inedan4" class="nee">100</span>魚</p>
+                                <p class="nee"><span id="Inedan4">100</span>魚</p>
                                 <button id="Item4" class="Itembtn">購入する</button>
                             </div>
                         </div>
@@ -370,8 +522,8 @@
                                 <p class="txt">ねこの手<i class="ri-cursor-line"></i><i class="ri-timer-fill"></i></p>
                                 <img  class="Itemphoto" src="./images/cat_fish_run.png">
                                 <p id="photo2">魚+5</p>
-                                <p><i class="ri-cursor-line"></i><span>+5</span></p>
-                                <p><span id="Inedan5" class="nee">650</span>魚</p>
+                                <p class="up"><i class="ri-cursor-line"></i><span>+5</span></p>
+                                <p class="nee"><span id="Inedan5">650</span>魚</p>
                                 <button id="Item5" class="Itembtn">購入する</button>
                             </div>
                         </div>
@@ -393,7 +545,7 @@
                         <i class="ri-shopping-basket-fill"></i>
                         <button id="plus10" class="pm">+10</button>
                         <button id="plus" class="pm">+1</button><!-- プラス -->
-                        <button id="kau">1</button>
+                        <button id="kau" class="pm">1</button>
                         <button id="minus" class="pm">-1</button><!-- マイナス -->
                         <button id="minus10" class="pm">-10</button>
                     </div>
@@ -406,7 +558,7 @@
                             </button>
                             <p><span id="get" class="up">所持数　×0</span></p>
                             <p><i class="ri-cursor-line"></i><span id="+cnt2" class="up">+0</span></p>
-                            <p><span id="nedan" class="line">20</span>魚</p>
+                            <p class="line"><span id="nedan">20</span>魚</p>
                             <button id="button1" class="text">購入する</button>
                         </div>
                         <div id="oyatutu" class="oyatudiv"title="食べ物2" >
@@ -417,7 +569,7 @@
                             </button>
                             <p><span id="get2" class="up">所持数　×0</span></p>
                             <p><i class="ri-cursor-line"></i><span id="+cnt3" class="up">+0</span></p>
-                            <p><span id="nedan2" class="line">80</span>魚</p>
+                            <p class="line"><span id="nedan2">80</span>魚</p>
                             <button id="button2" class="text">購入する</button>
                         </div>
                         <div id="oyatu3" class="oyatudiv"title="食べ物3" >
@@ -428,7 +580,7 @@
                             </button>
                             <p><span id="get3" class="up">所持数　×0</span></p>
                             <p><i class="ri-cursor-line"></i><span id="+cnt4" class="up">+0</span></p>
-                            <p><span id="nedan3" class="line">150</span>魚</p>
+                            <p class="line"><span id="nedan3">150</span>魚</p>
                             <button id="button3" class="text">購入する</button>
                         </div>
                         <div id="oyatu4" class="oyatudiv">
@@ -439,15 +591,17 @@
                             </button>
                             <p><span id="get4" class="up">所持数　×0</span></p>
                             <p><i class="ri-cursor-line"></i><span id="+cnt5" class="up">+50</span></p>
-                            <p><span id="nedan4" class="line">800</span>魚</p>
+                            <p class="line"><span id="nedan4">800</span>魚</p>
                             <button id="button4" class="text">購入する</button>
                         </div>
                         <div id="oyatu5" class="oyatudiv">
                             <p class="txt">ケーキ<i class="ri-gift-fill"></i></p>
-                            <button class="oyatu"><img src="./images/pet_cat_birthday_cake.png"></button>
+                            <button class="oyatu">
+                                <img src="./images/pet_cat_birthday_cake.png">
+                            </button>
                             <p><span id="get5" class="up">所持数　×0</span></p>
                             <p><i class="ri-cursor-line"></i><span id="+cnt6" class="up">x2</span></p>
-                            <p><span id="nedan5" class="line">1000</span>魚</p>
+                            <p class="line"><span id="nedan5">1000</span>魚</p>
                             <button id="button5" class="text">購入する</button>
                         </div>
                     </div>
@@ -514,47 +668,67 @@
             <p class="ok" id="o6"><i class="ri-save-fill"></i>保存されました</p>
             <p class="ok" id="o7"><i class="ri-delete-bin-2-fill"></i>削除されました</p>
             <p class="ok" id="o8"><i class="ri-auction-fill"></i>強化完了!</p>
+            <p class="ok" id="o9"><i class="ri-lock-unlock-fill"></i>実績解除!</p>
+            <p class="ok" id="o10"><i class="ri-error-warning-fill"></i>ポイントが足りません</p>
         </div>
     </body>
 </html>
 <script>
     // let count = 0;//魚の数✔︎
-    let count = Number(localStorage.getItem("count")) || 0;
-    let Lvcount = 0;//レベル（小判）✔︎
-    // let coun = 1;//魚をクリックして増える数✔︎
-    let coun = Number(localStorage.getItem("coun")) || 1;
-    let coun1s=0;//Item5自動クリック✔︎
-    let counttt= 0;//総クリック数　記録✔︎
-    let countb = 0;//魚を集めた数合計　記録✔︎
-    let countnedan =0;//魚を使った数　記録✔︎
-    let Icount =0;//商品を買った数　記録✔︎
-    // let Itemcount =0;//アイテムを買った数
+    //通貨
+    let count = BigInt(localStorage.getItem("count") || "0");
+    let Lvcount = BigInt(localStorage.getItem("Lvcount") || "0");//レベル（小判）✔︎
+    let point = BigInt(localStorage.getItem("point") || "0");
+    //クリック
+    let coun = BigInt(localStorage.getItem("coun") || "1");
+    let coun1s = BigInt(localStorage.getItem("coun1s") || "0");//Item5自動クリック✔︎
+    //記録
+    let counttt = BigInt(localStorage.getItem("kirokuclick") || "0");//総クリック数　記録✔︎
+    let countb = BigInt(localStorage.getItem("kirokunibosi") || "0");//魚を集めた数合計　記録✔︎
+    let countnedan = BigInt(localStorage.getItem("kirokucnedan") || "0");//魚を使った数　記録✔︎
+    let Icount = BigInt(localStorage.getItem("kirokuIcount") || "0");//商品を買った数　記録✔︎
+    let kirokutensei = BigInt(localStorage.getItem("kirokutensei") || "0");//転生した数　記録✔︎
+    //ショップ
+    let kaukazu = 1n;//ねこショップのものを買う数を決める✖︎
     let get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");//ねこショップのものを買った数✔︎
-    let kaukazu =1;//ねこショップのものを買う数を決める✖︎
-    // let nedan = [20,80,150];//ねこショップの値段✔︎
     let nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");//ねこショップの値段✔︎
-    // let Inedan = [760,800,50,100,1200];
+    let counnt = JSON.parse(localStorage.getItem("counnt") || "[2,5,10,50]");//ねこショップのものを買ってクリックが増える数✔︎
     let Inedan = JSON.parse(localStorage.getItem("Inedan") || "[0,800,100,650]");//アイテムショップの値段✔︎
     let unedan = JSON.parse(localStorage.getItem("unedan") || "[5,10,15,45]");//ウラショップの値段✔︎
-    let counnt = JSON.parse(localStorage.getItem("counnt") || "[2,5,10,50]");//ねこショップのものを買ってクリックが増える数✔︎
-    // let msakana = 170;//魚を集めるミッション⚪︎
-    // let mItem = 10;//アイテムを買うミッション⚪︎
-    // let mmck = 100;//クリックするミッション⚪︎
-    let msakana = Number(localStorage.getItem("msakana") || 170);
-    let mItem = Number(localStorage.getItem("mItem") || 10);
-    let mmck = Number(localStorage.getItem("mmck") || 100);
-    // let questlvup = [1,1,1];
+    let snedan = [50n,450n,200n];
+    //ミッション
+    let msakana = BigInt(localStorage.getItem("msakana") || "170");
+    let mItem = BigInt(localStorage.getItem("mItem") || "10");
+    let mmck = BigInt(localStorage.getItem("mmck") || "100");
     let questlvup = JSON.parse(localStorage.getItem("questlvup") || "[1,1,1]");//ミッションでレベルアップする数✔︎
-    let mqest1 =["魚を","ものを","魚を"];
+    let mqest1 =["魚を","ショップで商品を","魚を"];
     let questclear1 = false;
     let questclear2 = false;
     let questclear3 = false;
     let flagItm5 = false;
-    let clickCount =0;//catセリフ✖︎
-    let clickCount2 =0;//cat表情✖︎
-    let clickCountB =0;//usagiセリフ✖︎
-    let clickCountc =0;//uranyankoセリフ✖︎
+    let clickCount = 0;//catセリフ✖︎
+    let clickCount2 = 0;//cat表情✖︎
+    let clickCountB = 0;//usagiセリフ✖︎
+    let clickCountc = 0;//uranyankoセリフ✖︎
     let itm5timer = null;
+    //実績↓
+    let jissekiflag01 = false;//魚を10万コ集める
+    let jissekiflag02 = false;//魚を1億コ集める
+    let jissekiflag03 = false;//魚を1兆コ集める
+    let jissekiflag04 = false;//魚を1無量大数コ集める
+    let jissekiflag05 = false;//自動クリックを100にする
+    let jissekiflag06 = false;//ショップで商品を50コ買う
+    let jissekiflag07 = false;//ショップで商品を250コ買う
+    let jissekiflag08 = false;//ショップで商品を500コ買う
+    //転生/スキル
+    let tenseicount = BigInt(localStorage.getItem("tenseicount") || "100000000");
+    let kakutokuflag1 = false;
+    let kakutokuflag2 = false;
+    let kakutokuflag3 = false;
+    let skill2Active = false;
+    let skill2Timer = null;
+    let skill2EffectInterval = null;
+
 
     function migrateData() {
         const migrations = {
@@ -576,7 +750,7 @@
             }
             if (changed) {
             localStorage.setItem(key, JSON.stringify(current));
-            console.log(`${key} を更新しました:`, current);
+            console.log(`${key} を最新に更新しました:`, current);
             }
         }
     }
@@ -590,30 +764,388 @@
     //ロード画面
     window.onload = function () {
         migrateData();
+        loadcount();
+        loadpoint();
+        loadtenseicount();
         const spinner = document.getElementById("loading");
         spinner.classList.add("loaded");
-        oyatustyles();
-        shopItemStyles();
-        urashopStyles();
-        btn5();
-        loadcount();
-        loadcoun();
-        document.getElementById('catcc').innerText = `${catcount}`;
-        document.getElementById('catgetsakana').innerText = `${catget}`;
-        questclear1 = localStorage.getItem("questclear1") === "true";
-        questclear2 = localStorage.getItem("questclear2") === "true";
-        questclear3 = localStorage.getItem("questclear3") === "true";
-        flagItm5 = localStorage.getItem("flagItm5") === "true";
+        //BigInt変数
+        count = BigInt(localStorage.getItem("count") || "0");
+        Lvcount = BigInt(localStorage.getItem("Lvcount") || "0");
+        coun = BigInt(localStorage.getItem("coun") || "1");
+        coun1s = BigInt(localStorage.getItem("coun1s") || "0");
+        Icount = BigInt(localStorage.getItem("kirokuIcount") || "0");
+        kirokutensei = BigInt(localStorage.getItem("kirokutensei") || "0");
+        msakana = BigInt(localStorage.getItem("msakana") || "170");
+        mmck = BigInt(localStorage.getItem("mmck") || "100");
+        mItem = BigInt(localStorage.getItem("mItem") || "10");
+        point = BigInt(localStorage.getItem("point") || "0");
+        tenseicount = BigInt(localStorage.getItem("tenseicount") || "100000000");
         get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");//ねこショップのものを買った数✔︎
         nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");//ねこショップの値段✔︎
         Inedan = JSON.parse(localStorage.getItem("Inedan") || "[0,800,100,650]");//アイテムショップの値段✔︎
         unedan = JSON.parse(localStorage.getItem("unedan") || "[5,10,15,45]");//ウラショップの値段✔︎
         counnt = JSON.parse(localStorage.getItem("counnt") || "[2,5,10,50]");//ねこショップのものを買ってクリックが増える数✔︎
+        questlvup = JSON.parse(localStorage.getItem("questlvup") || "[1,1,1]");
+        questclear1 = localStorage.getItem("questclear1") === "true";
+        questclear2 = localStorage.getItem("questclear2") === "true";
+        questclear3 = localStorage.getItem("questclear3") === "true";
+        flagItm5 = localStorage.getItem("flagItm5") === "true";
+        document.getElementById('catcc').innerText = `${catcount}`;
+        document.getElementById('catgetsakana').innerText = `${catget}`;
+        //変換
+        get = get.map(v => BigInt(v));
+        nedan = nedan.map(v => BigInt(v));
+        Inedan = Inedan.map(v => BigInt(v));
+        unedan = unedan.map(v => BigInt(v));
+        counnt = counnt.map(v => BigInt(v));
+        questlvup = questlvup.map(v => BigInt(v));
+        oyatustyles();
+        shopItemStyles();
+        urashopStyles();
+        btn5();
+        loadcoun();
         Itm5flag();
         questflag();
         resumeItem2Timer();
-    };
+        loadjflag();
+        jissekiclearflag();
+        kakutokuyomikomi();
+        slill3();
+    }
 
+    //データ削除ボタン
+    function resetcount() {
+      ok7();
+      sakujogamen.style.display = 'none';
+      localStorage.removeItem('count');
+      setAndDisplaycount(0);
+      localStorage.removeItem('point');
+      setpoint(0);
+      localStorage.removeItem('tenseicount');
+      settenseicount(100000000);
+      document.getElementById('kirokusakana').innerText = `${formatNumberJP(count)}`;
+      localStorage.removeItem('Lvcount');
+      setAndDisplayLv(0);
+      document.getElementById('kirokuLv').innerText = `${formatNumberJP(Lvcount)}`;
+      localStorage.removeItem('coun');
+      setAndDisplaycoun(1);
+      localStorage.removeItem('coun1s');
+      setcs(0);
+      localStorage.removeItem("flagItm5");
+      localStorage.removeItem("tapflag");
+      //猫ショップのもの
+      localStorage.removeItem('get');
+      resetNedan();
+      oyatustyles();
+      shopItemStyles();
+      urashopStyles();
+      btn5();
+      localStorage.removeItem('userName');
+      document.getElementById('output').textContent = '名無しさんの';
+      localStorage.removeItem('nedan');
+      localStorage.removeItem('Inedan');
+      localStorage.removeItem('unedan');
+      localStorage.removeItem('counnt');
+      localStorage.removeItem('questlvup');
+      //記録
+      localStorage.removeItem('counttt');
+      setclick(0);
+      localStorage.removeItem('countb');
+      setnibosi(0);
+      localStorage.removeItem('countnedan');
+      setcnedan(0);
+      localStorage.removeItem('Icount');
+      setIcount(0);
+      localStorage.removeItem('kirokutensei');
+      setktensei(0);
+      resetquestflag();
+      localStorage.removeItem("msakana");
+      localStorage.removeItem("mItem");
+      localStorage.removeItem("mmck");
+      localStorage.setItem("itemBuycount", 0);
+      localStorage.setItem("itemBuyStartTime", Date.now());
+      Item1BuyStatus();
+      localStorage.setItem("item2StartTime", Date.now());
+      localStorage.removeItem("item2Duration");
+      localStorage.removeItem("motonedan");
+      localStorage.removeItem("motocoun");
+      catcount = 0;
+      catget = 100;
+      document.getElementById('catcount').innerText = '0';
+      localStorage.removeItem("catcount");
+      document.getElementById('catgetsakana').innerText = '100';
+      localStorage.removeItem("catget");
+      I2tt.style.opacity = 0;
+      document.querySelectorAll('.sale').forEach(el => {
+        el.style.opacity = 0;
+      });
+      timerdisplay.style.display = 'none';
+      BUN_EVT2.style.textDecoration = 'none';
+      BUN_EVT2.disabled = false;
+      BUN_EVT.style.textDecoration = 'none';
+      BUN_EVT.disabled = false;
+      Item2flag = false;
+      deletejflag();
+      kakutokusakujo();
+      slill3();
+      location.reload();
+    }
+    //フォントを読み込む
+    window.addEventListener('DOMContentLoaded', () => {
+    const savefont = sessionStorage.getItem('selectfont');
+        if (savefont) {
+            changeFont(savefont);
+        }
+    });
+    // ページ読み込み時に適用
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedSize = Number(sessionStorage.getItem('selectsize') || 0);
+        if (savedSize !== 0) {
+            changeFontSize(0); // 差分で現在サイズを適用
+        }
+    });
+
+    // ページ読み込み時に表示
+    window.addEventListener('DOMContentLoaded', displayName)
+    // ページ読み込み時にカウントを表示
+    window.addEventListener('DOMContentLoaded', loadcount);
+    //デバッグ用：ブラウザコンソールで使える関数
+    window.setcount = setAndDisplaycount;
+    window.setcoun = setAndDisplaycoun;
+    window.setlv = setAndDisplayLv;
+    window.set1s = setcs;
+    window.setpt = setpoint;
+    // ページ読み込み時にcounを表示
+    window.addEventListener('DOMContentLoaded', loadcoun);
+    window.addEventListener('DOMContentLoaded', loadcs);
+    // ページ読み込み時にレベルを表示
+    window.addEventListener('DOMContentLoaded', loadLv);
+    //記録
+    window.addEventListener('DOMContentLoaded', loadclick);
+    window.addEventListener('DOMContentLoaded', loadnibosi);
+    window.addEventListener('DOMContentLoaded', loadcnedan);
+    window.addEventListener('DOMContentLoaded', loadIcount);
+    window.addEventListener('DOMContentLoaded', loadkirokutensei);
+
+    //名前を保存
+    // 表示用関数
+    function displayName() {
+      const savedName = localStorage.getItem('userName');
+      if (savedName) {
+        document.getElementById('output').textContent = `${savedName}さんの`;
+      } else {
+        document.getElementById('output').textContent = '名無しさんの';
+      }
+    }
+    // 名前保存ボタンの関数
+    function saveName() {
+      ok6();
+      const name = document.getElementById('inputName').value;
+      localStorage.setItem('userName', name);
+      displayName();
+    }
+    // 名前削除ボタンの関数
+    function clearName() {
+      ok7();
+      localStorage.removeItem('userName');
+      document.getElementById('output').textContent = '名無しさんの';
+    }
+
+    // count を保存しつつ表示を更新する共通関数
+    function setAndDisplaycount(newcount) {
+      count = newcount;
+      localStorage.setItem('count', count.toString());
+      document.getElementById('counter').textContent = formatNumberJP(count);
+    }
+
+    function loadcount() {
+      const saved = localStorage.getItem('count');
+      const initial = saved ? BigInt(saved) : 0n;
+      setAndDisplaycount(initial);
+    }
+
+    //coun
+    function setAndDisplaycoun(newcoun) {
+        coun = newcoun;
+        localStorage.setItem('coun', coun.toString());
+        document.getElementById('coun').textContent = "+"+formatNumberJP(coun);
+    }
+    function loadcoun() {
+        const savedcoun = localStorage.getItem('coun');
+        const initialcoun = savedcoun ? BigInt(savedcoun) : 1n;
+        setAndDisplaycoun(initialcoun);
+    }
+
+    //レベル
+    function setAndDisplayLv(newLv) {
+        Lvcount = newLv;
+        localStorage.setItem('Lvcount', Lvcount.toString());
+        document.getElementById('inputLv').textContent = Lvcount;
+    }
+    function loadLv() {
+        const savedLv = localStorage.getItem('Lvcount');
+        const initialLv = savedLv ? BigInt(savedLv) : 0n;
+        setAndDisplayLv(initialLv);
+    }
+
+    //coun1s
+    function setcs(newcs) {
+        coun1s = newcs;
+        localStorage.setItem("coun1s", coun1s.toString());
+        document.getElementById('coun1s').textContent = '毎秒+' + coun1s;
+    }
+    function loadcs() {
+        const savedcs = localStorage.getItem('coun1s');
+        const initialcs = savedcs ? BigInt(savedcs) : 0n;
+        setcs(initialcs);
+    }
+
+    //ねこショップ
+    //削除するときの関数(nedan)
+    function resetNedan() {
+        let nedan = [20, 80, 150, 800, 1500];
+        document.getElementById('nedan').textContent = formatNumberJP(nedan[0]); // 表示更新
+        document.getElementById('nedan2').innerText = formatNumberJP(nedan[1]); // 表示更新
+        document.getElementById('nedan3').innerText = formatNumberJP(nedan[2]); // 表示更新
+        document.getElementById('nedan4').innerText = formatNumberJP(nedan[3]); // 表示更新
+        document.getElementById('nedan5').innerText = formatNumberJP(nedan[4]); // 表示更新
+    }
+
+    //記録
+    //総クリック数counttt
+    function setclick(newclick) {
+        counttt = newclick;
+        // localStorage.setItem('kirokuclick', counttt);
+        localStorage.setItem('kirokuclick', counttt.toString());
+        document.getElementById('kirokuclick').innerText = `${formatNumberJP(counttt)}`;
+    }
+    function loadclick() {
+        const savedclick = localStorage.getItem('kirokuclick');
+        const initialclick = savedclick ? BigInt(savedclick) : 0n;
+        setclick(initialclick);
+    }
+    // クリック数を1増やす関数
+    function clickplus() {
+        setclick(counttt + 1n);
+    }
+    //魚を集めた数（合計）countb
+    function setnibosi(getnibosi) {
+        countb = getnibosi;
+        localStorage.setItem('kirokunibosi', countb.toString());
+        document.getElementById('kirokusakanas').innerText = `${formatNumberJP(countb)}`;
+    }
+    function loadnibosi() {
+        const savednibosi = localStorage.getItem('kirokunibosi');
+        const initialnibosi = savednibosi ? BigInt(savednibosi) : 0n;
+        setnibosi(initialnibosi);
+    }
+    //魚を使った数countnedan
+    function setcnedan(getcnedan) {
+        countnedan = getcnedan;
+        localStorage.setItem('kirokucnedan', countnedan.toString());
+        document.getElementById('kirokusakanasiyou').innerText = `${formatNumberJP(countnedan)}`;
+    }
+    function loadcnedan() {
+        const savedcnedan = localStorage.getItem('kirokucnedan');
+        const initialcnedan = savedcnedan ? BigInt(savedcnedan) : 0n;
+        setcnedan(initialcnedan);
+    }
+    //商品を買った数Icount
+    function setIcount(getIcount) {
+        Icount = getIcount;
+        localStorage.setItem('kirokuIcount', Icount.toString());
+        document.getElementById('kirokumono').innerText = `${formatNumberJP(Icount)}`;
+    }
+    function loadIcount() {
+        const savedIcount = localStorage.getItem('kirokuIcount');
+        const initialIcount = savedIcount ? BigInt(savedIcount) : 0n;
+        setIcount(initialIcount);
+    }
+    //転生した数
+    function setktensei(kirokutensei) {
+        localStorage.setItem('kirokutensei', kirokutensei.toString());
+        document.getElementById('kirokutensei').innerText = `${formatNumberJP(kirokutensei)}`;
+    }
+    function loadkirokutensei() {
+        const savedkirokutensei = localStorage.getItem('kirokutensei');
+        const initialkirokutensei = savedkirokutensei ? BigInt(savedkirokutensei) : 0n;
+        setktensei(initialkirokutensei);
+    }
+
+    function setpoint(point) {
+      localStorage.setItem('point', point.toString());
+      document.getElementById('point').textContent = formatNumberJP(point);
+    }
+
+    function loadpoint() {
+      const savepoint = localStorage.getItem('point');
+      const hyoujip = savepoint ? BigInt(savepoint) : 0n;
+      setpoint(hyoujip);
+    }
+
+    function settenseicount(tenseicount) {
+      localStorage.setItem('tenseicount', tenseicount.toString());
+      document.getElementById('tenseicount').textContent = formatNumberJP(tenseicount);
+    }
+
+    function loadtenseicount() {
+      const savetenseicount = localStorage.getItem('tenseicount');
+      const ticount = savetenseicount ? BigInt(savetenseicount) : 100000000n;
+      settenseicount(ticount);
+    }
+
+    //スクロールボタン
+    document.addEventListener('DOMContentLoaded', function () {
+        const scrollBtn = document.getElementById('scrollToggleBtn');
+        const scrollIcon = document.getElementById('scrollIcon');
+        const slicon = document.getElementById('slicon');
+
+        let goDown = true;
+
+        scrollBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (goDown) {
+            window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: 'smooth'
+            });
+        } else {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        });
+
+        window.addEventListener('scroll', function () {
+        if (window.scrollY < window.innerHeight / 2) {
+            goDown = true;
+            scrollIcon.classList.remove('rotate-up');
+            scrollIcon.classList.add('rotate-down');
+            document.getElementById('slicon').src='./images/うら1.png';
+        } else {
+            goDown = false;
+            scrollIcon.classList.remove('rotate-down');
+            scrollIcon.classList.add('rotate-up');
+            document.getElementById('slicon').src='./images/usagi1.png';
+        }
+        });
+
+        // 初期状態を反映
+        window.dispatchEvent(new Event('scroll'));
+    });
+
+    o1.style.display = 'none';
+    o2.style.display = 'none';
+    o3.style.display = 'none';
+    o4.style.display = 'none';
+    o5.style.display = 'none';
+    o6.style.display = 'none';
+    o7.style.display = 'none';
+    o8.style.display = 'none';
+    o9.style.display = 'none';
+    o10.style.display = 'none';
 
     function ok1() {//ミッションクリア
         // 新しいpを作る
@@ -703,362 +1235,288 @@
             msg.remove();
         }, 900);
     }
-    //データ削除ボタン
-    function resetcount() {
-      ok7();
-      sakujogamen.style.display = 'none';
-      localStorage.removeItem('count');
-      setAndDisplaycount(0);
-      document.getElementById('kirokusakana').innerText = `${count}`;
-      document.getElementById('ato42').innerText = `クリアまであと${1000-count}コ`;
-      document.getElementById('ato52').innerText = `クリアまであと${10000-count}コ`;
-      document.getElementById('ato62').innerText = `クリアまであと${100000-count}コ`;
-      localStorage.removeItem('Lvcount');
-      setAndDisplayLv(0);
-      document.getElementById('kirokuLv').innerText = `${Lvcount}`;
-      localStorage.removeItem('coun');
-      setAndDisplaycoun(1);
-      localStorage.removeItem('coun1s');
-      setcs(0);
-      localStorage.removeItem("flagItm5");
-      localStorage.removeItem("tapflag");
-      //猫ショップのもの
-      localStorage.removeItem('get');
-      localStorage.setItem("get", JSON.stringify([0,0,0,0,0]));
-      resetNedan();
-      oyatustyles();
-      shopItemStyles();
-      urashopStyles();
-      btn5();
-      localStorage.removeItem('userName');
-      document.getElementById('output').textContent = '名無しさんの';
-      localStorage.setItem("nedan", JSON.stringify([20, 80, 150, 800, 1500]));
-      localStorage.setItem("Inedan", JSON.stringify([0, 800, 100, 650]));
-      localStorage.setItem("unedan", JSON.stringify([5,10,15,45]));
-      localStorage.setItem("counnt", JSON.stringify([2,5,10,50]));
-      localStorage.setItem("questlvup", JSON.stringify([1,1,1]));
-    //   document.getElementById('Inedan').textContent = `${Inedan[0]}`;
-    //   document.getElementById('Inedan2').innerText = `${Inedan[1]}`;
-    //   document.getElementById('Inedan4').innerText = `${Inedan[2]}`;
-    //   document.getElementById('Inedan5').innerText = `${Inedan[3]}`;
-      document.getElementById('unedan1').innerText = `${unedan[0]}枚`;
-      document.getElementById('unedan2').innerText = `${unedan[1]}枚`;
-      document.getElementById('unedan3').innerText = `${unedan[2]}枚`;
-      document.getElementById('unedan4').innerText = `${unedan[3]}枚`;
-      document.getElementById('moto').innerText = `+${counnt[0]}`;
-      document.getElementById('kyouka').innerText = `+${counnt[0]+5}`;
-      document.getElementById('moto2').innerText = `+${counnt[1]}`;
-      document.getElementById('kyouka2').innerText = `+${counnt[1]+5}`;
-      document.getElementById('moto3').innerText = `+${counnt[2]}`;
-      document.getElementById('kyouka3').innerText = `+${counnt[2]+5}`;
-      document.getElementById('moto4').innerText = `+${counnt[3]}`;
-      document.getElementById('kyouka4').innerText = `+${counnt[3]+5}`;
-      //記録
-      localStorage.removeItem('counttt');
-      setclick(0);
-      localStorage.removeItem('countb');
-      setnibosi(0);
-      localStorage.removeItem('countnedan');
-      setcnedan(0);
-      localStorage.removeItem('Icount');
-      setIcount(0);
-      resetquestflag();
-      localStorage.setItem("msakana", 170);
-      localStorage.setItem("mItem", 10);
-      localStorage.setItem("mmck", 100);
-    //   mq12.textContent = mqest1[0]+msakana+"コ集める Lv+"+questlvup[0]+"↑";
-    //   mq22.textContent = mqest1[1]+mItem+"コ買う Lv+"+questlvup[1]+"↑";
-    //   mq32.textContent = mqest1[2]+mmck+"回クリックする Lv+"+questlvup[2]+"↑";
-    //   document.getElementById('ato12').innerText = `クリアまであと${msakana-count}コ`;
-    //   document.getElementById('ato22').innerText = `クリアまであと${mItem-Icount}コ`;
-    //   document.getElementById('ato32').innerText = `クリアまであと${mmck-counttt}回`;
-      localStorage.setItem("itemBuycount", 0);
-      localStorage.setItem("itemBuyStartTime", Date.now());
-      Item1BuyStatus();
-      localStorage.setItem("item2StartTime", Date.now());
-      localStorage.removeItem("item2Duration");
-      localStorage.removeItem("motonedan");
-      catcount = 0;
-      catget = 100;
-      document.getElementById('catcount').innerText = '0';
-      localStorage.removeItem("catcount");
-      document.getElementById('catgetsakana').innerText = '100';
-      localStorage.removeItem("catget");
-      I2tt.style.opacity = 0;
-      document.querySelectorAll('.sale').forEach(el => {
-        el.style.opacity = 0;
-      });
-      timerdisplay.style.display = 'none';
-      BUN_EVT2.style.textDecoration = 'none';
-      BUN_EVT2.disabled = false;
-      BUN_EVT.style.textDecoration = 'none';
-      BUN_EVT.disabled = false;
-      Item2flag = false;
-      console.log('最後にリロード実行');
-      location.reload();
+    function ok9() {//強化完了したとき
+        // 新しいpを作る
+        const msg = document.createElement('p');
+        msg.innerHTML = '<i class="ri-lock-unlock-fill"></i>実績解除!';
+        msg.style.zIndex = 1000;
+        msg.classList.add('ok','o9-style');
+        document.body.appendChild(msg);
+        setTimeout(() => {
+            msg.remove();
+        }, 900);
     }
-    //フォントを読み込む
-    window.addEventListener('DOMContentLoaded', () => {
-    const savefont = sessionStorage.getItem('selectfont');
-        if (savefont) {
-            changeFont(savefont);
-        }
-    });
-    // ページ読み込み時に適用
-    window.addEventListener('DOMContentLoaded', () => {
-        const savedSize = Number(sessionStorage.getItem('selectsize') || 0);
-        if (savedSize !== 0) {
-            changeFontSize(0); // 差分で現在サイズを適用
-        }
-    });
-
-    // ページ読み込み時に表示
-    window.addEventListener('DOMContentLoaded', displayName)
-    // ページ読み込み時にカウントを表示
-    window.addEventListener('DOMContentLoaded', loadcount);
-    //デバッグ用：ブラウザコンソールで使える関数
-    window.setcount = setAndDisplaycount;
-    window.setcoun = setAndDisplaycoun;
-    window.setlv = setAndDisplayLv;
-    window.set1s = setcs;
-    // ページ読み込み時にcounを表示
-    window.addEventListener('DOMContentLoaded', loadcoun);
-    window.addEventListener('DOMContentLoaded', loadcs);
-    // ページ読み込み時にレベルを表示
-    window.addEventListener('DOMContentLoaded', loadLv);
-    //記録
-    window.addEventListener('DOMContentLoaded', loadclick);
-    window.addEventListener('DOMContentLoaded', loadnibosi);
-    window.addEventListener('DOMContentLoaded', loadcnedan);
-    window.addEventListener('DOMContentLoaded', loadIcount);
-
-    //名前を保存
-    // 表示用関数
-    function displayName() {
-      const savedName = localStorage.getItem('userName');
-      if (savedName) {
-        document.getElementById('output').textContent = `${savedName}さんの`;
-      } else {
-        document.getElementById('output').textContent = '名無しさんの';
-      }
-    }
-    // 名前保存ボタンの関数
-    function saveName() {
-      ok6();
-      const name = document.getElementById('inputName').value;
-      localStorage.setItem('userName', name);
-      displayName();
-    }
-    // 名前削除ボタンの関数
-    function clearName() {
-      ok7();
-      localStorage.removeItem('userName');
-      document.getElementById('output').textContent = '名無しさんの';
+    function ok10() {//購入失敗したとき（ポイント）
+        // 新しいpを作る
+        const msg = document.createElement('p');
+        msg.innerHTML = '<i class="ri-error-warning-fill"></i>ポイントが足りません';
+        msg.style.zIndex = 1000;
+        msg.classList.add('ok');
+        document.body.appendChild(msg);
+        setTimeout(() => {
+            msg.remove();
+        }, 900);
     }
 
-    // count を保存しつつ表示を更新する共通関数
-    function setAndDisplaycount(newcount) {
-      count = newcount;
-      localStorage.setItem('count', count);
-      document.getElementById('counter').textContent = formatNumberJP(count);
-    }
-    function loadcount() {
-      const saved = localStorage.getItem('count');
-      const initial = saved ? parseInt(saved, 10) : 0;
-      setAndDisplaycount(initial); // ← 保存内容を使って初期表示
-    }
 
-    //レベル
-    function setAndDisplayLv(newLv) {
-        Lvcount = newLv;
-        localStorage.setItem('inputLv', Lvcount);
-        document.getElementById('inputLv').textContent = Lvcount;
-    }
-    function loadLv() {
-        const savedLv = localStorage.getItem('inputLv');
-        const initialLv = savedLv ? parseInt(savedLv, 10) : 0;
-        setAndDisplayLv(initialLv);
-    }
-
-   //coun
-   function setAndDisplaycoun(newcoun) {
-        coun = newcoun;
-        localStorage.setItem('coun', coun);
-        document.getElementById('coun').textContent = '+' + coun;
-    }
-    function loadcoun() {
-        const savedcoun = localStorage.getItem('coun');
-        const initialcoun = savedcoun ? parseInt(savedcoun, 10) : 1;
-        setAndDisplaycoun(initialcoun);
-    }
-
-    //coun1s
-    function setcs(newcs) {
-        coun1s = newcs;
-        localStorage.setItem('coun1s', coun1s);
-        document.getElementById('coun1s').textContent = '毎秒+' + coun1s;
-    }
-    function loadcs() {
-        const savedcs = localStorage.getItem('coun1s');
-        const initialcs = savedcs ? parseInt(savedcs, 10) : 0;
-        setcs(initialcs);
-    }
-
-    //ねこショップ
-    //削除するときの関数(nedan)
-    function resetNedan() {
-        let nedan = [20, 80, 150, 800, 1500];
-        document.getElementById('nedan').textContent = formatNumberJP(nedan[0]); // 表示更新
-        document.getElementById('nedan2').innerText = formatNumberJP(nedan[1]); // 表示更新
-        document.getElementById('nedan3').innerText = formatNumberJP(nedan[2]); // 表示更新
-        document.getElementById('nedan4').innerText = formatNumberJP(nedan[3]); // 表示更新
-        document.getElementById('nedan5').innerText = formatNumberJP(nedan[4]); // 表示更新
-    }
-
-    //記録
-    //総クリック数counttt
-    function setclick(newclick) {
-        counttt = newclick;
-        localStorage.setItem('kirokuclick', counttt);
-        document.getElementById('kirokuclick').textContent = counttt;
-    }
-    function loadclick() {
-        const savedclick = localStorage.getItem('kirokuclick');
-        const initialclick = savedclick ? parseInt(savedclick, 10) : 0;
-        setclick(initialclick);
-    }
-    // クリック数を1増やす関数
-    function clickplus() {
-        setclick(counttt + 1);
-    }
-    //魚を集めた数（合計）countb
-    function setnibosi(getnibosi) {
-        countb = getnibosi;
-        localStorage.setItem('kirokunibosi', countb);
-        document.getElementById('kirokusakanas').textContent = countb;
-    }
-    function loadnibosi() {
-        const savednibosi = localStorage.getItem('kirokunibosi');
-        const initialnibosi = savednibosi ? parseInt(savednibosi, 10) : 0;
-        setnibosi(initialnibosi);
-    }
-    //魚を使った数countnedan
-    function setcnedan(getcnedan) {
-        countnedan = getcnedan;
-        localStorage.setItem('kirokucnedan', countnedan);
-        document.getElementById('kirokusakanasiyou').textContent = countnedan;
-    }
-    function loadcnedan() {
-        const savedcnedan = localStorage.getItem('kirokucnedan');
-        const initialcnedan = savedcnedan ? parseInt(savedcnedan, 10) : 0;
-        setcnedan(initialcnedan);
-    }
-    //商品を買った数Icount
-    function setIcount(getIcount) {
-        Icount = getIcount;
-        localStorage.setItem('kirokuIcount', Icount);
-        document.getElementById('kirokumono').textContent = Icount;
-    }
-    function loadIcount() {
-        const savedIcount = localStorage.getItem('kirokuIcount');
-        const initialIcount = savedIcount ? parseInt(savedIcount, 10) : 0;
-        setIcount(initialIcount);
-    }
-
-    //スクロールボタン
-    document.addEventListener('DOMContentLoaded', function () {
-        const scrollBtn = document.getElementById('scrollToggleBtn');
-        const scrollIcon = document.getElementById('scrollIcon');
-        const slicon = document.getElementById('slicon');
-
-        let goDown = true;
-
-        scrollBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        if (goDown) {
-            window.scrollTo({
-                top: document.documentElement.scrollHeight,
-                behavior: 'smooth'
-            });
-        } else {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-        });
-
-        window.addEventListener('scroll', function () {
-        if (window.scrollY < window.innerHeight / 2) {
-            goDown = true;
-            scrollIcon.classList.remove('rotate-up');
-            scrollIcon.classList.add('rotate-down');
-            document.getElementById('slicon').src='./images/うら1.png';
-        } else {
-            goDown = false;
-            scrollIcon.classList.remove('rotate-down');
-            scrollIcon.classList.add('rotate-up');
-            document.getElementById('slicon').src='./images/usagi1.png';
-        }
-        });
-
-        // 初期状態を反映
-        window.dispatchEvent(new Event('scroll'));
-    });
-
+    //クリック
     const clickicon = document.getElementById("clickicon");
     const tapicon = document.getElementById("tapicon");
     upsakana.style.display = 'none';
     tapicon.style.display = 'block';
     clickicon.style.display = 'none';
-    const hit = () =>
+    const hit = (event) =>
     {
-        uposakana(event.clientX, event.clientY);
+        // const audio = new Audio('./音/決定ボタンを押す45.mp3');
+        const audio = new Audio('./音/水滴1.mp3');
+        audio.volume = slider_volume.value;
+        audio.play();          
+        // uposakana(event.clientX, event.clientY);
+        const x = event.clientX;
+        const y = event.clientY;
+
+        uposakana(x, y);
         tapicon.style.display = 'none';
         //カウント（魚）を増やす
-        let count = Number(localStorage.getItem("count") || 0);
-        let coun = Number(localStorage.getItem("coun"));
-        localStorage.setItem('coun', coun);
-        count+=coun;
-        localStorage.setItem('count', count);
-        document.getElementById('counter').textContent = formatNumberJP(count);
+        // count = BigInt(localStorage.getItem("count") || "0");
+        count += coun;
+        localStorage.setItem("count", count.toString());
         setnibosi(countb+=coun);
         clickplus();
-        const audio = new Audio('音/決定ボタンを押す45.mp3');
-        audio.volume = slider_volume.value;
-        audio.play();
+        clearcheck();
+        jissekiclearflag();
+        hutougou();
+        document.getElementById('counter').textContent = formatNumberJP(count);
+        koukansakana.textContent = formatNumberJP(count);
+        // localStorage.setItem('count', count);
         oyatustyles();
         shopItemStyles();
         urashopStyles();
-        questlvup = JSON.parse(localStorage.getItem("questlvup") || "[1,1,1]");
-        msakana = Number(localStorage.getItem("msakana") || 170);
-        mmck = Number(localStorage.getItem("mmck") || 100);
+        document.getElementById('imacount').innerText = `${formatNumberJP(count)}`;
+        // msakana = Number(localStorage.getItem("msakana") || 170);
+        //スキル
+        if(kakutokuflag1 == true){
+            var random = Math.floor(Math.random()*20);
+            if(random == 1){
+                showSkillCircles(x, y);// エフェクト
+                const irandom = BigInt(Math.floor(Math.random() * 10) + 11);
+                count += coun * irandom;
+                // for(let i=0;i<irandom;i++){
+                //     count += coun;
+                // }
+                const audio = new Audio('./音/決定ボタンを押す46.mp3');
+                audio.volume = slider_volume.value;
+                audio.play();
+                console.log("スキル1実行"+"クリック*"+irandom+"倍");
+            }
+        }
+        if (kakutokuflag2 === true && !skill2Active) {
+            const random = Math.floor(Math.random() * 50);
+            if (random === 1) {
+                const audio = new Audio('./音/決定ボタンを押す46.mp3');
+                audio.volume = slider_volume.value;
+                audio.play();
+                console.log("スキル2実行");
+                skill2Active = true;
+                const originalCoun = coun;
+                coun = coun * 10n;
+                console.log(formatNumberJP(coun));
+
+                skill2EffectInterval = setInterval(() => {
+                    spawnSkill2Circles(event.clientX, event.clientY);//エフェクト
+                }, 300);
+                //元に戻す
+                skill2Timer = setTimeout(() => {
+                    coun = originalCoun;
+                    skill2Active = false;
+                    clearInterval(skill2EffectInterval);
+                    skill2EffectInterval = null;
+                    console.log("スキル2終了");
+                }, 10000);
+            }
+        }
+
         //ミッション
-        if(count>=msakana){
-            msakana*=2;
+        if(count >= msakana){
+            msakana *= 2n;
             // console.log(msakana);
-            Lvcount+=questlvup[0];
-            questlvup[0]+=1;
-            localStorage.setItem("msakana", msakana);
+            Lvcount += questlvup[0];
+            questlvup[0] += 1n;
+            // localStorage.setItem("msakana", msakana);
+            localStorage.setItem("msakana", msakana.toString());
             mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める 小判+"+questlvup[0];
-            localStorage.setItem("questlvup", JSON.stringify(questlvup));
+            localStorage.setItem("questlvup",JSON.stringify(questlvup.map(v => v.toString())));
             ok1();
             lvup();
         }
-        if(counttt==mmck){
-            mmck+=200;
-            Lvcount+=questlvup[2];
-            questlvup[2]+=1;
-            localStorage.setItem("mmck", mmck);
+        if(counttt == mmck){
+            mmck += 200n;
+            Lvcount += questlvup[2];
+            questlvup[2] += 1n;
+            localStorage.setItem("mmck", mmck.toString());
             mq32.textContent = mqest1[2]+formatNumberJP(mmck)+"回クリックする 小判+"+questlvup[2];
-            localStorage.setItem("questlvup", JSON.stringify(questlvup));
+            localStorage.setItem("questlvup",JSON.stringify(questlvup.map(v => v.toString())));
             ok1();
             lvup();
         }
 
+        //記録
+        document.getElementById('kirokuLv').innerText = `${formatNumberJP(Lvcount)}`;
+        document.getElementById('kirokuclick').innerText = `${formatNumberJP(counttt)}`;
+        document.getElementById('kirokusakana').innerText = `${formatNumberJP(count)}`;
+        document.getElementById('kirokusakanas').innerText = `${formatNumberJP(countb)}`;
+        document.getElementById('kirokusakanasiyou').innerText = `${formatNumberJP(countnedan)}`;
+        document.getElementById('kirokumono').innerText = `${formatNumberJP(Icount)}`;
+    }
+
+    function uposakana(x,y) {//upsakana
+        // 新しいpを作る
+        const osakana = document.createElement('p');
+        osakana.id = 'upsakana';
+        osakana.textContent = `+${formatNumberJP(coun)}`;
+        osakana.style.zIndex = 1000;
+        osakana.classList.add('upsakana');
+        // クリック位置に配置
+        osakana.style.position = 'absolute';
+        osakana.style.left = `${x}px`;
+        osakana.style.top = `${y}px`;
+
+        document.body.appendChild(osakana);
+        setTimeout(() => {
+            osakana.remove();
+        }, 300);
+    }
+    //スキルエフェクト
+    function showSkillCircles(x, y) {
+        const count = Math.floor(Math.random() * 6) + 5; // 5〜10個
+
+        for (let i = 0; i < count; i++) {
+            const circle = document.createElement('div');
+            circle.className = 'skill-circle';
+
+            // 少しランダムに散らす
+            const offsetX = (Math.random() - 0.5) * 120;
+            const offsetY = (Math.random() - 0.5) * 120;
+
+            circle.style.left = `${x + offsetX}px`;
+            circle.style.top = `${y + offsetY}px`;
+
+            document.body.appendChild(circle);
+
+            // 消す
+            setTimeout(() => {
+                circle.remove();
+            }, 600);
+        }
+    }
+    function spawnSkill2Circles(x, y) {
+        const num = Math.floor(Math.random() * 4) + 3; // 3〜6個
+
+        for (let i = 0; i < num; i++) {
+            const c = document.createElement('div');
+            c.className = 'skill2-circle';
+
+            const size = Math.random() * 20 + 10;
+            c.style.width = `${size}px`;
+            c.style.height = `${size}px`;
+
+            const offsetX = (Math.random() - 0.5) * 140;
+            const offsetY = (Math.random() - 0.5) * 140;
+
+            c.style.left = `${x + offsetX}px`;
+            c.style.top = `${y + offsetY}px`;
+
+            document.body.appendChild(c);
+
+            setTimeout(() => {
+                c.remove();
+            }, 800);
+        }
+    }
+
+
+
+    //単位
+    function formatNumberJP(n) {
+        n = BigInt(n);
+
+        // n は BigInt 前提
+        const units = [
+            "", "万", "億", "兆", "京", "垓", "秭", "穣", "溝", "澗",
+            "正", "載", "極", "恒河沙", "阿僧祇", "那由他", "不可思議",
+            "無量大数"
+        ];
+
+        const BASE = 10000n;
+
+        if (n < BASE) return n.toString();// 1万未満はそのまま表示
+
+        let unitIndex = 0;
+        let value = n;
+
+        while (value >= BASE && unitIndex < units.length - 1) {
+            value /= BASE;
+            unitIndex++;
+        }
+
+        let divisor = BASE ** BigInt(unitIndex);
+
+        // 単位内の値
+        let intPart = n / divisor;                 // 整数部
+        let decimalRaw = (n * 100n) / divisor;     // 小数2桁を作るため ×100
+        let decimalPart = decimalRaw % 100n;       // 小数点以下2桁
+
+        let decimalStr = decimalPart.toString().padStart(2, "0");
+
+        return `${intPart}.${decimalStr}${units[unitIndex]}`;
+    }
+
+
+    //自動クリック
+    function Itm5flag(){
+        if (flagItm5 === true && itm5timer === null) {
+            clickicon.style.display = 'block';
+            itm5timer = setInterval(() => {
+                count += coun1s;
+                setnibosi(countb+=coun1s);
+                document.getElementById('counter').textContent = formatNumberJP(count);
+                koukansakana.textContent = formatNumberJP(count);
+                localStorage.setItem("count", count.toString());
+                document.getElementById('imacount').innerText = `${formatNumberJP(count)}`;
+                oyatustyles();
+                shopItemStyles();
+                clearcheck();
+                jissekiclearflag();
+                //ミッション
+                if(count>=msakana){
+                    msakana *= 2n;
+                    // console.log(msakana);
+                    Lvcount+=questlvup[0];
+                    questlvup[0] += 1n;
+                    localStorage.setItem("msakana", msakana.toString());
+                    mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める 小判+"+questlvup[0];
+                    localStorage.setItem("questlvup",JSON.stringify(questlvup.map(v => v.toString())));
+                    ok1();
+                    lvup();
+                }
+                hutougou();
+            }, 1000);
+        }
+    }
+
+    //ミッション
+    function clearcheck() {
+        document.getElementById('ato12').innerText = `　${formatNumberJP(count)}/${formatNumberJP(msakana)}`;
+        document.getElementById('ato22').innerText = `　${formatNumberJP(Icount)}/${formatNumberJP(mItem)}`;
+        document.getElementById('ato32').innerText = `　${formatNumberJP(counttt)}/${formatNumberJP(mmck)}`;
+        document.getElementById('ato42').innerText = `　${formatNumberJP(count)}/${formatNumberJP(1000n)}`;
+        document.getElementById('ato52').innerText = `　${formatNumberJP(count)}/${formatNumberJP(10000n)}`;
+        document.getElementById('ato62').innerText = `　${formatNumberJP(count)}/${formatNumberJP(100000n)}`;
+    }
+
+    function hutougou(){
         if(count >= 1000 && !questclear1){
-            let count = Number(localStorage.getItem("count") || 0);
-            Lvcount+=10;
+            Lvcount += 10n;
             questclear1 = true;
             localStorage.setItem("questclear1", "true");
             mq42.style.textDecoration = 'line-through'; // ← 追加！
@@ -1068,8 +1526,7 @@
             lvup();
         }
         if(count >= 10000 && !questclear2){
-            let count = Number(localStorage.getItem("count") || 0);
-            Lvcount+=30;
+            Lvcount += 30n;
             questclear2 = true;
             localStorage.setItem("questclear2", "true");
             mq52.style.textDecoration = 'line-through'; // ← 追加！
@@ -1079,8 +1536,7 @@
             lvup();
         }
         if(count >= 100000 && !questclear3){
-            let count = Number(localStorage.getItem("count") || 0);
-            Lvcount+=50;
+            Lvcount += 50n;
             questclear3 = true;
             localStorage.setItem("questclear3", "true");
             mq62.style.textDecoration = 'line-through'; // ← 追加！
@@ -1089,53 +1545,8 @@
             ok1();
             lvup();
         }
-
-        //記録
-        document.getElementById('kirokuLv').innerText = `${Lvcount}`;
-        document.getElementById('kirokuclick').innerText = `${counttt}`;
-        document.getElementById('kirokusakana').innerText = `${count}`;
-        document.getElementById('kirokusakanas').innerText = `${countb}`;
-        document.getElementById('kirokusakanasiyou').innerText = `${countnedan}`;
-        document.getElementById('kirokumono').innerText = `${Icount}`;
-        clearcheck();
     }
 
-    function formatNumberJP(count) {
-        if (count < 10000) return count.toString(); // 万未満はそのまま表示
-
-        const units = [
-            "", "万", "億", "兆", "京", "垓", "秭", "穣", "溝", "澗",
-            "正", "載", "極", "恒河沙", "阿僧祇", "那由他","不可思議",
-            "無量大数"
-        ];
-
-        let unitIndex = 0;
-
-        while (count >= 10000 && unitIndex < units.length - 1) {
-            count /= 10000;
-            unitIndex++;
-        }
-
-        // 小数2桁の切り捨て
-        const formatted = Math.floor(count * 100) / 100;
-
-        return formatted.toString() + units[unitIndex];
-    }
-
-
-    function clearcheck(){
-        let count = Number(localStorage.getItem("count") || 0);
-        msakana = Number(localStorage.getItem("msakana") || 170);
-        mItem = Number(localStorage.getItem("mItem") || 10);
-        mmck = Number(localStorage.getItem("mmck") || 100);
-        Icount = Number(localStorage.getItem("kirokuIcount")) || 0;
-        document.getElementById('ato12').innerText = `クリアまであと${msakana-count}コ`;
-        document.getElementById('ato22').innerText = `クリアまであと${mItem-Icount}コ`;
-        document.getElementById('ato32').innerText = `クリアまであと${mmck-counttt}回`;
-        document.getElementById('ato42').innerText = `クリアまであと${1000-count}コ`;
-        document.getElementById('ato52').innerText = `クリアまであと${10000-count}コ`;
-        document.getElementById('ato62').innerText = `クリアまであと${100000-count}コ`;
-    }
     function questflag(){
         if(questclear1==true){
             mq42.style.textDecoration = 'line-through'; // ← 追加！
@@ -1153,7 +1564,8 @@
             ato62.style.display = 'none';
         }
     }
-    function resetquestflag(){
+
+    function resetquestflag() {
       // フラグを false にする
       questclear1 = false;
       questclear2 = false;
@@ -1167,83 +1579,195 @@
       mq42.style.textDecoration = 'none';
       mq42.style.opacity = '1';
       ato42.style.display = 'block';
-      mq52.textContent = '魚を1000コ以上集める 小判+30';
+      mq52.textContent = '魚を1万コ以上集める 小判+30';
       mq52.style.textDecoration = 'none';
       mq52.style.opacity = '1';
       ato52.style.display = 'block';
-      mq62.textContent = '魚を1000コ以上集める 小判+50';
+      mq62.textContent = '魚を10万コ以上集める 小判+50';
       mq62.style.textDecoration = 'none';
       mq62.style.opacity = '1';
       ato62.style.display = 'block';
-      document.getElementById('ato42').innerText = `クリアまであと${1000-count}コ`;
-      document.getElementById('ato52').innerText = `クリアまであと${10000-count}コ`;
-      document.getElementById('ato62').innerText = `クリアまであと${100000-count}コ`;
     }
 
-    function Itm5flag(){
-        if (flagItm5 === true && itm5timer === null) {
-            clickicon.style.display = 'block';
-            itm5timer = setInterval(() => {
-                let count = Number(localStorage.getItem("count") || 0);
-                let coun1s = Number(localStorage.getItem("coun1s") || 0);
-                count += coun1s;
-                setnibosi(countb+=coun1s);
-                localStorage.setItem("count", count);
-                document.getElementById('counter').textContent = formatNumberJP(count);
-                oyatustyles();
-                shopItemStyles();
-                clearcheck();
-                //ミッション
-                if(count>=msakana){
-                    msakana*=2;
-                    // console.log(msakana);
-                    Lvcount+=questlvup[0];
-                    questlvup[0]+=1;
-                    localStorage.setItem("msakana", msakana);
-                    mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める 小判+"+questlvup[0];
-                    localStorage.setItem("questlvup", JSON.stringify(questlvup));
-                    ok1();
-                    lvup();
-                }
-                if(count >= 1000 && !questclear1){
-                    let count = Number(localStorage.getItem("count") || 0);
-                    Lvcount+=10;
-                    questclear1 = true;
-                    localStorage.setItem("questclear1", "true");
-                    mq42.style.textDecoration = 'line-through'; // ← 追加！
-                    mq42.style.opacity = '0.6'; // 少し薄く
-                    ato42.style.display = 'none';
-                    ok1();
-                    lvup();
-                }
-                if(count >= 10000 && !questclear2){
-                    let count = Number(localStorage.getItem("count") || 0);
-                    Lvcount+=30;
-                    questclear2 = true;
-                    localStorage.setItem("questclear2", "true");
-                    mq52.style.textDecoration = 'line-through'; // ← 追加！
-                    mq52.style.opacity = '0.6'; // 少し薄く
-                    ato52.style.display = 'none';
-                    ok1();
-                    lvup();
-                }
-                if(count >= 100000 && !questclear3){
-                    let count = Number(localStorage.getItem("count") || 0);
-                    Lvcount+=50;
-                    questclear3 = true;
-                    localStorage.setItem("questclear3", "true");
-                    mq62.style.textDecoration = 'line-through'; // ← 追加！
-                    mq62.style.opacity = '0.6'; // 少し薄く
-                    ato62.style.display = 'none';
-                    ok1();
-                    lvup();
-                }
-            }, 1000);
+
+    //実績
+    function jissekiclearflag() {
+        if(count >= 100000n && !jissekiflag01){
+            ok9();
+            console.log("実績を達成")
+            jissekiflag01 = true;//魚を10万コ集める
+            localStorage.setItem("jissekiflag01", jissekiflag01);
+            clear01.style.opacity = '1';
+        }
+        if(count >= 100000000n && !jissekiflag02){
+            ok9();
+            console.log("実績を達成")
+            jissekiflag02 = true;//魚を1億コ集める
+            localStorage.setItem("jissekiflag02", jissekiflag02);
+            clear02.style.opacity = '1';
+        }
+        if(count >= 1000000000000n && !jissekiflag03){
+            ok9();
+            console.log("実績を達成")
+            jissekiflag03 = true;//魚を1兆コ集める
+            localStorage.setItem("jissekiflag03", jissekiflag03);
+            clear03.style.opacity = '1';
+        }
+        if(count >= 100000000000000000000000000000000000000000000000000000000000000000000n && !jissekiflag04){
+            ok9();
+            console.log("実績を達成")
+            jissekiflag04 = true;//魚を1無量大数コ集める
+            localStorage.setItem("jissekiflag04", jissekiflag04);
+            clear04.style.opacity = '1';
+        }
+        if(coun1s >= 100n && !jissekiflag05){
+            ok9();
+            console.log("実績を達成")
+            jissekiflag05 = true;//自動クリックを100にする
+            localStorage.setItem("jissekiflag05", jissekiflag05);
+            clear05.style.opacity = '1';
+        }
+        if(Icount >= 50n && !jissekiflag06){
+            ok9();
+            console.log("実績を達成")
+            jissekiflag06 = true;//ショップで商品を50コ買う
+            localStorage.setItem("jissekiflag06", jissekiflag06);
+            clear06.style.opacity = '1';
+        }
+        if(Icount >= 250n && !jissekiflag07){
+            ok9();
+            console.log("実績を達成")
+            jissekiflag07 = true;//ショップで商品を250コ買う
+            localStorage.setItem("jissekiflag07", jissekiflag07);
+            clear06.style.opacity = '1';
+        }
+        if(Icount >= 500n && !jissekiflag08){
+            ok9();
+            console.log("実績を達成")
+            jissekiflag08 = true;//ショップで商品を500コ買う
+            localStorage.setItem("jissekiflag08", jissekiflag08);
+            clear06.style.opacity = '1';
+        }
+        jissekiclearopacity();
+    }
+    //読み込み/削除
+    function loadjflag() {
+        jissekiflag01 = localStorage.getItem("jissekiflag01") === "true";
+        jissekiflag02 = localStorage.getItem("jissekiflag02") === "true";
+        jissekiflag03 = localStorage.getItem("jissekiflag03") === "true";
+        jissekiflag04 = localStorage.getItem("jissekiflag04") === "true";
+        jissekiflag05 = localStorage.getItem("jissekiflag05") === "true";
+        jissekiflag06 = localStorage.getItem("jissekiflag06") === "true";
+        jissekiflag07 = localStorage.getItem("jissekiflag07") === "true";
+        jissekiflag08 = localStorage.getItem("jissekiflag08") === "true";
+        jissekiclearopacity();
+    }
+    function deletejflag() {
+        localStorage.removeItem("jissekiflag01");
+        localStorage.removeItem("jissekiflag02");
+        localStorage.removeItem("jissekiflag03");
+        localStorage.removeItem("jissekiflag04");
+        localStorage.removeItem("jissekiflag05");
+        localStorage.removeItem("jissekiflag06");
+        localStorage.removeItem("jissekiflag07");
+        localStorage.removeItem("jissekiflag08");
+
+        // ローカルの変数もリセット
+        jissekiflag01 = false;
+        jissekiflag02 = false;
+        jissekiflag03 = false;
+        jissekiflag04 = false;
+        jissekiflag05 = false;
+        jissekiflag06 = false;
+        jissekiflag07 = false;
+        jissekiflag08 = false;
+    }
+
+    function jissekiclearopacity(){
+        if(jissekiflag01 == true){
+            clear01.style.opacity = '1';
+        }
+        if(jissekiflag02 == true){
+            clear02.style.opacity = '1';
+        }
+        if(jissekiflag03 == true){
+            clear03.style.opacity = '1';
+        }
+        if(jissekiflag04 == true){
+            clear04.style.opacity = '1';
+        }
+        if(jissekiflag05 == true){
+            clear05.style.opacity = '1';
+        }
+        if(jissekiflag06 == true){
+            clear06.style.opacity = '1';
+        }
+        if(jissekiflag07 == true){
+            clear07.style.opacity = '1';
+        }
+        if(jissekiflag08 == true){
+            clear08.style.opacity = '1';
         }
     }
 
+    function kakutokuyomikomi() {
+        kakutokuflag1 = localStorage.getItem("kakutokuflag1") === "true";
+        kakutokuflag2 = localStorage.getItem("kakutokuflag2") === "true";
+        kakutokuflag3 = localStorage.getItem("kakutokuflag3") === "true";
+        kakutokuopacity();
+    }
+    function kakutokusakujo() {
+        localStorage.removeItem("kakutokuflag1");
+        localStorage.removeItem("kakutokuflag2");
+        localStorage.removeItem("kakutokuflag3");
+
+        // ローカルの変数もリセット
+        kakutokuflag1 = false;
+        kakutokuflag2 = false;
+        kakutokuflag3 = false;
+    }
+    const SKILLBUTTON = document.getElementById('skillbtn1');
+    const SKILLBUTTON2 = document.getElementById('skillbtn2');
+    const SKILLBUTTON3 = document.getElementById('skillbtn3');
+    const kakutoku1 = document.getElementById('kakutoku1');
+    const kakutoku2 = document.getElementById('kakutoku2');
+    const kakutoku3 = document.getElementById('kakutoku3');
+
+    function kakutokuopacity() {
+        if(kakutokuflag1 == true){
+            kakutoku1.style.opacity = 1;
+            SKILLBUTTON.disabled = true;
+            SKILLBUTTON.style.textDecoration = 'line-through';
+            SKILLBUTTON.style.textDecorationColor = 'red';
+            SKILLBUTTON.style.textDecorationThickness = '3px';
+        }
+        if(kakutokuflag2 == true){
+            kakutoku2.style.opacity = 1;
+            SKILLBUTTON2.disabled = true;
+            SKILLBUTTON2.style.textDecoration = 'line-through';
+            SKILLBUTTON2.style.textDecorationColor = 'red';
+            SKILLBUTTON2.style.textDecorationThickness = '3px';
+        }
+        if(kakutokuflag3 == true){
+            kakutoku3.style.opacity = 1;
+            SKILLBUTTON3.disabled = true;
+            SKILLBUTTON3.style.textDecoration = 'line-through';
+            SKILLBUTTON3.style.textDecorationColor = 'red';
+            SKILLBUTTON3.style.textDecorationThickness = '3px';
+        }
+    }
+
+    function kyoukahyouji(){
+        counnt = counnt.map(v => BigInt(v));
+        document.getElementById('kyouka').innerText = `+${counnt[0]+5n}`;
+        document.getElementById('kyouka2').innerText = `+${counnt[1]+5n}`;
+        document.getElementById('kyouka3').innerText = `+${counnt[2]+5n}`;
+        document.getElementById('kyouka4').innerText = `+${counnt[3]+5n}`;
+    }
+
+
     document.getElementById('counter').textContent = formatNumberJP(count);
-    document.getElementById('coun').innerText = `+${coun}`;
+    document.getElementById('coun').innerText = `+${formatNumberJP(coun)}`;
     document.getElementById('coun1s').innerText = `毎秒+${coun1s}`;
     document.getElementById('inputLv').innerText = `${Lvcount}`;
 
@@ -1272,13 +1796,17 @@
     document.getElementById('inputLv').innerText = `${Lvcount}`;
     //ウラショップ
     document.getElementById('moto').innerText = `+${counnt[0]}`;
-    document.getElementById('kyouka').innerText = `+${counnt[0]+5}`;
     document.getElementById('moto2').innerText = `+${counnt[1]}`;
-    document.getElementById('kyouka2').innerText = `+${counnt[1]+5}`;
     document.getElementById('moto3').innerText = `+${counnt[2]}`;
-    document.getElementById('kyouka3').innerText = `+${counnt[2]+5}`;
     document.getElementById('moto4').innerText = `+${counnt[3]}`;
-    document.getElementById('kyouka4').innerText = `+${counnt[3]+5}`;
+    kyoukahyouji();
+    //スキル
+    document.getElementById('imacount').innerText = `${formatNumberJP(count)}`;
+    document.getElementById('tenseicount').innerText = `${formatNumberJP(tenseicount)}`;
+    document.getElementById('snedan1').textContent = formatNumberJP(snedan[0]);
+    document.getElementById('snedan2').textContent = formatNumberJP(snedan[1]);
+    document.getElementById('snedan3').textContent = formatNumberJP(snedan[2]);
+
     //強化の値段
     document.getElementById('unedan1').innerText = `${unedan[0]}枚`;
     document.getElementById('unedan2').innerText = `${unedan[1]}枚`;
@@ -1286,75 +1814,55 @@
     document.getElementById('unedan4').innerText = `${unedan[3]}枚`;
 
     //ミッション
-    document.getElementById('ato12').innerText = `クリアまであと${msakana-count}コ`;
-    document.getElementById('ato22').innerText = `クリアまであと${mItem-Icount}コ`;
-    document.getElementById('ato32').innerText = `クリアまであと${mmck-counttt}回`;
-    document.getElementById('ato42').innerText = `クリアまであと${1000-count}コ`;
-    document.getElementById('ato52').innerText = `クリアまであと${10000-count}コ`;
-    document.getElementById('ato62').innerText = `クリアまであと${100000-count}コ`;
+    document.getElementById('ato12').innerText = `　${formatNumberJP(count)}/${formatNumberJP(msakana)}`;
+    document.getElementById('ato22').innerText = `　${formatNumberJP(Icount)}/${formatNumberJP(mItem)}`;
+    document.getElementById('ato32').innerText = `　${formatNumberJP(counttt)}/${formatNumberJP(mmck)}`;
+    document.getElementById('ato42').innerText = `　${formatNumberJP(count)}/${formatNumberJP(1000n)}`;
+    document.getElementById('ato52').innerText = `　${formatNumberJP(count)}/${formatNumberJP(10000n)}`;
+    document.getElementById('ato62').innerText = `　${formatNumberJP(count)}/${formatNumberJP(100000n)}`;
 
-    o1.style.display = 'none';
-    o2.style.display = 'none';
-    o3.style.display = 'none';
-    o4.style.display = 'none';
-    o5.style.display = 'none';
-    o6.style.display = 'none';
-    o7.style.display = 'none';
-    o8.style.display = 'none';
-
-    function uposakana(x,y) {//upsakana
-        // 新しいpを作る
-        const osakana = document.createElement('p');
-        osakana.id = 'upsakana';
-        osakana.textContent = '+'+coun;
-        osakana.style.zIndex = 1000;
-        osakana.classList.add('upsakana');
-        // クリック位置に配置
-        osakana.style.position = 'absolute';
-        osakana.style.left = `${x}px`;
-        osakana.style.top = `${y}px`;
-
-        document.body.appendChild(osakana);
-        setTimeout(() => {
-            osakana.remove();
-        }, 300);
-    }
+    //実績
+    const clear01 = document.getElementById("clear01");
+    const clear02 = document.getElementById("clear02");
+    const clear03 = document.getElementById("clear03");
+    const clear04 = document.getElementById("clear04");
+    const clear05 = document.getElementById("clear05");
+    const clear06 = document.getElementById("clear06");
+    const clear07 = document.getElementById("clear07");
+    const clear08 = document.getElementById("clear08");
 
 
     function lvup(){     
-        const audio =new Audio('音/決定ボタンを押す12.mp3');
+        const audio = new Audio('./音/決定ボタンを押す12.mp3');
         audio.volume = slider_volume.value;
         audio.play();
         // alert("レベルアップ! Lv."+Lvcount+"になったよ");
         ok2();
         urashopStyles();
         console.log("小判を獲得");
-        localStorage.setItem('inputLv', Lvcount);
+        localStorage.setItem('Lvcount', Lvcount.toString());
         document.getElementById('inputLv').textContent = Lvcount;
+        koukankoban.textContent = formatNumberJP(Lvcount);
     }  
     
     //ものを買うミッション
     function mmI(){
-        Icount = Number(localStorage.getItem("kirokuIcount")) || 0;
-        questlvup = JSON.parse(localStorage.getItem("questlvup") || "[1,1,1]");
-        mItem = Number(localStorage.getItem("mItem") || 10);
-        document.getElementById('ato22').innerText = `クリアまであと${mItem - Icount}コ`;
+        document.getElementById('ato22').innerText = `　${formatNumberJP(Icount)}/${formatNumberJP(mItem)}`;
         if(Icount >= mItem){
-            mItem*=2;
-            Lvcount+=questlvup[1];
+            mItem *= 2n;
+            Lvcount += questlvup[1];
             mq22.textContent = mqest1[1]+formatNumberJP(mItem)+"コ買う 小判+"+questlvup[1];
-            document.getElementById('ato22').innerText = `クリアまであと${mItem - Icount}コ`;
-            questlvup[1]+=1;
-            localStorage.setItem("mItem", mItem);
-            localStorage.setItem("questlvup", JSON.stringify(questlvup));
+            document.getElementById('ato22').innerText = `　${formatNumberJP(Icount)}/${formatNumberJP(mItem)}`;
+            questlvup[1] += 1n;
+            localStorage.setItem("mItem", mItem.toString());
+            // localStorage.setItem("questlvup", JSON.stringify(questlvup));
+            localStorage.setItem("questlvup",JSON.stringify(questlvup.map(v => v.toString())));
             ok1();
             lvup();
         }
     }
 
     function oyatustyles() {
-        const count = Number(localStorage.getItem("count")) || 0;
-
         const targets = [
             {
                 name: '缶詰',
@@ -1393,11 +1901,11 @@
             }
         ];
         targets.forEach(target => {
-            let total = 0;
-            let price = target.basePrice();
-            for (let i = 0; i < kaukazu; i++) {
+            let total = 0n;
+            let price = target.basePrice();//20,80,150,800,1500
+            for (let i = 0n; i < kaukazu; i++) {
                 total += price;
-                price *= 2;
+                price *= 2n;
             }
 
             // アイテム要素の取得
@@ -1432,7 +1940,7 @@
     //プラス10
     const KAUP10BUTTON = document.getElementById('plus10');
     KAUP10BUTTON.addEventListener('click', () => {
-        kaukazu+=10;
+        kaukazu += 10n;
         document.getElementById('kau').innerText = `${kaukazu}`;
         updateTotalPriceDisplay();
         updateTotalPriceDisplay2();
@@ -1444,8 +1952,8 @@
 
     const KAUMBUTTON = document.getElementById('minus');
     KAUMBUTTON.addEventListener('click', () => {
-        if(kaukazu>=2){
-            kaukazu-=1;
+        if(kaukazu >= 2){
+            kaukazu -= 1n;
             document.getElementById('kau').innerText = `${kaukazu}`;
             updateTotalPriceDisplay();
             updateTotalPriceDisplay2();
@@ -1458,10 +1966,10 @@
     //マイナス10
     const KAUM10BUTTON = document.getElementById('minus10');
     KAUM10BUTTON.addEventListener('click', () => {
-        if(kaukazu>=11){
-            kaukazu-=10;
+        if(kaukazu >= 11){
+            kaukazu -= 10n;
             document.getElementById('kau').innerText = `${kaukazu}`;
-            updateTotalPriceDisplay(); // ←追加
+            updateTotalPriceDisplay();
             updateTotalPriceDisplay2();
             updateTotalPriceDisplay3();
             updateTotalPriceDisplay4();
@@ -1472,11 +1980,11 @@
 
     //kaukazu分の合計価格を計算して表示
     function updateTotalPriceDisplay() {    
-        let total = 0;
+        let total = 0n;
         let price = nedan[0];
-        for (let i = 0; i < kaukazu; i++) {
+        for (let i = 0n; i < kaukazu; i++) {
             total += price;
-            price *= 1.25;
+            price = price * 125n / 100n; // 1.25倍を整数計算
         }
         document.getElementById('nedan').textContent = formatNumberJP(total);
     }
@@ -1485,16 +1993,13 @@
     // 缶詰の購入ボタンの動作
     const BUTTON_CLICK_EVENT = document.getElementById('button1');
     BUTTON_CLICK_EVENT.addEventListener('click', () => {
-        let count = Number(localStorage.getItem("count"));
-        get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
-        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");
         let currentPrice = nedan[0]; //現在の価格
-        let totalCost = 0;           //合計金額の初期化
+        let totalCost = 0n;           //合計金額の初期化
 
         //価格上昇を加味した合計金額を計算
-        for (let i = 0; i < kaukazu; i++) {
+        for (let i = 0n; i < kaukazu; i++) {
             totalCost += currentPrice;
-            currentPrice *= 1.25;
+            currentPrice =  currentPrice * 125n / 100n;
         }
 
         if (count >= totalCost && kaukazu > 0) { //魚が足りる＆個数が1以上
@@ -1504,44 +2009,51 @@
             setcnedan(countnedan += totalCost);
             get[0] += kaukazu; //追加
 
-            for (let i = 0; i < kaukazu; i++) { //価格上昇の反映
-                nedan[0] *= 1.25;
+            for (let i = 0n; i < kaukazu; i++) { //価格上昇の反映
+                // nedan[0] *= 125n / 100n;
+                nedan[0] = nedan[0] * 125n / 100n;
+                console.log("缶詰値上げ");
             }
             setIcount(Icount += kaukazu);
-            nedan = nedan.map(value => Math.floor(value));//nedanを小数点切り捨て
+            // nedan = nedan.map(value => Math.floor(value));//nedanを小数点切り捨て
             // Icount += kaukazu; //追加
 
-            //レベルアップ判定
+            //レベルアップ処理
             const previousGet = get[0] - kaukazu;
-            for (let i = previousGet + 1; i <= get[0]; i++) {
-                if (i % 10 === 0) {
-                    Lvcount += 1;
+            for (let i = previousGet + 1n; i <= get[0]; i++) {
+                if (i % 10n === 0) {
+                    Lvcount++;
                     lvup();
                 }
             }
 
-            const audio = new Audio('音/kounyu2.mp3');
+            const audio = new Audio('./音/金額表示.mp3');
             audio.volume = slider_volume.value;
             audio.play();
 
             mmI();
             ok3();
             document.getElementById('get').innerText = `所持数　×${get[0]}`;
-            localStorage.setItem('coun', coun);
-            document.getElementById('coun').textContent = '+' + coun;
-            localStorage.setItem("count", count);
-            localStorage.setItem("get", JSON.stringify(get));
+            localStorage.setItem("coun", coun.toString());
+            document.getElementById('coun').innerText = `+${formatNumberJP(coun)}`;
             document.getElementById('counter').textContent = formatNumberJP(count);
+            koukansakana.textContent = formatNumberJP(count);
+            document.getElementById('imacount').innerText = `${formatNumberJP(count)}`;
+            localStorage.setItem("count", count.toString());
+            // localStorage.setItem("get", JSON.stringify(get));
+            localStorage.setItem("get",JSON.stringify(get.map(v => v.toString())));
             document.getElementById('nedan').textContent = formatNumberJP(nedan[0]);
-            localStorage.setItem("nedan", JSON.stringify(nedan));
+            // localStorage.setItem("nedan", JSON.stringify(nedan));
+            localStorage.setItem("nedan",JSON.stringify(nedan.map(v => v.toString())));
             oyatustyles();
             shopItemStyles();
             urashopStyles();
             btn5();
             clearcheck();
+            jissekiclearflag();
         } 
         else { //魚が足りない or kaukazuが0なら
-            const audio = new Audio('音/キャンセル4.mp3')
+            const audio = new Audio('./音/キャンセル4.mp3')
             audio.volume = slider_volume.value;
             audio.play();
             ok4();
@@ -1551,11 +2063,11 @@
     
     //kaukazu分の合計価格を計算して表示　キャットフード
     function updateTotalPriceDisplay2() {    
-        let total = 0;
+        let total = 0n;
         let price = nedan[1];
-        for (let i = 0; i < kaukazu; i++) {
+        for (let i = 0n; i < kaukazu; i++) {
             total += price;
-            price *= 1.5;
+            price = price * 15n / 10n;
         }
         document.getElementById('nedan2').innerText = `${total}`;
     }
@@ -1563,16 +2075,13 @@
     //キャットフードの購入ボタンの動作
     const BUTTON_EVT= document.getElementById('button2');
     BUTTON_EVT.addEventListener('click', () => {
-        let count = Number(localStorage.getItem("count"));
-        get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
-        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");
         let currentPrice = nedan[1];      //現在の価格
-        let totalCost = 0;                //合計コスト
+        let totalCost = 0n;                //合計コスト
 
         //価格上昇を含めた合計金額を計算
-        for (let i = 0; i < kaukazu; i++) {
+        for (let i = 0n; i < kaukazu; i++) {
             totalCost += currentPrice;
-            currentPrice *= 1.5; // キャットフード 価格上昇
+            currentPrice = currentPrice * 15n / 10n; // キャットフード 価格上昇
         }
 
         //魚が足りるかチェック
@@ -1582,21 +2091,23 @@
             setcnedan(countnedan += totalCost);
             get[1] += kaukazu;
 
-            // 価格と表示用価格記録
-            for (let i = 0; i < kaukazu; i++) {
-                nedan[1] *= 1.5;
+            // 価格上昇の反映
+            for (let i = 0n; i < kaukazu; i++) {
+                nedan[1] = nedan[1] * 15n / 10n
+                console.log("キャットフード値上げ");
             }
             setIcount(Icount += kaukazu);
-            nedan = nedan.map(value => Math.floor(value));//nedanを小数点切り捨て
+            // nedan = nedan.map(value => Math.floor(value));//nedanを小数点切り捨て
 
-            const audio = new Audio('音/kounyu2.mp3');
+            // const audio = new Audio('./音/レジスター・開ける02.mp3');
+            const audio = new Audio('./音/金額表示.mp3');
             audio.volume = slider_volume.value;
             audio.play();
             
             // レベルアップ処理（5個ごと）
             const previous = get[1] - kaukazu;
-            for (let i = previous + 1; i <= get[1]; i++) {
-                if (i % 5 === 0) {
+            for (let i = previous + 1n; i <= get[1]; i++) {
+                if (i % 5n === 0) {
                     Lvcount++;
                     lvup();
                 }
@@ -1604,22 +2115,25 @@
             mmI();
             ok3();
             document.getElementById('get2').innerText = `所持数　×${get[1]}`;
-            localStorage.setItem('coun', coun);
-            document.getElementById('coun').textContent = '+' + coun;
-            localStorage.setItem("count", count);
-            localStorage.setItem("get", JSON.stringify(get));
+            localStorage.setItem("coun", coun.toString());
+            document.getElementById('coun').innerText = `+${formatNumberJP(coun)}`;
             document.getElementById('counter').textContent = formatNumberJP(count);
+            koukansakana.textContent = formatNumberJP(count);
+            document.getElementById('imacount').innerText = `${formatNumberJP(count)}`;
+            localStorage.setItem("count", count.toString());
+            localStorage.setItem("get",JSON.stringify(get.map(v => v.toString())));
             document.getElementById('nedan2').innerText = `${nedan[1]}`;
-            localStorage.setItem("nedan", JSON.stringify(nedan));
+            localStorage.setItem("nedan",JSON.stringify(nedan.map(v => v.toString())));
             oyatustyles();
             shopItemStyles();
             urashopStyles();
             btn5();
             clearcheck();
+            jissekiclearflag();
         }
         else 
         {
-            const audio = new Audio('音/キャンセル4.mp3')
+            const audio = new Audio('./音/キャンセル4.mp3')
             audio.volume = slider_volume.value;
             audio.play();
             ok4();
@@ -1628,11 +2142,11 @@
 
   //kaukazu分の合計価格を計算して表示　高級缶詰
   function updateTotalPriceDisplay3() {    
-        let total = 0;
+        let total = 0n;
         let price = nedan[2];
-        for (let i = 0; i < kaukazu; i++) {
+        for (let i = 0n; i < kaukazu; i++) {
             total += price;
-            price *= 2;
+            price *= 2n;
         }
         document.getElementById('nedan3').innerText = `${total}`; // ←表示用要素IDに合わせて調整
     }
@@ -1640,16 +2154,13 @@
     //高級缶詰の購入ボタンの動作
     const BUTTON_koukandume= document.getElementById('button3');
     BUTTON_koukandume.addEventListener('click', () => {
-        let count = Number(localStorage.getItem("count"));
-        get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
-        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");
         let currentPrice = nedan[2];      //現在の価格
-        let totalCost = 0;                //合計コスト
+        let totalCost = 0n;                //合計コスト
 
         //価格上昇を含めた合計金額を計算
-        for (let i = 0; i < kaukazu; i++) {
+        for (let i = 0n; i < kaukazu; i++) {
             totalCost += currentPrice;
-            currentPrice *= 2; // 高級缶詰 価格上昇
+            currentPrice *= 2n; // 高級缶詰 価格上昇
         }
 
         //魚が足りるかチェック
@@ -1660,19 +2171,19 @@
             get[2] += kaukazu;
 
             // 価格と表示用価格記録
-            for (let i = 0; i < kaukazu; i++) {
-                nedan[2] *= 2;
+            for (let i = 0n; i < kaukazu; i++) {
+                nedan[2] *= 2n;
             }
             setIcount(Icount += kaukazu);
 
-            const audio = new Audio('音/kounyu2.mp3');
+            const audio = new Audio('./音/金額表示.mp3');
             audio.volume = slider_volume.value;
             audio.play();
             
             // レベルアップ処理（5個ごと）
             const previous = get[2] - kaukazu;
-            for (let i = previous + 1; i <= get[2]; i++) {
-                if (i % 5 === 0) {
+            for (let i = previous + 1n; i <= get[2]; i++) {
+                if (i % 5n === 0) {
                     Lvcount++;
                     lvup();
                 }
@@ -1680,22 +2191,25 @@
             mmI();
             ok3();
             document.getElementById('get3').innerText = `所持数　×${get[2]}`;
-            localStorage.setItem('coun', coun);
-            document.getElementById('coun').textContent = '+' + coun;
-            localStorage.setItem("count", count);
-            localStorage.setItem("get", JSON.stringify(get));
+            localStorage.setItem("coun", coun.toString());
+            document.getElementById('coun').innerText = `+${formatNumberJP(coun)}`;
             document.getElementById('counter').textContent = formatNumberJP(count);
+            koukansakana.textContent = formatNumberJP(count);
+            document.getElementById('imacount').innerText = `${formatNumberJP(count)}`;
+            localStorage.setItem("count", count.toString());
+            localStorage.setItem("get",JSON.stringify(get.map(v => v.toString())));
             document.getElementById('nedan3').innerText = `${nedan[2]}`;
-            localStorage.setItem("nedan", JSON.stringify(nedan));
+            localStorage.setItem("nedan",JSON.stringify(nedan.map(v => v.toString())));
             oyatustyles();
             shopItemStyles();
             urashopStyles();
             btn5();
             clearcheck();
+            jissekiclearflag();
         }
         else 
         {
-            const audio = new Audio('音/キャンセル4.mp3')
+            const audio = new Audio('./音/キャンセル4.mp3')
             audio.volume = slider_volume.value;
             audio.play();
             ok4();
@@ -1704,11 +2218,11 @@
 
     //kaukazu分の合計価格を計算して表示　オヤツ
     function updateTotalPriceDisplay4() {    
-        let total = 0;
+        let total = 0n;
         let price = nedan[3];
-        for (let i = 0; i < kaukazu; i++) {
+        for (let i = 0n; i < kaukazu; i++) {
             total += price;
-            price *= 2;
+            price *= 2n;
         }
         document.getElementById('nedan4').innerText = `${total}`; // ←表示用要素IDに合わせて調整
     }
@@ -1716,16 +2230,13 @@
     //オヤツの購入ボタンの動作
     const BUTTON_oyatu= document.getElementById('button4');
     BUTTON_oyatu.addEventListener('click', () => {
-        let count = Number(localStorage.getItem("count"));
-        get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
-        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");
         let currentPrice = nedan[3];      //現在の価格
-        let totalCost = 0;                //合計コスト
+        let totalCost = 0n;                //合計コスト
 
         //価格上昇を含めた合計金額を計算
-        for (let i = 0; i < kaukazu; i++) {
+        for (let i = 0n; i < kaukazu; i++) {
             totalCost += currentPrice;
-            currentPrice *= 2; // 高級缶詰 価格上昇
+            currentPrice *= 2n; // 高級缶詰 価格上昇
         }
 
         //魚が足りるかチェック
@@ -1736,19 +2247,19 @@
             get[3] += kaukazu;
 
             // 価格と表示用価格記録
-            for (let i = 0; i < kaukazu; i++) {
-                nedan[3] *= 2;
+            for (let i = 0n; i < kaukazu; i++) {
+                nedan[3] *= 2n;
             }
             setIcount(Icount += kaukazu);
 
-            const audio = new Audio('音/kounyu2.mp3');
+            const audio = new Audio('./音/金額表示.mp3');
             audio.volume = slider_volume.value;
             audio.play();
             
             // レベルアップ処理（5個ごと）
             const previous = get[3] - kaukazu;
-            for (let i = previous + 1; i <= get[3]; i++) {
-                if (i % 5 === 0) {
+            for (let i = previous + 1n; i <= get[3]; i++) {
+                if (i % 5n === 0) {
                     Lvcount++;
                     lvup();
                 }
@@ -1756,22 +2267,25 @@
             mmI();
             ok3();
             document.getElementById('get4').innerText = `所持数　×${get[3]}`;
-            localStorage.setItem('coun', coun);
-            document.getElementById('coun').textContent = '+' + coun;
-            localStorage.setItem("count", count);
-            localStorage.setItem("get", JSON.stringify(get));
+            localStorage.setItem("coun", coun.toString());
+            document.getElementById('coun').innerText = `+${formatNumberJP(coun)}`;
             document.getElementById('counter').textContent = formatNumberJP(count);
+            koukansakana.textContent = formatNumberJP(count);
+            document.getElementById('imacount').innerText = `${formatNumberJP(count)}`;
+            localStorage.setItem("count", count.toString());
+            localStorage.setItem("get",JSON.stringify(get.map(v => v.toString())));
             document.getElementById('nedan4').innerText = `${nedan[3]}`;
-            localStorage.setItem("nedan", JSON.stringify(nedan));
+            localStorage.setItem("nedan",JSON.stringify(nedan.map(v => v.toString())));
             oyatustyles();
             shopItemStyles();
             urashopStyles();
             btn5();
             clearcheck();
+            jissekiclearflag();
         }
         else 
         {
-            const audio = new Audio('音/キャンセル4.mp3')
+            const audio = new Audio('./音/キャンセル4.mp3')
             audio.volume = slider_volume.value;
             audio.play();
             ok4();
@@ -1780,11 +2294,11 @@
 
      //kaukazu分の合計価格を計算して表示　ケーキ
     function updateTotalPriceDisplay5() {    
-        let total = 0;
+        let total = 0n;
         let price = nedan[4];
-        for (let i = 0; i < kaukazu; i++) {
+        for (let i = 0n; i < kaukazu; i++) {
             total += price;
-            price *= 3;
+            price *= 2n;
         }
         document.getElementById('nedan5').innerText = `${total}`; // ←表示用要素IDに合わせて調整
     }
@@ -1792,40 +2306,37 @@
     //ケーキの購入ボタンの動作
     const BUTTON_cake = document.getElementById('button5');
     BUTTON_cake.addEventListener('click', () => {
-        let count = Number(localStorage.getItem("count"));
-        get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
-        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");
         let currentPrice = nedan[4];      //現在の価格
-        let totalCost = 0;                //合計コスト
+        let totalCost = 0n;                //合計コスト
 
         //価格上昇を含めた合計金額を計算
-        for (let i = 0; i < kaukazu; i++) {
+        for (let i = 0n; i < kaukazu; i++) {
             totalCost += currentPrice;
-            currentPrice *= 3; // 高級缶詰 価格上昇
+            currentPrice *= 2n; // 高級缶詰 価格上昇
         }
 
         //魚が足りるかチェック
         if (count >= totalCost && kaukazu > 0) {
             count -= totalCost;
-            coun *= 2 * kaukazu;
+            coun *= 2n * kaukazu;
             setcnedan(countnedan += totalCost);
             get[4] += kaukazu;
 
             // 価格と表示用価格記録
-            for (let i = 0; i < kaukazu; i++) {
-                nedan[4] *= 3;
+            for (let i = 0n; i < kaukazu; i++) {
+                nedan[4] *= 2n;
             }
             setIcount(Icount += kaukazu);
-            nedan = nedan.map(value => Math.floor(value));//nedanを小数点切り捨て
+            // nedan = nedan.map(value => Math.floor(value));//nedanを小数点切り捨て
 
-            const audio = new Audio('音/kounyu2.mp3');
+            const audio = new Audio('./音/金額表示.mp3');
             audio.volume = slider_volume.value;
             audio.play();
             
             // レベルアップ処理（5個ごと）
             const previous = get[4] - kaukazu;
-            for (let i = previous + 1; i <= get[4]; i++) {
-                if (i % 5 === 0) {
+            for (let i = previous + 1n; i <= get[4]; i++) {
+                if (i % 5n === 0) {
                     Lvcount++;
                     lvup();
                 }
@@ -1833,22 +2344,25 @@
             mmI();
             ok3();
             document.getElementById('get5').innerText = `所持数　×${get[4]}`;
-            localStorage.setItem('coun', coun);
-            document.getElementById('coun').textContent = '+' + coun;
-            localStorage.setItem("count", count);
-            localStorage.setItem("get", JSON.stringify(get));
+            localStorage.setItem("coun", coun.toString());
+            document.getElementById('coun').innerText = `+${formatNumberJP(coun)}`;
             document.getElementById('counter').textContent = formatNumberJP(count);
+            koukansakana.textContent = formatNumberJP(count);
+            document.getElementById('imacount').innerText = `${formatNumberJP(count)}`;
+            localStorage.setItem("count", count.toString());
+            localStorage.setItem("get",JSON.stringify(get.map(v => v.toString())));
             document.getElementById('nedan5').innerText = `${nedan[4]}`;
-            localStorage.setItem("nedan", JSON.stringify(nedan));
+            localStorage.setItem("nedan",JSON.stringify(nedan.map(v => v.toString())));
             oyatustyles();
             shopItemStyles();
             urashopStyles();
             btn5();
             clearcheck();
+            jissekiclearflag();
         }
         else 
         {
-            const audio = new Audio('音/キャンセル4.mp3')
+            const audio = new Audio('./音/キャンセル4.mp3')
             audio.volume = slider_volume.value;
             audio.play();
             ok4();
@@ -1859,8 +2373,7 @@
     button5.style.textDecoration = 'line-through';
     button5.style.textDecorationColor = 'red';
     button5.style.textDecorationThickness = '3px';
-    function btn5(){
-        let coun = Number(localStorage.getItem("coun"));
+    function btn5() {
         button5.style.textDecoration = 'none';
         if(coun == 1){
             button5.disabled = true;
@@ -1878,8 +2391,6 @@
 
 
     function shopItemStyles() {
-        const count = Number(localStorage.getItem("count")) || 0;
-
         const targets = [
             { elementId: 'Item', itemDivClass: 'Itemm', priceIndex: 0 },
             { elementId: 'Item2', itemDivClass: 'Itemm', priceIndex: 1 },
@@ -1990,9 +2501,6 @@
 
     // ボタンクリック時の処理
     BUN_EVT.addEventListener('click', () => {
-        let count = Number(localStorage.getItem("count"));
-        let Inedan = JSON.parse(localStorage.getItem("Inedan") || "[0,800,100,650]");
-
         let itemBuycount = Number(localStorage.getItem("itemBuycount") || 0);
         let itemBuyStartTime = Number(localStorage.getItem("itemBuyStartTime") || 0);
         const now = Date.now();
@@ -2006,7 +2514,7 @@
         }
 
         if (itemBuycount >= 5) {
-            const audio = new Audio('音/キャンセル4.mp3');
+            const audio = new Audio('./音/キャンセル4.mp3');
             audio.volume = slider_volume.value;
             audio.play();
             ok4();
@@ -2014,64 +2522,33 @@
         }
 
         if (count >= Inedan[0]) {
-            const audio = new Audio('音/kounyu1.mp3');
+            const audio = new Audio('./音/レジスター・開ける03.mp3');
             audio.volume = slider_volume.value;
             audio.play();
 
             count -= Inedan[0];
             setcnedan(countnedan += Inedan[0]);
-            setIcount(Icount += 1);
-            count += 150;
-            setnibosi(countb+=150);
+            setIcount(Icount += 1n);
+            count += 150n;
+            setnibosi(countb+=150n);
 
             if(count>=msakana){
-                msakana*=2;
+                msakana *= 2n;
                 // console.log(msakana);
-                Lvcount+=questlvup[0];
-                questlvup[0]+=1;
-                localStorage.setItem("msakana", msakana);
+                Lvcount += questlvup[0];
+                questlvup[0] += 1n;
+                localStorage.setItem("msakana", msakana.toString());
                 mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める 小判+"+questlvup[0];
-                localStorage.setItem("questlvup", JSON.stringify(questlvup));
+                localStorage.setItem("questlvup",JSON.stringify(questlvup.map(v => v.toString())));
                 ok1();
                 lvup();
             }
-
-            if(count >= 1000 && !questclear1){
-                let count = Number(localStorage.getItem("count") || 0);
-                Lvcount+=10;
-                questclear1 = true;
-                localStorage.setItem("questclear1", "true");
-                mq42.style.textDecoration = 'line-through'; // ← 追加！
-                mq42.style.opacity = '0.6'; // 少し薄く
-                ato42.style.display = 'none';
-                ok1();
-                lvup();
-            }
-            if(count >= 10000 && !questclear2){
-                let count = Number(localStorage.getItem("count") || 0);
-                Lvcount+=30;
-                questclear2 = true;
-                localStorage.setItem("questclear2", "true");
-                mq52.style.textDecoration = 'line-through'; // ← 追加！
-                mq52.style.opacity = '0.6'; // 少し薄く
-                ato52.style.display = 'none';
-                ok1();
-                lvup();
-            }
-            if(count >= 100000 && !questclear3){
-                let count = Number(localStorage.getItem("count") || 0);
-                Lvcount+=50;
-                questclear3 = true;
-                localStorage.setItem("questclear3", "true");
-                mq62.style.textDecoration = 'line-through'; // ← 追加！
-                mq62.style.opacity = '0.6'; // 少し薄く
-                ato62.style.display = 'none';
-                ok1();
-                lvup();
-            }
-
-            localStorage.setItem("count", count);
+            hutougou();
+            
             document.getElementById('counter').textContent = formatNumberJP(count);
+            koukansakana.textContent = formatNumberJP(count);
+            document.getElementById('imacount').innerText = `${formatNumberJP(count)}`;
+            localStorage.setItem("count", count.toString());
             document.getElementById('Inedan').textContent = formatNumberJP(Inedan[0]);;
 
             itemBuycount++;
@@ -2086,8 +2563,10 @@
             ok3();
             oyatustyles();
             shopItemStyles();
+            jissekiclearflag();
+            clearcheck();
         } else {
-            const audio = new Audio('音/キャンセル4.mp3');
+            const audio = new Audio('./音/キャンセル4.mp3');
             audio.volume = slider_volume.value;
             audio.play();
             ok4();
@@ -2175,15 +2654,15 @@
 
         // 値段を元に戻す処理（必要ならここで）
         let savedMotonedan = JSON.parse(localStorage.getItem("motonedan") || "[]");
+        savedMotonedan = savedMotonedan.map(v => BigInt(v));
         if (savedMotonedan.length === 4) {
-            nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");
             nedan[0] = savedMotonedan[0];
             nedan[1] = savedMotonedan[1];
             nedan[2] = savedMotonedan[2];
             nedan[3] = savedMotonedan[3];
             oyatustyles();
             shopItemStyles();
-            localStorage.setItem("nedan", JSON.stringify(nedan));
+            localStorage.setItem("nedan",JSON.stringify(nedan.map(v => v.toString())));
             document.getElementById('nedan').textContent = formatNumberJP(nedan[0]);
             document.getElementById('nedan2').innerText = formatNumberJP(nedan[1]);
             document.getElementById('nedan3').innerText = formatNumberJP(nedan[2]);
@@ -2197,12 +2676,8 @@
 
     BUN_EVT2.addEventListener('click', () => {
 
-        let count = Number(localStorage.getItem("count"));
-        Inedan = JSON.parse(localStorage.getItem("Inedan") || "[0,800,100,650]");
-        nedan = JSON.parse(localStorage.getItem("nedan") || "[20,80,150,800,1500]");
-
         if (count < Inedan[1]) {
-            const audio = new Audio('音/キャンセル4.mp3');
+            const audio = new Audio('./音/キャンセル4.mp3');
             audio.volume = slider_volume.value;
             audio.play();
             ok4();
@@ -2212,30 +2687,34 @@
         // 購入処理
         count -= Inedan[1];
         setcnedan(countnedan += Inedan[1]);
-        Inedan[1] *= 1.5;
-        Inedan = Inedan.map(value => Math.floor(value));//Inedanを小数点切り捨て
-        setIcount(Icount += 1);
+        Inedan[1] = Inedan[1] * 15n/10n;
+        // Inedan = Inedan.map(value => Math.floor(value));//Inedanを小数点切り捨て
+        setIcount(Icount += 1n);
 
         // 値段を半分にする処理
-        const motonedan = [nedan[0], nedan[1], nedan[2], nedan[3]];
-        localStorage.setItem("motonedan", JSON.stringify(motonedan));
-        nedan[0] = Math.floor(nedan[0] / 2);
-        nedan[1] = Math.floor(nedan[1] / 2);
-        nedan[2] = Math.floor(nedan[2] / 2);
-        nedan[3] = Math.floor(nedan[3] / 2);
-
-        localStorage.setItem("count", count);
-        localStorage.setItem("Inedan", JSON.stringify(Inedan));
-        localStorage.setItem("nedan", JSON.stringify(nedan));
+        let motonedan = [nedan[0], nedan[1], nedan[2], nedan[3]];
+        motonedan = motonedan.map(v => BigInt(v));
+        localStorage.setItem("motonedan",JSON.stringify(motonedan.map(v => v.toString())));
+        nedan[0] = nedan[0] / 2n;
+        nedan[1] = nedan[1] / 2n;
+        nedan[2] = nedan[2] / 2n;
+        nedan[3] = nedan[3] / 2n;
 
         document.getElementById('counter').textContent = formatNumberJP(count);
+        koukansakana.textContent = formatNumberJP(count);
+        document.getElementById('imacount').innerText = `${formatNumberJP(count)}`;
+        localStorage.setItem("count", count.toString());
+        // localStorage.setItem("Inedan", JSON.stringify(Inedan));
+        localStorage.setItem("Inedan",JSON.stringify(Inedan.map(v => v.toString())));
+        localStorage.setItem("nedan",JSON.stringify(nedan.map(v => v.toString())));
+
         document.getElementById('nedan').textContent = formatNumberJP(nedan[0]);
         document.getElementById('nedan2').textContent = formatNumberJP(nedan[1]);
         document.getElementById('nedan3').textContent = formatNumberJP(nedan[2]);
         document.getElementById('nedan4').textContent = formatNumberJP(nedan[3]);
         document.getElementById('Inedan2').textContent = formatNumberJP(Inedan[1]);
 
-        const audio = new Audio('音/kounyu1.mp3');
+        const audio = new Audio('./音/レジスター・開ける03.mp3');
         audio.volume = slider_volume.value;
         audio.play();
         ok3();
@@ -2247,6 +2726,7 @@
         localStorage.setItem("item2Duration", cooldownDuration);
 
         startItem2Cooldown(cooldownDuration);
+        jissekiclearflag();
     });
 
     // ページ読み込み時にクールダウン復元
@@ -2259,29 +2739,27 @@
     kekka.style.display = 'none';
     const BUN_EVT4= document.getElementById('Item4');
     BUN_EVT4.addEventListener('click', () => {
-        let count = Number(localStorage.getItem("count"));
-        Inedan = JSON.parse(localStorage.getItem("Inedan") || "[0,800,100,650]");
-        get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");
         // var result = confirm("おみくじ（ランダムでねこショップの商品が貰えます。ﾊｽﾞﾚあり）\nｱﾀﾘ:1番、2番,9番");
         var random = Math.floor(Math.random()*10)+1
         // if(result) 
         // {
             const kekka = document.getElementById('kekka');
-            if(count>=Inedan[2])
+            if(count >= Inedan[2])
             {
                 // console.log('Item4購入完了');
-                const audio = new Audio('音/kounyu1.mp3');
+                const audio = new Audio('./音/レジスター・開ける03.mp3');
                 audio.volume = slider_volume.value;
                 audio.play();
-                count-=Inedan[2];
+                count -= Inedan[2];
                 setcnedan(countnedan += Inedan[2]);
-                Inedan[2] *= 1.5;
-                Inedan = Inedan.map(value => Math.floor(value));//Inedanを小数点切り捨て
-                document.getElementById('Inedan4').textContent = formatNumberJP(Inedan[3]);
-                setIcount(Icount += 1);
+                Inedan[2] = Inedan[2] * 15n / 10n;
+                // Inedan = Inedan.map(value => Math.floor(value));//Inedanを小数点切り捨て
+                document.getElementById('Inedan4').textContent = formatNumberJP(Inedan[2]);
+                setIcount(Icount += 1n);
                 oyatustyles();
                 shopItemStyles();
                 btn5();
+                jissekiclearflag();
                 const gazou = document.getElementById('gazou');
                 const kuji = document.getElementById('kuji');
                 if(random==1){
@@ -2289,36 +2767,36 @@
                     gazou.innerHTML='<img src="./images/pet_food_cat_can.png">';
                     kuji.innerHTML='<img src="./images/omikuji_kichi.png">';
                     bangou.textContent = random + "番 当たり！缶詰+1";
-                    get[0]+=1;
+                    get[0] += 1n;
                     coun+=counnt[0];
                     // alert("当たり！缶詰+1");
                     // console.log("缶詰"+get[0]);
                     document.getElementById('get').innerText = `所持数　×${get[0]}`;
-                    document.getElementById('coun').innerText = `+${coun}`;
+                    document.getElementById('coun').innerText = `+${formatNumberJP(coun)}`;
                 }
                 else if(random==2){
                     kekka.style.display = 'block';
                     gazou.innerHTML='<img src="./images/pet_food_cat.png">';
                     kuji.innerHTML='<img src="./images/omikuji_chuukichi.png">';
                     bangou.textContent = random + "番 当たり！キャットフード+1";
-                    get[1]+=1;
+                    get[1] += 1n;
                     coun+=counnt[1];
                     // alert("当たり！キャットフード+1");
                     // console.log("キャットフード"+get[1]);
                     document.getElementById('get2').innerText = `所持数　×${get[1]}`;        
-                    document.getElementById('coun').innerText = `+${coun}`;
+                    document.getElementById('coun').innerText = `+${formatNumberJP(coun)}`;
                 }
                 else if(random==9){
                     kekka.style.display = 'block';
                     gazou.innerHTML='<img src="./images/kandume_koukyuu.png">';
                     kuji.innerHTML='<img src="./images/omikuji_daikichi.png">';
                     bangou.textContent = random + "番 当たり！高級缶詰+1";
-                    get[2]+=1;
+                    get[2] += 1n;
                     coun+=counnt[2];
                     // alert("当たり！高級缶詰+1");
                     // console.log("高級缶詰"+get[2]);
                     document.getElementById('get3').innerText = `所持数　×${get[2]}`;
-                    document.getElementById('coun').innerText = `+${coun}`;
+                    document.getElementById('coun').innerText = `+${formatNumberJP(coun)}`;
                 }
                 else
                 {
@@ -2331,20 +2809,22 @@
                 }   
                 mmI(); 
                 ok3();  
-                document.getElementById('Inedan4').textContent = formatNumberJP(Inedan[3]);
-                localStorage.setItem("Inedan", JSON.stringify(Inedan));
-                localStorage.setItem("get", JSON.stringify(get));
-                localStorage.setItem('coun', coun);
-                document.getElementById('coun').textContent = '+' + coun;
-                localStorage.setItem("count", count); 
+                document.getElementById('Inedan4').textContent = formatNumberJP(Inedan[2]);
+                localStorage.setItem("Inedan",JSON.stringify(Inedan.map(v => v.toString())));
+                localStorage.setItem("get",JSON.stringify(get.map(v => v.toString())));
+                localStorage.setItem("coun", coun.toString());
+                document.getElementById('coun').innerText = `+${formatNumberJP(coun)}`;
+                document.getElementById('counter').textContent = formatNumberJP(count);
+                koukansakana.textContent = formatNumberJP(count);
+                document.getElementById('imacount').innerText = `${formatNumberJP(count)}`;
+                localStorage.setItem("count", count.toString());
                 document.getElementById('get').innerText = `所持数　×${get[0]}`;
                 document.getElementById('get2').innerText = `所持数　×${get[1]}`;
                 document.getElementById('get3').innerText = `所持数　×${get[2]}`;
-                document.getElementById('counter').textContent = formatNumberJP(count);
             }
             else
             {
-                const audio = new Audio('音/キャンセル4.mp3')
+                const audio = new Audio('./音/キャンセル4.mp3')
                 audio.volume = slider_volume.value;
                 audio.play();
                 ok4();
@@ -2355,39 +2835,39 @@
 
     const BUN_EVT5= document.getElementById('Item5');
     BUN_EVT5.addEventListener('click', () => {
-        let count = Number(localStorage.getItem("count") || 0);
-        let coun1s = Number(localStorage.getItem("coun1s") || 0);
-        Inedan = JSON.parse(localStorage.getItem("Inedan") || "[0,800,100,650]");
         // var result = confirm("このアイテムは毎秒魚が1増えるようになるアイテムです。\n購入しますか？");
         // if(result) 
         // {
             if(count>=Inedan[3])
             {
                 // console.log('Item5購入完了');
-                const audio = new Audio('音/kounyu1.mp3');
+                const audio = new Audio('./音/レジスター・開ける03.mp3');
                 audio.volume = slider_volume.value;
                 audio.play();
-                count-=Inedan[3];
+                count -= Inedan[3];
                 setcnedan(countnedan += Inedan[3]);
-                Inedan[3]*= 2;
+                Inedan[3] *= 2n;
                 flagItm5 = true;
                 localStorage.setItem("flagItm5", "true");
-                setIcount(Icount += 1);
+                setIcount(Icount += 1n);
                 // coun1s+=1;
-                setcs(coun1s+=5);
+                setcs(coun1s += 5n);
                 Itm5flag();
                 oyatustyles();
                 shopItemStyles();
-                localStorage.setItem("count", count);
-                localStorage.setItem("Inedan", JSON.stringify(Inedan));
+                jissekiclearflag();
                 document.getElementById('counter').textContent = formatNumberJP(count);
+                koukansakana.textContent = formatNumberJP(count);
+                localStorage.setItem("count", count.toString());
+                localStorage.setItem("Inedan",JSON.stringify(Inedan.map(v => v.toString())));
+                document.getElementById('imacount').innerText = `${formatNumberJP(count)}`;
                 document.getElementById('Inedan5').textContent = formatNumberJP(Inedan[3]);
                 document.getElementById('coun1s').innerText = `毎秒+${coun1s}`;
                 mmI();
                 ok3();
             }
             else{
-                const audio = new Audio('音/キャンセル4.mp3')
+                const audio = new Audio('./音/キャンセル4.mp3')
                 audio.volume = slider_volume.value;
                 audio.play();
                 ok4();
@@ -2397,8 +2877,6 @@
     );
 
     function urashopStyles() {
-        const Lvcount = Number(localStorage.getItem("inputLv")) || 0;
-
         const targets = [
             { id: 'uramono', unedanIndex: 0 },
             { id: 'ura2',    unedanIndex: 1 },
@@ -2421,32 +2899,34 @@
     //ウラショップ
     const UBTN= document.getElementById('kyoukabutton');
     UBTN.addEventListener('click', () => {
-        unedan = JSON.parse(localStorage.getItem("unedan") || "[5,10,15,45]");
-        counnt = JSON.parse(localStorage.getItem("counnt") || "[2,5,10,50]");
             if(Lvcount >= unedan[0])
             {
                 console.log('缶詰強化完了');
                 Lvcount-=unedan[0];
-                unedan[0] += 5;
-                counnt[0] += 5;
+                unedan[0] += 5n;
+                counnt[0] += 5n;
                 ok8();
                 // alert("強化完了!");
-                const audio = new Audio('音/決定ボタンを押す31.mp3');
+                // const audio = new Audio('./音/決定ボタンを押す31.mp3');
+                const audio = new Audio('./音/決定ボタンを押す42.mp3');
                 audio.volume = slider_volume.value;
                 audio.play();
                 urashopStyles();
-                localStorage.setItem('inputLv', Lvcount);
-                localStorage.setItem("unedan", JSON.stringify(unedan));
-                localStorage.setItem("counnt", JSON.stringify(counnt));
+                jissekiclearflag();
+                localStorage.setItem('Lvcount', Lvcount.toString());
+                // localStorage.setItem("unedan", JSON.stringify(unedan));
+                localStorage.setItem("unedan",JSON.stringify(unedan.map(v => v.toString())));
+                // localStorage.setItem("counnt", JSON.stringify(counnt));
+                localStorage.setItem("counnt",JSON.stringify(counnt.map(v => v.toString())));
                 document.getElementById('inputLv').textContent = Lvcount;
+                koukankoban.textContent = formatNumberJP(Lvcount);
                 document.getElementById('unedan1').innerText = `${unedan[0]}枚`;
-                document.getElementById('inputLv').innerText = `${Lvcount}`; 
                 document.getElementById('+cnt2').innerText = `+${counnt[0]}`;
                 document.getElementById('moto').innerText = `+${counnt[0]}`;
-                document.getElementById('kyouka').innerText = `+${counnt[0]+5}`;
+                document.getElementById('kyouka').innerText = `+${counnt[0]+5n}`;
             }
             else{
-                const audio = new Audio('音/キャンセル4.mp3')
+                const audio = new Audio('./音/キャンセル4.mp3')
                 audio.volume = slider_volume.value;
                 audio.play();
                 ok5();
@@ -2455,32 +2935,31 @@
     });
     const UBTN2= document.getElementById('kyoukabutton2');
     UBTN2.addEventListener('click', () => {
-        unedan = JSON.parse(localStorage.getItem("unedan") || "[5,10,15,45]");
-        counnt = JSON.parse(localStorage.getItem("counnt") || "[2,5,10,50]");
             if(Lvcount >= unedan[1])
             {
                 console.log('キャットフード強化完了');
                 Lvcount-=unedan[1];
-                unedan[1]+=5;
-                counnt[1]+=5;
+                unedan[1] += 5n;
+                counnt[1] += 5n;
                 ok8();
                 // alert("強化完了!");
-                const audio = new Audio('音/決定ボタンを押す31.mp3');
+                const audio = new Audio('./音/決定ボタンを押す42.mp3');
                 audio.volume = slider_volume.value;
                 audio.play();
                 urashopStyles();
-                localStorage.setItem('inputLv', Lvcount);
-                localStorage.setItem("unedan", JSON.stringify(unedan));
-                localStorage.setItem("counnt", JSON.stringify(counnt));
+                jissekiclearflag();
+                localStorage.setItem('Lvcount', Lvcount.toString());
+                localStorage.setItem("unedan",JSON.stringify(unedan.map(v => v.toString())));
+                localStorage.setItem("counnt",JSON.stringify(counnt.map(v => v.toString())));
                 document.getElementById('inputLv').textContent = Lvcount;
+                koukankoban.textContent = formatNumberJP(Lvcount);
                 document.getElementById('unedan2').innerText = `${unedan[1]}枚`;
-                document.getElementById('inputLv').innerText = `${Lvcount}`; 
                 document.getElementById('+cnt3').innerText = `+${counnt[1]}`;
                 document.getElementById('moto2').innerText = `+${counnt[1]}`;
-                document.getElementById('kyouka2').innerText = `+${counnt[1]+5}`;
+                document.getElementById('kyouka2').innerText = `+${counnt[1]+5n}`;
             }
             else{
-                const audio = new Audio('音/キャンセル4.mp3')
+                const audio = new Audio('./音/キャンセル4.mp3')
                 audio.volume = slider_volume.value;
                 audio.play();
                 ok5();
@@ -2488,32 +2967,31 @@
     });
     const UBTN3= document.getElementById('kyoukabutton3');
     UBTN3.addEventListener('click', () => {
-        unedan = JSON.parse(localStorage.getItem("unedan") || "[5,10,15,45]");
-        counnt = JSON.parse(localStorage.getItem("counnt") || "[2,5,10,50]");
             if(Lvcount >= unedan[2])
             {
                 console.log('高級缶詰強化完了');
-                Lvcount-=unedan[2];
-                unedan[2]+=5;
-                counnt[2]+=5;
+                Lvcount -= unedan[2];
+                unedan[2] += 5n;
+                counnt[2] += 5n;
                 ok8();
                 // alert("強化完了!");
-                const audio = new Audio('音/決定ボタンを押す31.mp3');
+                const audio = new Audio('./音/決定ボタンを押す42.mp3');
                 audio.volume = slider_volume.value;
                 audio.play();
                 urashopStyles();
-                localStorage.setItem('inputLv', Lvcount);
-                localStorage.setItem("unedan", JSON.stringify(unedan));
-                localStorage.setItem("counnt", JSON.stringify(counnt));
+                jissekiclearflag();
+                localStorage.setItem('Lvcount', Lvcount.toString());
+                localStorage.setItem("unedan",JSON.stringify(unedan.map(v => v.toString())));
+                localStorage.setItem("counnt",JSON.stringify(counnt.map(v => v.toString())));
                 document.getElementById('inputLv').textContent = Lvcount;
+                koukankoban.textContent = formatNumberJP(Lvcount);
                 document.getElementById('unedan3').innerText = `${unedan[2]}枚`;
-                document.getElementById('inputLv').innerText = `${Lvcount}`; 
                 document.getElementById('+cnt4').innerText = `+${counnt[2]}`;
                 document.getElementById('moto3').innerText = `+${counnt[2]}`;
-                document.getElementById('kyouka3').innerText = `+${counnt[2]+5}`;
+                document.getElementById('kyouka3').innerText = `+${counnt[2]+5n}`;
             }
             else{
-                const audio = new Audio('音/キャンセル4.mp3')
+                const audio = new Audio('./音/キャンセル4.mp3')
                 audio.volume = slider_volume.value;
                 audio.play();
                 ok5();
@@ -2521,36 +2999,206 @@
     });
     const UBTN4= document.getElementById('kyoukabutton4');
     UBTN4.addEventListener('click', () => {
-        unedan = JSON.parse(localStorage.getItem("unedan") || "[5,10,15,45]");
-        counnt = JSON.parse(localStorage.getItem("counnt") || "[2,5,10,50]");
             if(Lvcount >= unedan[3])
             {
                 console.log('オヤツ強化完了');
-                Lvcount-=unedan[3];
-                unedan[3]+=5;
-                counnt[3]+=5;
+                Lvcount -= unedan[3];
+                unedan[3] += 5n;
+                counnt[3] += 5n;
                 ok8();
                 // alert("強化完了!");
-                const audio = new Audio('音/決定ボタンを押す31.mp3');
+                const audio = new Audio('./音/決定ボタンを押す42.mp3');
                 audio.volume = slider_volume.value;
                 audio.play();
                 urashopStyles();
-                localStorage.setItem('inputLv', Lvcount);
-                localStorage.setItem("unedan", JSON.stringify(unedan));
-                localStorage.setItem("counnt", JSON.stringify(counnt));
+                jissekiclearflag();
+                localStorage.setItem('Lvcount', Lvcount.toString());
+                localStorage.setItem("unedan",JSON.stringify(unedan.map(v => v.toString())));
+                localStorage.setItem("counnt",JSON.stringify(counnt.map(v => v.toString())));
                 document.getElementById('inputLv').textContent = Lvcount;
-                document.getElementById('unedan4').innerText = `${unedan[3]}枚`;
-                document.getElementById('inputLv').innerText = `${Lvcount}`; 
+                koukankoban.textContent = formatNumberJP(Lvcount);
+                document.getElementById('unedan4').innerText = `${unedan[3]}枚`; 
                 document.getElementById('+cnt5').innerText = `+${counnt[3]}`;
                 document.getElementById('moto4').innerText = `+${counnt[3]}`;
-                document.getElementById('kyouka4').innerText = `+${counnt[3]+5}`;
+                document.getElementById('kyouka4').innerText = `+${counnt[3]+5n}`;
             }
             else{
-                const audio = new Audio('音/キャンセル4.mp3')
+                const audio = new Audio('./音/キャンセル4.mp3')
                 audio.volume = slider_volume.value;
                 audio.play();
                 ok5();
             }
+    });
+
+    //スキル
+    kakutoku1.style.opacity = 0;
+    kakutoku2.style.opacity = 0;
+    kakutoku3.style.opacity = 0;
+    SKILLBUTTON.disabled = false;
+    SKILLBUTTON.style.textDecoration = 'none';
+    SKILLBUTTON.style.textDecorationColor = 'initial';
+    SKILLBUTTON.style.textDecorationThickness = 'initial'; 
+    SKILLBUTTON2.disabled = false;
+    SKILLBUTTON2.style.textDecoration = 'none';
+    SKILLBUTTON2.style.textDecorationColor = 'initial';
+    SKILLBUTTON2.style.textDecorationThickness = 'initial'; 
+    SKILLBUTTON3.disabled = false;
+    SKILLBUTTON3.style.textDecoration = 'none';
+    SKILLBUTTON3.style.textDecorationColor = 'initial';
+    SKILLBUTTON3.style.textDecorationThickness = 'initial'; 
+
+    SKILLBUTTON.addEventListener('click', () => {
+        if (point >= snedan[0]) {
+            point -= snedan[0];
+            localStorage.setItem("point", point.toString());
+            document.getElementById('point').textContent = formatNumberJP(point);
+            const audio = new Audio('./音/クリック (1).mp3');
+            audio.volume = slider_volume.value;
+            audio.play();
+            ok3();
+            kakutoku1.style.opacity = 1;
+            SKILLBUTTON.disabled = true;
+            SKILLBUTTON.style.textDecoration = 'line-through';
+            SKILLBUTTON.style.textDecorationColor = 'red';
+            SKILLBUTTON.style.textDecorationThickness = '3px';
+            kakutokuflag1 = true;
+            localStorage.setItem("kakutokuflag1", kakutokuflag1);
+        } 
+        else {
+            const audio = new Audio('./音/キャンセル4.mp3')
+            audio.volume = slider_volume.value;
+            audio.play();
+            ok10();
+        }
+    });
+    SKILLBUTTON2.addEventListener('click', () => {
+        if (point >= snedan[1]) {
+            point -= snedan[1];
+            localStorage.setItem("point", point.toString());
+            document.getElementById('point').textContent = formatNumberJP(point);
+            const audio = new Audio('./音/クリック (1).mp3');
+            audio.volume = slider_volume.value;
+            audio.play();
+            ok3();
+            kakutoku2.style.opacity = 1;
+            SKILLBUTTON2.disabled = true;
+            SKILLBUTTON2.style.textDecoration = 'line-through';
+            SKILLBUTTON2.style.textDecorationColor = 'red';
+            SKILLBUTTON2.style.textDecorationThickness = '3px';
+            kakutokuflag2 = true;
+            localStorage.setItem("kakutokuflag2", kakutokuflag2);
+        } 
+        else {
+            const audio = new Audio('./音/キャンセル4.mp3')
+            audio.volume = slider_volume.value;
+            audio.play();
+            ok10();
+        }
+    });
+    const koukann = document.getElementById('koukann');
+    koukann.style.display = 'none';
+    function slill3() {
+        if(kakutokuflag3 == true){
+            koukann.style.display = 'block';
+        }
+        else{
+            koukann.style.display = 'none';
+        }
+    }
+    koukantab.style.display = 'none';
+    const koukankoban = document.getElementById('koukankoban');
+    const koukansakana = document.getElementById('koukansakana');
+    koukankoban.textContent = formatNumberJP(Lvcount);
+    koukansakana.textContent = formatNumberJP(count);
+    koukann.addEventListener('click', () => {
+        const audio = new Audio('./音/決定ボタンを押す31.mp3');
+        audio.volume = slider_volume.value;
+        audio.play();
+        koukantab.style.display = 'block';
+    });
+    let koukankazu = 0n;
+    const KOUKAN_RATE = 100n; //小判1 = 魚100
+    const koukanplus = document.getElementById('koukanplus');
+    const koukancount = document.getElementById('koukancount');
+    koukancount.textContent = koukankazu.toString();
+    koukanplus.addEventListener('click', () => {
+        if(koukankazu < Lvcount){
+            koukankazu += 1n;
+        }
+        koukancount.textContent = koukankazu.toString();
+        koukansakana.textContent = formatNumberJP(count + koukankazu * KOUKAN_RATE);
+        koukankoban.textContent = formatNumberJP(Lvcount - koukankazu);
+    });
+    const koukanten = document.getElementById('koukanten');
+    koukanten.addEventListener('click', () => {
+        koukankazu = Lvcount;
+        koukancount.textContent = koukankazu.toString();
+        koukansakana.textContent = formatNumberJP(count + koukankazu * KOUKAN_RATE);
+        koukankoban.textContent = formatNumberJP(Lvcount - koukankazu);
+    });
+    const koukanminus = document.getElementById('koukanminus');
+    koukanminus.addEventListener('click', () => {
+        if(koukankazu >= 1n){
+            koukankazu -= 1n;
+            koukancount.textContent = koukankazu.toString();
+            koukansakana.textContent = formatNumberJP(count + koukankazu * KOUKAN_RATE);
+            koukankoban.textContent = formatNumberJP(Lvcount - koukankazu);
+        }
+    });
+    const koukanmten = document.getElementById('koukanmten');
+    koukanmten.addEventListener('click', () => {
+        if(koukankazu >= 10n){
+            koukankazu -= 10n;
+            koukancount.textContent = koukankazu.toString();
+            koukansakana.textContent = formatNumberJP(count + koukankazu * KOUKAN_RATE);
+            koukankoban.textContent = formatNumberJP(Lvcount - koukankazu);
+        }
+    });
+
+    koukankakutei.addEventListener('click', () => {
+        if (koukankazu <= 0n) return;
+        if (koukankazu > Lvcount) return;
+        //交換処理
+        Lvcount -= koukankazu;
+        count += koukankazu * KOUKAN_RATE;
+        oyatustyles();
+        urashopStyles();
+        document.getElementById('counter').textContent = formatNumberJP(count);
+        koukansakana.textContent = formatNumberJP(count);
+        document.getElementById('inputLv').textContent = formatNumberJP(Lvcount);
+        koukankoban.textContent = formatNumberJP(Lvcount);
+        localStorage.setItem("count", count.toString());
+        localStorage.setItem("Lvcount", Lvcount.toString());
+        //リセット
+        koukankazu = 0n;
+        koukancount.textContent = koukankazu.toString();
+    });
+
+    SKILLBUTTON3.addEventListener('click', () => {
+        if (point >= snedan[2]) {
+            point -= snedan[2];
+            localStorage.setItem("point", point.toString());
+            document.getElementById('point').textContent = formatNumberJP(point);
+            const audio = new Audio('./音/クリック (1).mp3');
+            audio.volume = slider_volume.value;
+            audio.play();
+            ok3();
+            slill3();
+            koukann.style.display = 'block';
+            kakutoku3.style.opacity = 1;
+            SKILLBUTTON3.disabled = true;
+            SKILLBUTTON3.style.textDecoration = 'line-through';
+            SKILLBUTTON3.style.textDecorationColor = 'red';
+            SKILLBUTTON3.style.textDecorationThickness = '3px';
+            kakutokuflag3 = true;
+            localStorage.setItem("kakutokuflag3", kakutokuflag3);
+        } 
+        else {
+            const audio = new Audio('./音/キャンセル4.mp3')
+            audio.volume = slider_volume.value;
+            audio.play();
+            ok10();
+        }
     });
 
 
@@ -2558,7 +3206,7 @@
     //設定
     const hatenabtn = document.getElementById('hatena');
     hatenabtn.addEventListener('click', () => {
-        const audio = new Audio('音/決定ボタンを押す31.mp3');
+        const audio = new Audio('./音/決定ボタンを押す31.mp3');
         audio.volume = slider_volume.value;
         audio.play();
         // 要素を表示する
@@ -2567,23 +3215,12 @@
 
     //ミッション
     mii2.style.display = 'none';
-    atojiru.style.visibility = 'hidden';
-    ato12.style.display = 'none';
-    ato22.style.display = 'none';
-    ato32.style.display = 'none';
-    ato42.style.display = 'none';
-    ato52.style.display = 'none';
-    ato62.style.display = 'none';
 
     const BUTTONm2= document.getElementById('tst');
     BUTTONm2.addEventListener('click', () => {
-        const audio = new Audio('音/決定ボタンを押す31.mp3');
+        const audio = new Audio('./音/決定ボタンを押す31.mp3');
         audio.volume = slider_volume.value;
         audio.play();
-        questlvup = JSON.parse(localStorage.getItem("questlvup") || "[1,1,1]");
-        msakana = Number(localStorage.getItem("msakana") || 170);
-        mItem = Number(localStorage.getItem("mItem") || 10);
-        mmck = Number(localStorage.getItem("mmck") || 100);
         const ato42 = document.getElementById("ato42");
         const ato52 = document.getElementById("ato52");
         const ato62 = document.getElementById("ato62");
@@ -2592,54 +3229,33 @@
         mq12.textContent = mqest1[0]+formatNumberJP(msakana)+"コ集める 小判+"+questlvup[0];
         mq22.textContent = mqest1[1]+formatNumberJP(mItem)+"コ買う 小判+"+questlvup[1];
         mq32.textContent = mqest1[2]+formatNumberJP(mmck)+"回クリックする 小判+"+questlvup[2];
-        document.getElementById('ato12').innerText = `クリアまであと${msakana-count}コ`;
-        document.getElementById('ato22').innerText = `クリアまであと${mItem-Icount}コ`;
-        document.getElementById('ato32').innerText = `クリアまであと${mmck-counttt}回`;
-        document.getElementById('ato42').innerText = `クリアまであと${1000-count}コ`;
-        document.getElementById('ato52').innerText = `クリアまであと${10000-count}コ`;
-        document.getElementById('ato62').innerText = `クリアまであと${100000-count}コ`;
+        document.getElementById('ato12').innerText = `　${formatNumberJP(count)}/${formatNumberJP(msakana)}`;
+        document.getElementById('ato22').innerText = `　${formatNumberJP(Icount)}/${formatNumberJP(mItem)}`;
+        document.getElementById('ato32').innerText = `　${formatNumberJP(counttt)}/${formatNumberJP(mmck)}`;
+        document.getElementById('ato42').innerText = `　${formatNumberJP(count)}/${formatNumberJP(1000n)}`;
+        document.getElementById('ato52').innerText = `　${formatNumberJP(count)}/${formatNumberJP(10000n)}`;
+        document.getElementById('ato62').innerText = `　${formatNumberJP(count)}/${formatNumberJP(100000n)}`;
     });
-    // const BUTTONxx2= document.getElementById('xx2');
-    // BUTTONxx2.addEventListener('click', () => {
-    //     audio[3].play();
-    //     mii2.style.display = 'none';
-    // });
-    const BUTTONato= document.getElementById('atobtn');
-    BUTTONato.addEventListener('click', () => {
-        atojiru.style.visibility = 'visible';
-        ato12.style.display = 'block';
-        ato22.style.display = 'block';
-        ato32.style.display = 'block';
-        ato42.style.display = 'block';
-        ato52.style.display = 'block';
-        ato62.style.display = 'block';
-        if(questclear1 == true){
-            ato42.style.display = 'none';
-        }
-        if(questclear2 == true){
 
-            ato52.style.display = 'none';
-        }
-        if(questclear3 == true){
-            ato62.style.display = 'none';
-        }
+
+    //実績
+    jissekitab.style.display = 'none';
+    const jisssekibtn = document.getElementById('jisseki');
+    jisssekibtn.addEventListener('click', () => {
+        const audio = new Audio('./音/決定ボタンを押す31.mp3');
+        audio.volume = slider_volume.value;
+        audio.play();
+        // 要素を表示する
+        jissekitab.style.display = 'block';
     });
-    const BUTTONatojiru= document.getElementById('atojiru');
-    BUTTONatojiru.addEventListener('click', () => {
-        atojiru.style.visibility = 'hidden';
-        ato12.style.display = 'none';
-        ato22.style.display = 'none';
-        ato32.style.display = 'none';
-        ato42.style.display = 'none';
-        ato52.style.display = 'none';
-        ato62.style.display = 'none';
-    });
+
+
 
     scon.style.display = 'none';//設定欄を隠す
     //設定
     const BUTTONs= document.getElementById('sbtn');
     BUTTONs.addEventListener('click', () => {
-        const audio = new Audio('音/決定ボタンを押す31.mp3');
+        const audio = new Audio('./音/決定ボタンを押す31.mp3');
         audio.volume = slider_volume.value;
         audio.play();
         // 要素を表示する
@@ -2647,19 +3263,19 @@
     }); 
     const otoBUTTON= document.getElementById('ototst');
     otoBUTTON.addEventListener('click', () => {
-        const audio = new Audio('音/決定ボタンを押す45.mp3');
+        const audio = new Audio('./音/決定ボタンを押す45.mp3');
         audio.volume = slider_volume.value;
         audio.play();
     }); 
 
-    const soundList = [
-        "音/決定ボタンを押す45.mp3",
-        "音/決定ボタンを押す31.mp3",
-        "音/決定ボタンを押す50.mp3",
-        "音/決定ボタンを押す12.mp3",
-        "音/kounyu1.mp3",
-        "音/kounyu2.mp3"
-    ];
+    // const soundList = [
+    //     "音/決定ボタンを押す45.mp3",
+    //     "音/決定ボタンを押す31.mp3",
+    //     "音/決定ボタンを押す50.mp3",
+    //     "音/決定ボタンを押す12.mp3",
+    //     "音/kounyu1.mp3",
+    //     "音/kounyu2.mp3"
+    // ];
 
     // すべてのオーディオ要素を取得
     const slider_volume = document.getElementById("volume");
@@ -2724,7 +3340,7 @@
         if (newSizeOffset > 32) newSizeOffset = 32;
 
         // 適用対象のセレクタ
-        const selectors = ['.txt', '.nee', '.line', '.up'];
+        const selectors = ['.txt', '.nee', '.line', '.up', '.mt2','.bun','.wavy'];
         selectors.forEach(selector => {
             const elements = document.querySelectorAll(selector);
             elements.forEach(el => {
@@ -2738,7 +3354,7 @@
     }
 
     function resetFontSize() {
-        const selectors = ['.txt', '.nee', '.line', '.up'];
+        const selectors = ['.txt', '.nee', '.line', '.up', '.mt2','.bun','.wavy'];
         selectors.forEach(selector => {
             const elements = document.querySelectorAll(selector);
             elements.forEach(el => {
@@ -2750,11 +3366,195 @@
         sessionStorage.setItem('selectsize', "0");
     }
 
+    //記録
+    document.getElementById('kirokuLv').innerText = `${formatNumberJP(Lvcount)}`;
+    document.getElementById('kirokuclick').innerText = `${formatNumberJP(counttt)}`;
+    document.getElementById('kirokusakana').innerText = `${formatNumberJP(count)}`;
+    document.getElementById('kirokusakanas').innerText = `${formatNumberJP(countb)}`;
+    document.getElementById('kirokusakanasiyou').innerText = `${formatNumberJP(countnedan)}`;
+    document.getElementById('kirokumono').innerText = `${formatNumberJP(Icount)}`;
+
+    kiroku.style.display = 'none';
+    //記録ボタンの動作
+    const BUTTONAA= document.getElementById('buttonAA');
+    BUTTONAA.addEventListener('click', () => {
+        const audio = new Audio('./音/決定ボタンを押す31.mp3');
+        audio.volume = slider_volume.value;
+        audio.play();
+        kiroku.style.display = 'block';
+        document.getElementById('kirokuLv').innerText = `${formatNumberJP(Lvcount)}`;
+        document.getElementById('kirokuclick').innerText = `${formatNumberJP(counttt)}`;
+        document.getElementById('kirokusakana').innerText = `${formatNumberJP(count)}`;
+        document.getElementById('kirokusakanas').innerText = `${formatNumberJP(countb)}`;
+        document.getElementById('kirokusakanasiyou').innerText = `${formatNumberJP(countnedan)}`;
+        document.getElementById('kirokumono').innerText = `${formatNumberJP(Icount)}`;
+    });
+
+    const img = document.getElementById('data');
+    const nekotapicon = document.getElementById('nekotapicon');
+    nekotapicon.style.display = 'block';
+    const d1 = document.getElementById('d1');
+    const catreset = document.getElementById('catreset');
+    const catcc = document.getElementById('catcc');
+    const cathyouji = document.getElementById('cathyouji');
+    const catgetsakana = document.getElementById('catgetsakana');
+    let catcount = Number(localStorage.getItem('catcount')) || 0;
+    let catget = BigInt(localStorage.getItem("catget") || "100");
+    document.getElementById('catgetsakana').innerText = `${catget}`;
+
+    catreset.addEventListener('click', () => {
+        img.style.top = '50%';
+        img.style.left = '50%';
+        nekotapicon.style.top = '50%';
+        nekotapicon.style.left = '50%';
+    });
+
+    cathyouji.style.display = 'none';
+    document.getElementById('catcount').innerText = `${catcount}`;
+    img.addEventListener('click', () => {
+        nekotapicon.style.display = 'none';
+        catcount += 1;
+        const d1Width = d1.clientWidth;
+        const d1Height = d1.clientHeight;
+        
+        const maxX = d1Width - img.width;
+        const maxY = d1Height - img.height;
+        const mxX = d1Width - nekotapicon.width;
+        const mxY = d1Height - nekotapicon.height;
+        
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+        
+        img.style.left = `${randomX}px`;
+        img.style.top = `${randomY}px`;
+        nekotapicon.style.left = `${randomX}px`;
+        nekotapicon.style.top = `${randomY}px`;
+        if(catcount % 15 === 0){
+            cathyouji.style.display = 'block';
+            document.getElementById('catcc').innerText = `${catcount}`;
+            document.getElementById('catgetsakana').innerText = `${catget}`;
+            setnibosi(countb += catget);
+            count += catget;
+            localStorage.setItem('catget', catget);
+            catget += 100n;
+            localStorage.setItem('catget', catget);
+            document.getElementById('counter').textContent = formatNumberJP(count);
+            koukansakana.textContent = formatNumberJP(count);
+            document.getElementById('imacount').innerText = `${formatNumberJP(count)}`;
+            localStorage.setItem("count", count.toString());
+            hutougou();
+            jissekiclearflag();
+        }
+        localStorage.setItem('catcount', catcount);
+        document.getElementById('catcount').innerText = `${catcount}`;
+    });
+
+    sakujogamen.style.display = 'none';
+    //削除画面の動作
+    const BUTTONsakujo= document.getElementById('datasakujo');
+    BUTTONsakujo.addEventListener('click', () => {
+        const audio = new Audio('./音/決定ボタンを押す31.mp3');
+        audio.volume = slider_volume.value;
+        audio.play();
+        sakujogamen.style.display = 'block';
+    });
+
+    tenseitab.style.display = 'none';
+    const tenseibtn = document.getElementById('tenseibtn');
+    const tenseiok = document.getElementById('tenseiok');
+    tenseibtn.addEventListener('click', () => {
+        const audio = new Audio('./音/決定ボタンを押す31.mp3');
+        audio.volume = slider_volume.value;
+        audio.play();
+        tenseitab.style.display = 'block';
+        if(count >= tenseicount){
+            tenseiok.style.opacity = '1';
+        }
+    });
+
+    tenseikakunin.style.display = 'none';
+    tenseiok.style.opacity = '0.6';
+    tenseiok.addEventListener('click', () => {
+        const audio = new Audio('./音/決定ボタンを押す31.mp3');
+        audio.volume = slider_volume.value;
+        audio.play();
+        if(count >= tenseicount){
+            tenseiok.style.opacity = '1';
+            tenseikakunin.style.display = 'block';
+        }
+    });
+
+    document.getElementById('point').textContent = formatNumberJP(point);
+    function tensei(){
+        setktensei(kirokutensei += 1n);
+        tenseicount *= 2n;
+        localStorage.setItem('tenseicount', tenseicount.toString());
+        document.getElementById('tenseicount').innerText = `${formatNumberJP(tenseicount)}`;
+        point += 50n;
+        localStorage.setItem("point", point.toString());
+        count = 0;
+        Lvcount = 0;
+        localStorage.setItem('Lvcount', Lvcount.toString());
+        localStorage.setItem("count", count.toString());
+        document.getElementById('point').textContent = formatNumberJP(point);
+        localStorage.removeItem('nedan');
+        localStorage.removeItem('Inedan');
+        localStorage.removeItem('unedan');
+        document.getElementById('kirokusakana').innerText = `${formatNumberJP(count)}`;
+        document.getElementById('kirokuLv').innerText = `${formatNumberJP(Lvcount)}`;
+        localStorage.removeItem('coun');
+        setAndDisplaycoun(1);
+        localStorage.removeItem('coun1s');
+        localStorage.removeItem("flagItm5");
+        localStorage.removeItem("tapflag");
+        localStorage.removeItem('get');
+        localStorage.removeItem('questlvup');
+        localStorage.removeItem("msakana");
+        localStorage.removeItem("mItem");
+        localStorage.removeItem("mmck");
+        localStorage.removeItem('counttt');
+        localStorage.removeItem('Icount');
+        localStorage.setItem("itemBuycount", 0);
+        localStorage.setItem("itemBuyStartTime", Date.now());
+        localStorage.setItem("item2StartTime", Date.now());
+        localStorage.removeItem("item2Duration");
+        localStorage.removeItem("motonedan");
+        localStorage.removeItem("motocoun");
+        timerdisplay.style.display = 'none';
+        BUN_EVT2.style.textDecoration = 'none';
+        BUN_EVT2.disabled = false;
+        BUN_EVT.style.textDecoration = 'none';
+        BUN_EVT.disabled = false;
+        Item2flag = false;
+        resetquestflag();
+        location.reload();
+    }
+
+    //xボタンの動作
+    function xbutton(event) {
+        // audio[3].play();  // 効果音再生（任意）
+        const audio = new Audio('./音/決定ボタンを押す50.mp3');
+        audio.volume = slider_volume.value;
+        audio.play();
+        const button = event.currentTarget;
+        const parent = button.parentElement;
+        if (parent) {
+            parent.classList.remove('show');         // opacity を 0 に
+            parent.classList.add('fade-out');        // フェードアウトアニメーション
+
+            parent.addEventListener('animationend', () => {
+                parent.style.display = 'none';       // 非表示にする
+                parent.classList.remove('fade-out'); // クラスを戻しておく
+            }, { once: true });
+        }
+    }
+
+    
     //ねこの表情とセリフ
     {
         const btn = document.getElementById('btn');
         btn.addEventListener('click', () => {
-            const audio = new Audio('音/決定ボタンを押す50.mp3');
+            const audio = new Audio('./音/決定ボタンを押す50.mp3');
             audio.volume = slider_volume.value;
             clickCount += 1
             if(clickCount==1){
@@ -2788,7 +3588,7 @@
     {
         const btnB = document.getElementById('btn2');
         btnB.addEventListener('click', () => {
-            const audio = new Audio('音/決定ボタンを押す50.mp3');
+            const audio = new Audio('./音/決定ボタンを押す50.mp3');
             audio.volume = slider_volume.value;
             clickCountB += 1
             if(clickCountB==1){
@@ -2821,7 +3621,7 @@
     {
         const btnB = document.getElementById('btn3');
         btnB.addEventListener('click', () => {
-            const audio = new Audio('音/決定ボタンを押す50.mp3');
+            const audio = new Audio('./音/決定ボタンを押す50.mp3');
             audio.volume = slider_volume.value;
             clickCountc += 1
             if(clickCountc==1){
@@ -2853,7 +3653,7 @@
     }
     //商品をクリックするとねこの表情が変わるようにする。
     function syouhinclick(){
-        const audio = new Audio('音/決定ボタンを押す50.mp3');
+        const audio = new Audio('./音/決定ボタンを押す50.mp3');
         audio.volume = slider_volume.value;
         btn.textContent = '🎶　　';
         document.getElementById('cat').src='./images/ねこ4.png';
@@ -2866,101 +3666,5 @@
             audio.play();
         }
     }
-    
-    //記録
-    document.getElementById('kirokuLv').innerText = `${Lvcount}`;
-    document.getElementById('kirokuclick').innerText = `${counttt}`;
-    document.getElementById('kirokusakana').innerText = `${count}`;
-    document.getElementById('kirokusakanas').innerText = `${countb}`;
-    document.getElementById('kirokusakanasiyou').innerText = `${countnedan}`;
-    document.getElementById('kirokumono').innerText = `${Icount}`;
 
-    kiroku.style.display = 'none';
-    //記録ボタンの動作
-    const BUTTONAA= document.getElementById('buttonAA');
-    BUTTONAA.addEventListener('click', () => {
-        let count = Number(localStorage.getItem("count"));
-        const audio = new Audio('音/決定ボタンを押す31.mp3');
-        audio.volume = slider_volume.value;
-        audio.play();
-        kiroku.style.display = 'block';
-        kiroku.style.opacity = 1;
-        document.getElementById('kirokuLv').innerText = `${Lvcount}`;
-        document.getElementById('kirokuclick').innerText = `${counttt}`;
-        document.getElementById('kirokusakana').innerText = `${count}`;
-        document.getElementById('kirokusakanas').innerText = `${countb}`;
-        document.getElementById('kirokusakanasiyou').innerText = `${countnedan}`;
-        document.getElementById('kirokumono').innerText = `${Icount}`;
-    });
-
-    const img = document.getElementById('data');
-    const d1 = document.getElementById('d1');
-    const catreset = document.getElementById('catreset');
-    const catcc = document.getElementById('catcc');
-    const cathyouji = document.getElementById('cathyouji');
-    const catgetsakana = document.getElementById('catgetsakana');
-    let catcount = Number(localStorage.getItem('catcount')) || 0;
-    let catget = Number(localStorage.getItem('catget')) || 100;;
-    document.getElementById('catgetsakana').innerText = `${catget}`;
-
-    catreset.addEventListener('click', () => {
-        img.style.top = '50%';
-        img.style.left = '50%';
-    });
-
-    cathyouji.style.display = 'none';
-    document.getElementById('catcount').innerText = `${catcount}`;
-    img.addEventListener('click', () => {
-        catcount += 1;
-        const d1Width = d1.clientWidth;
-        const d1Height = d1.clientHeight;
-        
-        const maxX = d1Width - img.width;
-        const maxY = d1Height - img.height;
-        
-        const randomX = Math.floor(Math.random() * maxX);
-        const randomY = Math.floor(Math.random() * maxY);
-        
-        img.style.left = `${randomX}px`;
-        img.style.top = `${randomY}px`;
-        if(catcount % 15 === 0){
-            cathyouji.style.display = 'block';
-            document.getElementById('catcc').innerText = `${catcount}`;
-            document.getElementById('catgetsakana').innerText = `${catget}`;
-            count += catget;
-            localStorage.setItem('catget', catget);
-            catget += 100;
-            localStorage.setItem('catget', catget);
-            localStorage.setItem("count", count); 
-            document.getElementById('counter').textContent = formatNumberJP(count);
-        }
-        localStorage.setItem('catcount', catcount);
-        document.getElementById('catcount').innerText = `${catcount}`;
-    });
-
-    sakujogamen.style.display = 'none';
-    //削除画面の動作
-    const BUTTONsakujo= document.getElementById('datasakujo');
-    BUTTONsakujo.addEventListener('click', () => {
-        const audio = new Audio('音/決定ボタンを押す31.mp3');
-        audio.volume = slider_volume.value;
-        audio.play();
-        sakujogamen.style.display = 'block';
-    });
-
-    //xボタンの動作
-    function xbutton(event) {
-        audio[3].play();  // 効果音再生（任意）
-        const button = event.currentTarget;
-        const parent = button.parentElement;
-        if (parent) {
-            parent.classList.remove('show');         // opacity を 0 に
-            parent.classList.add('fade-out');        // フェードアウトアニメーション
-
-            parent.addEventListener('animationend', () => {
-                parent.style.display = 'none';       // 非表示にする
-                parent.classList.remove('fade-out'); // クラスを戻しておく
-            }, { once: true });
-        }
-    }
 </script>
