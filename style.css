@@ -2033,15 +2033,18 @@ input[type="text"]:focus {
     filter: drop-shadow(0 0 8px #AAD6EC);
     transform: scale(1.1,1.1);
   }
-  #tst{
+  .yokobtn{
     background-color: #273f5c;
     color: #FFF;
     border: 1.5px solid #ffffff;
     filter:drop-shadow(2px 4px #d6dde4);
   }
-  #tst:hover{
+  .yokobtn:hover{
     background-color: #FFF;
     color: #273f5c;
+  }
+  #title{
+    color: #183c65;
   }
   .mmm2{
     background-image: linear-gradient(0deg, transparent calc(100% - 1px), #c0c0c0 calc(100% - 1px)),
@@ -2052,6 +2055,10 @@ input[type="text"]:focus {
     color: #ffffff;
   }
   .mt2{
+    background-color: #FFF;
+    color: #183c65;
+  }
+  .date{
     background-color: #FFF;
     color: #183c65;
   }

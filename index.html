@@ -793,6 +793,9 @@
         flagItm5 = localStorage.getItem("flagItm5") === "true";
         document.getElementById('catcc').innerText = `${catcount}`;
         document.getElementById('catgetsakana').innerText = `${catget}`;
+        counttt = BigInt(localStorage.getItem("kirokuclick") || "0");//総クリック数　記録✔︎
+        countb = BigInt(localStorage.getItem("kirokunibosi") || "0");//魚を集めた数合計　記録✔︎
+        countnedan = BigInt(localStorage.getItem("kirokucnedan") || "0");//魚を使った数　記録✔︎
         //変換
         get = get.map(v => BigInt(v));
         nedan = nedan.map(v => BigInt(v));
@@ -3492,8 +3495,8 @@
         document.getElementById('tenseicount').innerText = `${formatNumberJP(tenseicount)}`;
         point += 50n;
         localStorage.setItem("point", point.toString());
-        count = 0;
-        Lvcount = 0;
+        count = 0n;
+        Lvcount = 0n;
         localStorage.setItem('Lvcount', Lvcount.toString());
         localStorage.setItem("count", count.toString());
         document.getElementById('point').textContent = formatNumberJP(point);
@@ -3513,7 +3516,11 @@
         localStorage.removeItem("mItem");
         localStorage.removeItem("mmck");
         localStorage.removeItem('counttt');
+        setclick(0);
+        localStorage.removeItem('countnedan');
+        setcnedan(0);
         localStorage.removeItem('Icount');
+        setIcount(0);
         localStorage.setItem("itemBuycount", 0);
         localStorage.setItem("itemBuyStartTime", Date.now());
         localStorage.setItem("item2StartTime", Date.now());
