@@ -2029,10 +2029,6 @@ input[type="text"]:focus {
     background-image:
     radial-gradient(#ffffff 1px, transparent 1px);
   }
-  #sakana:hover{
-    filter: drop-shadow(0 0 8px #AAD6EC);
-    transform: scale(1.1,1.1);
-  }
   .yokobtn{
     background-color: #273f5c;
     color: #FFF;
