@@ -779,6 +779,9 @@
         msakana = BigInt(localStorage.getItem("msakana") || "170");
         mmck = BigInt(localStorage.getItem("mmck") || "100");
         mItem = BigInt(localStorage.getItem("mItem") || "10");
+        counttt = BigInt(localStorage.getItem("kirokuclick") || "0");
+        countb = BigInt(localStorage.getItem("kirokunibosi") || "0");
+        countnedan = BigInt(localStorage.getItem("kirokucnedan") || "0");
         point = BigInt(localStorage.getItem("point") || "0");
         tenseicount = BigInt(localStorage.getItem("tenseicount") || "100000000");
         get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");//ねこショップのものを買った数✔︎
@@ -793,9 +796,6 @@
         flagItm5 = localStorage.getItem("flagItm5") === "true";
         document.getElementById('catcc').innerText = `${catcount}`;
         document.getElementById('catgetsakana').innerText = `${catget}`;
-        counttt = BigInt(localStorage.getItem("kirokuclick") || "0");//総クリック数　記録✔︎
-        countb = BigInt(localStorage.getItem("kirokunibosi") || "0");//魚を集めた数合計　記録✔︎
-        countnedan = BigInt(localStorage.getItem("kirokucnedan") || "0");//魚を使った数　記録✔︎
         //変換
         get = get.map(v => BigInt(v));
         nedan = nedan.map(v => BigInt(v));
@@ -822,19 +822,19 @@
       ok7();
       sakujogamen.style.display = 'none';
       localStorage.removeItem('count');
-      setAndDisplaycount(0);
+      setAndDisplaycount(0n);
       localStorage.removeItem('point');
-      setpoint(0);
+      setpoint(0n);
       localStorage.removeItem('tenseicount');
-      settenseicount(100000000);
+      settenseicount(100000000n);
       document.getElementById('kirokusakana').innerText = `${formatNumberJP(count)}`;
       localStorage.removeItem('Lvcount');
-      setAndDisplayLv(0);
+      setAndDisplayLv(0n);
       document.getElementById('kirokuLv').innerText = `${formatNumberJP(Lvcount)}`;
       localStorage.removeItem('coun');
-      setAndDisplaycoun(1);
+      setAndDisplaycoun(1n);
       localStorage.removeItem('coun1s');
-      setcs(0);
+      setcs(0n);
       localStorage.removeItem("flagItm5");
       localStorage.removeItem("tapflag");
       //猫ショップのもの
@@ -853,15 +853,15 @@
       localStorage.removeItem('questlvup');
       //記録
       localStorage.removeItem('counttt');
-      setclick(0);
+      setclick(0n);
       localStorage.removeItem('countb');
-      setnibosi(0);
+      setnibosi(0n);
       localStorage.removeItem('countnedan');
-      setcnedan(0);
+      setcnedan(0n);
       localStorage.removeItem('Icount');
-      setIcount(0);
+      setIcount(0n);
       localStorage.removeItem('kirokutensei');
-      setktensei(0);
+      setktensei(0n);
       resetquestflag();
       localStorage.removeItem("msakana");
       localStorage.removeItem("mItem");
@@ -873,8 +873,8 @@
       localStorage.removeItem("item2Duration");
       localStorage.removeItem("motonedan");
       localStorage.removeItem("motocoun");
-      catcount = 0;
-      catget = 100;
+      catcount = 0n;
+      catget = 100n;
       document.getElementById('catcount').innerText = '0';
       localStorage.removeItem("catcount");
       document.getElementById('catgetsakana').innerText = '100';
@@ -3506,7 +3506,7 @@
         document.getElementById('kirokusakana').innerText = `${formatNumberJP(count)}`;
         document.getElementById('kirokuLv').innerText = `${formatNumberJP(Lvcount)}`;
         localStorage.removeItem('coun');
-        setAndDisplaycoun(1);
+        setAndDisplaycoun(1n);
         localStorage.removeItem('coun1s');
         localStorage.removeItem("flagItm5");
         localStorage.removeItem("tapflag");
@@ -3516,11 +3516,11 @@
         localStorage.removeItem("mItem");
         localStorage.removeItem("mmck");
         localStorage.removeItem('counttt');
-        setclick(0);
+        setclick(0n);
         localStorage.removeItem('countnedan');
-        setcnedan(0);
+        setcnedan(0n);
         localStorage.removeItem('Icount');
-        setIcount(0);
+        setIcount(0n);
         localStorage.setItem("itemBuycount", 0);
         localStorage.setItem("itemBuyStartTime", Date.now());
         localStorage.setItem("item2StartTime", Date.now());
