@@ -780,8 +780,10 @@
         mmck = BigInt(localStorage.getItem("mmck") || "100");
         mItem = BigInt(localStorage.getItem("mItem") || "10");
         counttt = BigInt(localStorage.getItem("kirokuclick") || "0");
-        countb = BigInt(localStorage.getItem("kirokunibosi") || "0");
-        countnedan = BigInt(localStorage.getItem("kirokucnedan") || "0");
+        // countb = BigInt(localStorage.getItem("kirokunibosi") || "0");
+        loadnibosi();
+        // countnedan = BigInt(localStorage.getItem("kirokucnedan") || "0");
+        loadcnedan();
         point = BigInt(localStorage.getItem("point") || "0");
         tenseicount = BigInt(localStorage.getItem("tenseicount") || "100000000");
         get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");//ねこショップのものを買った数✔︎
@@ -852,13 +854,13 @@
       localStorage.removeItem('counnt');
       localStorage.removeItem('questlvup');
       //記録
-      localStorage.removeItem('counttt');
+      localStorage.removeItem('kirokuclick');
       setclick(0n);
-      localStorage.removeItem('countb');
+      localStorage.removeItem('kirokunibosi');
       setnibosi(0n);
-      localStorage.removeItem('countnedan');
+      localStorage.removeItem('kirokucnedan');
       setcnedan(0n);
-      localStorage.removeItem('Icount');
+      localStorage.removeItem('kirokuIcount');
       setIcount(0n);
       localStorage.removeItem('kirokutensei');
       setktensei(0n);
@@ -3515,11 +3517,11 @@
         localStorage.removeItem("msakana");
         localStorage.removeItem("mItem");
         localStorage.removeItem("mmck");
-        localStorage.removeItem('counttt');
+        localStorage.removeItem('kirokuclick');
         setclick(0n);
-        localStorage.removeItem('countnedan');
+        localStorage.removeItem('kirokucnedan');
         setcnedan(0n);
-        localStorage.removeItem('Icount');
+        localStorage.removeItem('kirokuIcount');
         setIcount(0n);
         localStorage.setItem("itemBuycount", 0);
         localStorage.setItem("itemBuyStartTime", Date.now());
