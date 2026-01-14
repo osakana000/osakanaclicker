@@ -294,7 +294,7 @@ img{
   bottom: 10px;
   right: 10px;
   filter: drop-shadow(0 0 8px #9f9f9f);
-  z-index: 9999;
+  z-index: 9990;
 }
 #slicon{
   width: 55px;
