@@ -342,7 +342,7 @@
                     <p class="up">転生回数: <span class="marker" id="kirokutensei"></span></p>
                     <p class="up">物を買った数: <span class="marker" id="kirokumono"></span></p>
                     <p class="up">魚を集めた数(合計): <span class="marker" id="kirokusakanas"></span></p>
-                    <p class="up">魚を使った数(合計): <span class="marker" id="kirokusakanasiyou"></span></p>
+                    <p class="up">魚を使った数: <span class="marker" id="kirokusakanasiyou"></span></p>
                 </div>
             </div>
         </div>
@@ -764,9 +764,6 @@
     //ロード画面
     window.onload = function () {
         migrateData();
-        loadcount();
-        loadpoint();
-        loadtenseicount();
         const spinner = document.getElementById("loading");
         spinner.classList.add("loaded");
         //BigInt変数
@@ -780,10 +777,8 @@
         mmck = BigInt(localStorage.getItem("mmck") || "100");
         mItem = BigInt(localStorage.getItem("mItem") || "10");
         counttt = BigInt(localStorage.getItem("kirokuclick") || "0");
-        // countb = BigInt(localStorage.getItem("kirokunibosi") || "0");
-        loadnibosi();
-        // countnedan = BigInt(localStorage.getItem("kirokucnedan") || "0");
-        loadcnedan();
+        countb = BigInt(localStorage.getItem("kirokunibosi") || "0");
+        countnedan = BigInt(localStorage.getItem("kirokucnedan") || "0");
         point = BigInt(localStorage.getItem("point") || "0");
         tenseicount = BigInt(localStorage.getItem("tenseicount") || "100000000");
         get = JSON.parse(localStorage.getItem("get") || "[0,0,0,0,0]");//ねこショップのものを買った数✔︎
@@ -809,7 +804,6 @@
         shopItemStyles();
         urashopStyles();
         btn5();
-        loadcoun();
         Itm5flag();
         questflag();
         resumeItem2Timer();
